@@ -65,6 +65,8 @@ padding:.55rem .65rem;background:var(--paper);border-radius:2px}
 .lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
 .val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.verdict{margin:0;font-size:.95rem;padding-top:.55rem;border-top:1px solid var(--rule)}
+
 .spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
 .flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
 .yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
@@ -76,6 +78,29 @@ border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
 .note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
 footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
 footer p{margin:0 0 .6rem}
+
+.pick:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick h3 a{color:inherit;text-decoration:none}
+.pick h3 a:hover{color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.three .card{padding:1rem 1.1rem}
+.three h3{font-size:.95rem;margin:0 0 .5rem}
+.three ol{margin:0;padding-left:1.1rem;font-size:.86rem}
+.three li{margin-bottom:.35rem}
+.three a{text-decoration:none;font-weight:600}
+.gap{font-family:"JetBrains Mono",monospace;font-size:.8rem}
+
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--accent)}
+th.sortable::after{content:"";opacity:.35;margin-left:.3rem}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:.9}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:.9}
+th.sortable:not([aria-sort])::after{content:"\21C5"}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;
+margin-top:1rem;font-size:.83rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
+letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
 </style>
 <div class="wrap">
 <header>
@@ -84,249 +109,202 @@ footer p{margin:0 0 .6rem}
   <p class="lede">Every pick in the league graded against the same three boards
   &mdash; value over replacement, real-draft ADP and expert consensus &mdash; then
   weighted by how much value was still on the table when it was made. One rule,
-  applied identically to all ten teams. Ranked two ways below, because how much
-  talent you hold and how well you drafted are different questions.</p>
+  applied identically to all ten teams.</p>
 </header>
 
 <section>
-  <h2>Two ways to read the same draft</h2>
-  <p class="lede">Roster value asks how much talent a team ended up with. The draft
-  grade asks how well each pick was made against what was still on the board. They
-  are not the same question, and the teams that diverge most are the interesting
-  ones.</p>
-  <div class="tw" style="margin-top:1.1rem"><table>
+  <h2>The league at a glance</h2>
+  <p class="lede">Click any column to sort. Talent and decision quality are different
+  questions, and the teams where they disagree are the interesting ones.</p>
+  <div class="tw" style="margin-top:1.1rem"><table id="league">
     <thead><tr>
-      <th>Team</th><th class="vv">slot</th>
-      <th class="vv">value rank</th><th class="vv">starters</th>
-      <th class="vv">grade rank</th><th>grade</th><th class="vv">GPA</th>
-      <th class="vv">D picks</th><th class="vv">shift</th>
+      <th class="sortable" data-type="text">Team</th>
+      <th class="sortable vv" data-type="num" aria-sort="descending">Starters</th>
+      <th class="sortable vv" data-type="num">Bench</th>
+      <th class="sortable" data-type="num">Grade</th>
+      <th class="sortable vv" data-type="num">GPA</th>
     </tr></thead>
     <tbody>
   <tr class="me">
-    <td><a href="boston-market.html">Boston Market</a></td>
-    <td class="vv">2</td>
-    <td class="vv"><strong>1</strong></td>
-    <td class="vv">527</td>
-    <td class="vv"><strong>6</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.37</td>
-    <td class="vv">2</td>
-    <td class="vv"><span class="rea">&darr; 5</span></td>
+    <td data-v="Boston Market"><a href="boston-market.html">Boston Market</a></td>
+    <td class="vv" data-v="527">527</td>
+    <td class="vv" data-v="-57">-57</td>
+    <td class="gr g-b" data-v="3.37">B+</td>
+    <td class="vv" data-v="3.37">3.37</td>
   </tr>
   <tr>
-    <td><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></td>
-    <td class="vv">4</td>
-    <td class="vv"><strong>2</strong></td>
-    <td class="vv">484</td>
-    <td class="vv"><strong>1</strong></td>
-    <td class="gr g-a">A-</td>
-    <td class="vv">3.60</td>
-    <td class="vv">1</td>
-    <td class="vv"><span class="flat">&mdash;</span></td>
+    <td data-v="Vijay&#x27;s Spirited Team"><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></td>
+    <td class="vv" data-v="484">484</td>
+    <td class="vv" data-v="-64">-64</td>
+    <td class="gr g-a" data-v="3.6">A-</td>
+    <td class="vv" data-v="3.6">3.60</td>
   </tr>
   <tr>
-    <td><a href="vikingnorseman4.html">Vikingnorseman4</a></td>
-    <td class="vv">1</td>
-    <td class="vv"><strong>3</strong></td>
-    <td class="vv">470</td>
-    <td class="vv"><strong>5</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.42</td>
-    <td class="vv">1</td>
-    <td class="vv"><span class="flat">&mdash;</span></td>
+    <td data-v="Vikingnorseman4"><a href="vikingnorseman4.html">Vikingnorseman4</a></td>
+    <td class="vv" data-v="470">470</td>
+    <td class="vv" data-v="-59">-59</td>
+    <td class="gr g-b" data-v="3.42">B+</td>
+    <td class="vv" data-v="3.42">3.42</td>
   </tr>
   <tr>
-    <td><a href="mike-byars.html">Mike Byars</a></td>
-    <td class="vv">7</td>
-    <td class="vv"><strong>4</strong></td>
-    <td class="vv">456</td>
-    <td class="vv"><strong>2</strong></td>
-    <td class="gr g-a">A-</td>
-    <td class="vv">3.57</td>
-    <td class="vv">1</td>
-    <td class="vv"><span class="flat">&mdash;</span></td>
+    <td data-v="Mike Byars"><a href="mike-byars.html">Mike Byars</a></td>
+    <td class="vv" data-v="456">456</td>
+    <td class="vv" data-v="-72">-72</td>
+    <td class="gr g-a" data-v="3.57">A-</td>
+    <td class="vv" data-v="3.57">3.57</td>
   </tr>
   <tr>
-    <td><a href="rtv-1k.html">RTV 1K</a></td>
-    <td class="vv">3</td>
-    <td class="vv"><strong>5</strong></td>
-    <td class="vv">455</td>
-    <td class="vv"><strong>8</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.33</td>
-    <td class="vv">2</td>
-    <td class="vv"><span class="rea">&darr; 3</span></td>
+    <td data-v="RTV 1K"><a href="rtv-1k.html">RTV 1K</a></td>
+    <td class="vv" data-v="455">455</td>
+    <td class="vv" data-v="-109">-109</td>
+    <td class="gr g-b" data-v="3.33">B+</td>
+    <td class="vv" data-v="3.33">3.33</td>
   </tr>
   <tr>
-    <td><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td>
-    <td class="vv">9</td>
-    <td class="vv"><strong>6</strong></td>
-    <td class="vv">424</td>
-    <td class="vv"><strong>3</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.51</td>
-    <td class="vv">0</td>
-    <td class="vv"><span class="val">&uarr; 3</span></td>
+    <td data-v="About to be $7k Richer"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td>
+    <td class="vv" data-v="424">424</td>
+    <td class="vv" data-v="-15">-15</td>
+    <td class="gr g-b" data-v="3.51">B+</td>
+    <td class="vv" data-v="3.51">3.51</td>
   </tr>
   <tr>
-    <td><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></td>
-    <td class="vv">6</td>
-    <td class="vv"><strong>7</strong></td>
-    <td class="vv">415</td>
-    <td class="vv"><strong>7</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.35</td>
-    <td class="vv">0</td>
-    <td class="vv"><span class="flat">&mdash;</span></td>
+    <td data-v="bryant&#x27;s Brilliant Team"><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></td>
+    <td class="vv" data-v="415">415</td>
+    <td class="vv" data-v="-149">-149</td>
+    <td class="gr g-b" data-v="3.35">B+</td>
+    <td class="vv" data-v="3.35">3.35</td>
   </tr>
   <tr>
-    <td><a href="horribad.html">HoRriBaD</a></td>
-    <td class="vv">5</td>
-    <td class="vv"><strong>8</strong></td>
-    <td class="vv">411</td>
-    <td class="vv"><strong>10</strong></td>
-    <td class="gr g-b">B</td>
-    <td class="vv">3.12</td>
-    <td class="vv">1</td>
-    <td class="vv"><span class="flat">&mdash;</span></td>
+    <td data-v="HoRriBaD"><a href="horribad.html">HoRriBaD</a></td>
+    <td class="vv" data-v="411">411</td>
+    <td class="vv" data-v="-178">-178</td>
+    <td class="gr g-b" data-v="3.12">B</td>
+    <td class="vv" data-v="3.12">3.12</td>
   </tr>
   <tr>
-    <td><a href="infamous.html">Infamous</a></td>
-    <td class="vv">8</td>
-    <td class="vv"><strong>9</strong></td>
-    <td class="vv">410</td>
-    <td class="vv"><strong>4</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.43</td>
-    <td class="vv">0</td>
-    <td class="vv"><span class="val">&uarr; 5</span></td>
+    <td data-v="Infamous"><a href="infamous.html">Infamous</a></td>
+    <td class="vv" data-v="410">410</td>
+    <td class="vv" data-v="-67">-67</td>
+    <td class="gr g-b" data-v="3.43">B+</td>
+    <td class="vv" data-v="3.43">3.43</td>
   </tr>
   <tr>
-    <td><a href="threepeatgoat.html">Threepeatgoat </a></td>
-    <td class="vv">10</td>
-    <td class="vv"><strong>10</strong></td>
-    <td class="vv">409</td>
-    <td class="vv"><strong>9</strong></td>
-    <td class="gr g-b">B+</td>
-    <td class="vv">3.32</td>
-    <td class="vv">0</td>
-    <td class="vv"><span class="flat">&mdash;</span></td>
+    <td data-v="Threepeatgoat "><a href="threepeatgoat.html">Threepeatgoat </a></td>
+    <td class="vv" data-v="409">409</td>
+    <td class="vv" data-v="-24">-24</td>
+    <td class="gr g-b" data-v="3.32">B+</td>
+    <td class="vv" data-v="3.32">3.32</td>
   </tr>
     </tbody></table></div>
-  <div class="note">
-    <p><strong>Draft slot explains much of the value column.</strong> Slots 1&ndash;3
-    averaged 484 points of startable roster; slots 8&ndash;10 averaged 414. That
-    70-point head start has nothing to do with how anyone drafted &mdash; the team
-    picking second is handed a player the team picking ninth never sees.</p>
-    <p><strong>The grade controls for that; roster value does not.</strong> Boston
-    Market has the most talent in the league from the second pick, and the sixth-best
-    set of decisions &mdash; two D grades, more than anyone except RTV 1K. Vijay's
-    Spirited Team picked fourth, finished second in talent, and made the best
-    decisions in the league: seven A grades and a single D.</p>
-    <p><strong>The shift column</strong> is value rank minus grade rank. A down arrow
-    means a team is holding more talent than its decisions earned; an up arrow means
-    it drafted better than its final roster suggests.</p>
+  <div class="legend">
+    <div><b>Starters</b> Points the best legal lineup projects above a replacement-level
+    player at each slot, added up. Higher is better; the spread here is 409 to 527.</div>
+    <div><b>Bench</b> The same measure for everyone who is not starting. It is negative
+    for every team, and that is normal &mdash; past the starting nine, players sit below
+    replacement by definition. Closer to zero means better cover when a starter is hurt.</div>
+    <div><b>Grade &amp; GPA</b> The weighted average of all sixteen pick grades, where each
+    pick counts for how much value was still on the board when it was made. This is the
+    only column that is not partly a function of draft position.</div>
   </div>
 </section>
 
 <section>
-  <h2>Best and worst of each draft</h2>
-  <p class="lede">Skill positions only &mdash; kickers and defenses always look poor
-  against an overall ranking, which says nothing about the decision.</p>
-  <div class="tw" style="margin-top:1rem"><table>
-    <thead><tr><th>Team</th><th>grade</th><th>Best pick</th><th>Weakest pick</th></tr></thead>
-    <tbody>
-  <tr>
-    <td><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></td>
-    <td class="gr g-a">A-</td>
-    <td>Puka Nacua <span class="gr g-a">A</span></td>
-    <td>Travis Hunter <span class="gr g-d">D</span></td>
-  </tr>
-  <tr>
-    <td><a href="mike-byars.html">Mike Byars</a></td>
-    <td class="gr g-a">A-</td>
-    <td>Jonathan Taylor <span class="gr g-a">A</span></td>
-    <td>Ray Davis <span class="gr g-d">D</span></td>
-  </tr>
-  <tr>
-    <td><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td>
-    <td class="gr g-b">B+</td>
-    <td>Jaxon Smith-Njigba <span class="gr g-a">A</span></td>
-    <td>Jadarian Price <span class="gr g-c">C</span></td>
-  </tr>
-  <tr>
-    <td><a href="infamous.html">Infamous</a></td>
-    <td class="gr g-b">B+</td>
-    <td>James Cook III <span class="gr g-a">A</span></td>
-    <td>Alec Pierce <span class="gr g-c">C</span></td>
-  </tr>
-  <tr>
-    <td><a href="vikingnorseman4.html">Vikingnorseman4</a></td>
-    <td class="gr g-b">B+</td>
-    <td>Jahmyr Gibbs <span class="gr g-a">A</span></td>
-    <td>Justice Hill <span class="gr g-d">D</span></td>
-  </tr>
-  <tr class="me">
-    <td><a href="boston-market.html">Boston Market</a></td>
-    <td class="gr g-b">B+</td>
-    <td>Bijan Robinson <span class="gr g-a">A</span></td>
-    <td>Josh Jacobs <span class="gr g-d">D</span></td>
-  </tr>
-  <tr>
-    <td><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></td>
-    <td class="gr g-b">B+</td>
-    <td>Ashton Jeanty <span class="gr g-a">A</span></td>
-    <td>Kenny Gainwell <span class="gr g-c">C-</span></td>
-  </tr>
-  <tr>
-    <td><a href="rtv-1k.html">RTV 1K</a></td>
-    <td class="gr g-b">B+</td>
-    <td>Ja&#x27;Marr Chase <span class="gr g-a">A</span></td>
-    <td>MarShawn Lloyd <span class="gr g-d">D</span></td>
-  </tr>
-  <tr>
-    <td><a href="threepeatgoat.html">Threepeatgoat </a></td>
-    <td class="gr g-b">B+</td>
-    <td>Breece Hall <span class="gr g-a">A</span></td>
-    <td>Jordan Mason <span class="gr g-c">C-</span></td>
-  </tr>
-  <tr>
-    <td><a href="horribad.html">HoRriBaD</a></td>
-    <td class="gr g-b">B</td>
-    <td>Christian McCaffrey <span class="gr g-a">A</span></td>
-    <td>Jacory Croskey-Merritt <span class="gr g-d">D</span></td>
-  </tr>
-    </tbody></table></div>
+  <h2>Three best picks, by value found</h2>
+  <p class="lede">Ranked by how far past the market each pick came, not by how good the
+  player is &mdash; otherwise every team's best pick is its first-rounder, which says more
+  about draft slot than judgment. Any name links straight to the reasoning.</p>
+  <div class="three">
+  <div class="card"><h3><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></h3><ol><li><a href="vijay-s-spirited-team.html#pick-137">Isaiah Likely</a> <span class="gr g-b">B+</span> <span class="gap">pick 137 &middot; +19 v market</span></li><li><a href="vijay-s-spirited-team.html#pick-104">Wan&#x27;Dale Robinson</a> <span class="gr g-b">B+</span> <span class="gap">pick 104 &middot; +18 v market</span></li><li><a href="vijay-s-spirited-team.html#pick-117">Jakobi Meyers</a> <span class="gr g-b">B+</span> <span class="gap">pick 117 &middot; +10 v market</span></li></ol></div>
+  <div class="card"><h3><a href="mike-byars.html">Mike Byars</a></h3><ol><li><a href="mike-byars.html#pick-114">Quentin Johnston</a> <span class="gr g-b">B+</span> <span class="gap">pick 114 &middot; +19 v market</span></li><li><a href="mike-byars.html#pick-127">Dalton Kincaid</a> <span class="gr g-b">B+</span> <span class="gap">pick 127 &middot; +16 v market</span></li><li><a href="mike-byars.html#pick-94">Tucker Kraft</a> <span class="gr g-a">A</span> <span class="gap">pick 94 &middot; +16 v market</span></li></ol></div>
+  <div class="card"><h3><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></h3><ol><li><a href="about-to-be-7k-richer.html#pick-109">RJ Harvey</a> <span class="gr g-b">B+</span> <span class="gap">pick 109 &middot; +14 v market</span></li><li><a href="about-to-be-7k-richer.html#pick-129">KC Concepcion</a> <span class="gr g-b">B+</span> <span class="gap">pick 129 &middot; +10 v market</span></li><li><a href="about-to-be-7k-richer.html#pick-92">Chuba Hubbard</a> <span class="gr g-b">B+</span> <span class="gap">pick 92 &middot; +9 v market</span></li></ol></div>
+  <div class="card"><h3><a href="infamous.html">Infamous</a></h3><ol><li><a href="infamous.html#pick-128">Jake Ferguson</a> <span class="gr g-b">B+</span> <span class="gap">pick 128 &middot; +10 v market</span></li><li><a href="infamous.html#pick-28">George Pickens</a> <span class="gr g-a">A</span> <span class="gap">pick 28 &middot; +8 v market</span></li><li><a href="infamous.html#pick-108">Patrick Mahomes</a> <span class="gr g-a">A-</span> <span class="gap">pick 108 &middot; +4 v market</span></li></ol></div>
+  <div class="card"><h3><a href="vikingnorseman4.html">Vikingnorseman4</a></h3><ol><li><a href="vikingnorseman4.html#pick-81">Jaylen Warren</a> <span class="gr g-a">A-</span> <span class="gap">pick 81 &middot; +10 v market</span></li><li><a href="vikingnorseman4.html#pick-20">Drake London</a> <span class="gr g-a">A</span> <span class="gap">pick 20 &middot; +7 v market</span></li><li><a href="vikingnorseman4.html#pick-40">Ladd McConkey</a> <span class="gr g-a">A-</span> <span class="gap">pick 40 &middot; +4 v market</span></li></ol></div>
+  <div class="card"><h3><a href="boston-market.html">Boston Market</a></h3><ol><li><a href="boston-market.html#pick-99">Chris Godwin Jr.</a> <span class="gr g-a">A-</span> <span class="gap">pick 99 &middot; +20 v market</span></li><li><a href="boston-market.html#pick-82">Caleb Williams</a> <span class="gr g-a">A</span> <span class="gap">pick 82 &middot; +11 v market</span></li><li><a href="boston-market.html#pick-59">Jameson Williams</a> <span class="gr g-b">B+</span> <span class="gap">pick 59 &middot; +6 v market</span></li></ol></div>
+  <div class="card"><h3><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></h3><ol><li><a href="bryant-s-brilliant-team.html#pick-46">Zay Flowers</a> <span class="gr g-a">A</span> <span class="gap">pick 46 &middot; +16 v market</span></li><li><a href="bryant-s-brilliant-team.html#pick-146">Mark Andrews</a> <span class="gr g-a">A-</span> <span class="gap">pick 146 &middot; +14 v market</span></li><li><a href="bryant-s-brilliant-team.html#pick-95">Justin Herbert</a> <span class="gr g-a">A</span> <span class="gap">pick 95 &middot; +13 v market</span></li></ol></div>
+  <div class="card"><h3><a href="rtv-1k.html">RTV 1K</a></h3><ol><li><a href="rtv-1k.html#pick-123">Bo Nix</a> <span class="gr g-b">B+</span> <span class="gap">pick 123 &middot; +11 v market</span></li><li><a href="rtv-1k.html#pick-63">Joe Burrow</a> <span class="gr g-a">A</span> <span class="gap">pick 63 &middot; +10 v market</span></li><li><a href="rtv-1k.html#pick-3">Ja&#x27;Marr Chase</a> <span class="gr g-a">A</span> <span class="gap">pick 3 &middot; -0 v market</span></li></ol></div>
+  <div class="card"><h3><a href="threepeatgoat.html">Threepeatgoat </a></h3><ol><li><a href="threepeatgoat.html#pick-150">Trevor Lawrence</a> <span class="gr g-a">A</span> <span class="gap">pick 150 &middot; +58 v market</span></li><li><a href="threepeatgoat.html#pick-90">Brian Thomas Jr.</a> <span class="gr g-b">B+</span> <span class="gap">pick 90 &middot; +15 v market</span></li><li><a href="threepeatgoat.html#pick-31">Malik Nabers</a> <span class="gr g-a">A-</span> <span class="gap">pick 31 &middot; +5 v market</span></li></ol></div>
+  <div class="card"><h3><a href="horribad.html">HoRriBaD</a></h3><ol><li><a href="horribad.html#pick-45">Tetairoa McMillan</a> <span class="gr g-a">A</span> <span class="gap">pick 45 &middot; +10 v market</span></li><li><a href="horribad.html#pick-156">Jonah Coleman</a> <span class="gr g-b">B+</span> <span class="gap">pick 156 &middot; +4 v market</span></li><li><a href="horribad.html#pick-36">Lamar Jackson</a> <span class="gr g-a">A-</span> <span class="gap">pick 36 &middot; +4 v market</span></li></ol></div>
+  </div>
+</section>
+
+<section>
+  <h2>Three weakest picks</h2>
+  <p class="lede">Lowest graded, ties broken by how far ahead of the market they came.
+  Kickers and defenses are excluded &mdash; they always look poor against an overall
+  ranking, which says nothing about the decision.</p>
+  <div class="three">
+  <div class="card"><h3><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></h3><ol><li><a href="vijay-s-spirited-team.html#pick-124">Travis Hunter</a> <span class="gr g-d">D</span> <span class="gap">pick 124 &middot; -43 v market</span></li><li><a href="vijay-s-spirited-team.html#pick-97">Aaron Jones Sr.</a> <span class="gr g-c">C-</span> <span class="gap">pick 97 &middot; -20 v market</span></li><li><a href="vijay-s-spirited-team.html#pick-84">Jonathon Brooks</a> <span class="gr g-c">C</span> <span class="gap">pick 84 &middot; -10 v market</span></li></ol></div>
+  <div class="card"><h3><a href="mike-byars.html">Mike Byars</a></h3><ol><li><a href="mike-byars.html#pick-134">Ray Davis</a> <span class="gr g-d">D</span> <span class="gap">pick 134 &middot; -59 v market</span></li><li><a href="mike-byars.html#pick-107">Tyjae Spears</a> <span class="gr g-c">C-</span> <span class="gap">pick 107 &middot; -34 v market</span></li><li><a href="mike-byars.html#pick-87">Kyle Monangai</a> <span class="gr g-c">C-</span> <span class="gap">pick 87 &middot; -24 v market</span></li></ol></div>
+  <div class="card"><h3><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></h3><ol><li><a href="about-to-be-7k-richer.html#pick-52">Jadarian Price</a> <span class="gr g-c">C</span> <span class="gap">pick 52 &middot; -16 v market</span></li><li><a href="about-to-be-7k-richer.html#pick-69">Carnell Tate</a> <span class="gr g-b">B</span> <span class="gap">pick 69 &middot; +1 v market</span></li><li><a href="about-to-be-7k-richer.html#pick-89">Michael Wilson</a> <span class="gr g-b">B</span> <span class="gap">pick 89 &middot; +3 v market</span></li></ol></div>
+  <div class="card"><h3><a href="infamous.html">Infamous</a></h3><ol><li><a href="infamous.html#pick-113">Xavier Worthy</a> <span class="gr g-c">C</span> <span class="gap">pick 113 &middot; -16 v market</span></li><li><a href="infamous.html#pick-88">Alec Pierce</a> <span class="gr g-c">C</span> <span class="gap">pick 88 &middot; -9 v market</span></li><li><a href="infamous.html#pick-153">Alvin Kamara</a> <span class="gr g-c">C+</span> <span class="gap">pick 153 &middot; -13 v market</span></li></ol></div>
+  <div class="card"><h3><a href="vikingnorseman4.html">Vikingnorseman4</a></h3><ol><li><a href="vikingnorseman4.html#pick-140">Justice Hill</a> <span class="gr g-d">D</span> <span class="gap">pick 140 &middot; -29 v market</span></li><li><a href="vikingnorseman4.html#pick-61">Courtland Sutton</a> <span class="gr g-c">C</span> <span class="gap">pick 61 &middot; -18 v market</span></li><li><a href="vikingnorseman4.html#pick-121">Kyler Murray</a> <span class="gr g-c">C</span> <span class="gap">pick 121 &middot; -13 v market</span></li></ol></div>
+  <div class="card"><h3><a href="boston-market.html">Boston Market</a></h3><ol><li><a href="boston-market.html#pick-142">Isiah Pacheco</a> <span class="gr g-d">D</span> <span class="gap">pick 142 &middot; -37 v market</span></li><li><a href="boston-market.html#pick-79">Josh Jacobs</a> <span class="gr g-d">D</span> <span class="gap">pick 79 &middot; +36 v market</span></li><li><a href="boston-market.html#pick-122">Deebo Samuel Sr.</a> <span class="gr g-c">C</span> <span class="gap">pick 122 &middot; -9 v market</span></li></ol></div>
+  <div class="card"><h3><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></h3><ol><li><a href="bryant-s-brilliant-team.html#pick-115">Tyler Allgeier</a> <span class="gr g-c">C-</span> <span class="gap">pick 115 &middot; -30 v market</span></li><li><a href="bryant-s-brilliant-team.html#pick-75">Kenny Gainwell</a> <span class="gr g-c">C-</span> <span class="gap">pick 75 &middot; -24 v market</span></li><li><a href="bryant-s-brilliant-team.html#pick-155">Tank Dell</a> <span class="gr g-c">C</span> <span class="gap">pick 155 &middot; -34 v market</span></li></ol></div>
+  <div class="card"><h3><a href="rtv-1k.html">RTV 1K</a></h3><ol><li><a href="rtv-1k.html#pick-78">MarShawn Lloyd</a> <span class="gr g-d">D</span> <span class="gap">pick 78 &middot; -52 v market</span></li><li><a href="rtv-1k.html#pick-143">Tank Bigsby</a> <span class="gr g-d">D</span> <span class="gap">pick 143 &middot; -29 v market</span></li><li><a href="rtv-1k.html#pick-98">Matthew Golden</a> <span class="gr g-c">C-</span> <span class="gap">pick 98 &middot; -27 v market</span></li></ol></div>
+  <div class="card"><h3><a href="threepeatgoat.html">Threepeatgoat </a></h3><ol><li><a href="threepeatgoat.html#pick-91">Jordan Mason</a> <span class="gr g-c">C-</span> <span class="gap">pick 91 &middot; -23 v market</span></li><li><a href="threepeatgoat.html#pick-70">Sam LaPorta</a> <span class="gr g-b">B-</span> <span class="gap">pick 70 &middot; -15 v market</span></li><li><a href="threepeatgoat.html#pick-110">Rachaad White</a> <span class="gr g-b">B-</span> <span class="gap">pick 110 &middot; -6 v market</span></li></ol></div>
+  <div class="card"><h3><a href="horribad.html">HoRriBaD</a></h3><ol><li><a href="horribad.html#pick-76">Jacory Croskey-Merritt</a> <span class="gr g-d">D</span> <span class="gap">pick 76 &middot; -39 v market</span></li><li><a href="horribad.html#pick-105">De&#x27;Zhaun Stribling</a> <span class="gr g-c">C-</span> <span class="gap">pick 105 &middot; -22 v market</span></li><li><a href="horribad.html#pick-145">Jalen McMillan</a> <span class="gr g-c">C</span> <span class="gap">pick 145 &middot; -30 v market</span></li></ol></div>
+  </div>
 </section>
 
 <section id="method">
   <h2>How the grades work</h2>
   <div class="note">
     <p><strong>Every pick is weighed by what was at stake.</strong> The second overall
-    pick had 181 VORP on the table; the last pick had 10. Grading them equally would
-    say a kicker matters as much as a first-rounder.</p>
-    <p><strong>Three boards, because they disagree in useful ways.</strong> Market ADP
-    is a blend weighting FFC highest, since it comes from real 10-team PPR drafts.
-    ECR is FantasyPros alone. VORP is projected points above a replacement starter.
-    Where ADP and ECR sit more than 40 places apart, the pessimistic reading is used:
-    a gap that large almost always means news one source has absorbed and the other
-    has not.</p>
-    <p><strong>Taking the best player left is its own credit.</strong> Early on there
-    is no value to capture &mdash; nobody falls to pick two &mdash; so a pick that takes
-    the top player still on the board floors at A regardless of ADP. That floor is
-    suspended when the sources are split, because it is computed from VORP, and VORP
-    has no concept of a player being unable to play.</p>
-    <p><strong>Roster need moves a grade one step.</strong> Filling an empty starting
-    slot earns it; adding depth while a starting slot sits empty loses it.</p>
-    <p>Grades measure decision quality against what was knowable on the night.
-    Projection R&sup2; is about 0.24 &mdash; outcome noise is roughly twice the spread of
-    the projections &mdash; so none of this predicts the season.</p>
+    pick had 181 points of value on the table; the last pick had 10. Grading them equally
+    would say a kicker matters as much as a first-rounder.</p>
+    <p><strong>Three boards, because they disagree in useful ways.</strong> Market ADP is
+    a blend weighting FFC highest, since it comes from real ten-team PPR drafts. ECR is
+    FantasyPros alone. VORP is projected points above a replacement starter. Where ADP and
+    ECR sit more than forty places apart, the pessimistic reading is used: a gap that large
+    almost always means news one source has absorbed and the other has not.</p>
+    <p><strong>Taking the best player left is its own credit.</strong> Early on there is no
+    value to capture, so a pick that takes the top player still on the board floors at A
+    regardless of ADP. That floor is suspended when the sources are split, because it is
+    computed from VORP, and VORP has no concept of a player being unable to play.</p>
+    <p><strong>Roster need moves a grade one step.</strong> Filling an empty starting slot
+    earns it; adding depth while a starting slot sits empty loses it.</p>
+    <p><strong>Draft slot is not skill.</strong> Slots 1&ndash;3 averaged 484 points of
+    startable roster; slots 8&ndash;10 averaged 414. The grade controls for that by judging
+    each pick against what was actually available; the starters column does not.</p>
+    <p>Grades measure decision quality against what was knowable on the night. Projection
+    R&sup2; is about 0.24 &mdash; outcome noise is roughly twice the spread of the
+    projections &mdash; so none of this predicts the season.</p>
   </div>
 </section>
 
 <footer>
   <p>Built from the completed ESPN draft, joined to a consensus board of 946 valued
-  players. Cheat-sheet notes and swing questions come from the RTV1K board as of
-  draft night and describe the player, not the team that drafted him.</p>
+  players. Cheat-sheet notes and swing questions come from the RTV1K board as of draft
+  night and describe the player, not the team that drafted him.</p>
 </footer>
 </div>
+<script>
+(function(){
+  var table = document.getElementById('league');
+  if(!table) return;
+  var heads = table.tHead.rows[0].cells;
+  Array.prototype.forEach.call(heads, function(th, i){
+    if(!th.classList.contains('sortable')) return;
+    th.tabIndex = 0;
+    function sort(){
+      var asc = th.getAttribute('aria-sort') === 'ascending';
+      var dir = asc ? 'descending' : 'ascending';
+      Array.prototype.forEach.call(heads, function(o){ o.removeAttribute('aria-sort'); });
+      th.setAttribute('aria-sort', dir);
+      var body = table.tBodies[0];
+      var rows = Array.prototype.slice.call(body.rows);
+      var num = th.dataset.type === 'num';
+      rows.sort(function(a, b){
+        var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+        var r = num ? (parseFloat(x) - parseFloat(y)) : String(x).localeCompare(String(y));
+        return dir === 'ascending' ? r : -r;
+      });
+      rows.forEach(function(r){ body.appendChild(r); });
+    }
+    th.addEventListener('click', sort);
+    th.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); sort(); }
+    });
+  });
+})();
+</script>
