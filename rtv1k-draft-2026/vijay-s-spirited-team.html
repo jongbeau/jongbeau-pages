@@ -129,6 +129,16 @@ font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:b
 .bars span.on{background:var(--accent)}
 @media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
 .ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
+.bd{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.1rem}
+@media (min-width:62rem){.bd{grid-template-columns:1fr 1fr}}
+table.brk{font-size:.85rem}
+table.brk td.sl{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);
+letter-spacing:.04em;width:3.1rem}
+table.brk td.mut{color:var(--muted)}
+table.brk tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:600;
+padding-top:.5rem}
+table.brk tr.tot td:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted)}
 @media (max-width:34rem){
   /* let the table use the full screen width; the page padding was costing it
      exactly the 38px that forced a horizontal scroll */
@@ -179,18 +189,33 @@ font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:b
       <div class="sub">2 of 10 &middot; vs an average lineup</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></div></div>
     <div><b>Week 1 ready</b><span class="big">+38</span>
       <div class="sub">2 of 10</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></div></div>
-    <div><b>Bench over waivers</b><span class="big">10</span>
-      <div class="sub">10 of 10 &middot; league avg 41</div><div class="bars"><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+    <div><b>Bench over waivers</b><span class="big">89</span>
+      <div class="sub">9 of 10 &middot; league avg 109</div><div class="bars"><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
     <div><b>Decision quality</b><span class="big">3.6</span>
       <div class="sub">1 of 10 &middot; grade A-</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
-    <div><b>Usable reserves</b><span class="big names"><a href="#pick-84">Jonathon Brooks</a> +10</span>
-      <div class="sub">1 of 7 bench players beat the waiver wire</div></div>
+    <div><b>Usable reserves</b><span class="big names"><a href="#pick-84">Jonathon Brooks</a> +39 &middot; <a href="#pick-97">Aaron Jones Sr.</a> +14 &middot; <a href="#pick-77">Michael Pittman Jr.</a> +13 &middot; <a href="#pick-104">Wan&#x27;Dale Robinson</a> +11 &middot; <a href="#pick-117">Jakobi Meyers</a> +7 &middot; <a href="#pick-137">Isaiah Likely</a> +6</span>
+      <div class="sub">6 of 7 bench players beat the best free agent</div></div>
     <div><b>Grade spread</b><span class="big" style="font-size:1rem">7&times;A &middot; 6&times;B &middot; 2&times;C &middot; 1&times;D</span>
       <div class="sub">across sixteen picks</div></div>
     <div><b>Roster shape</b><span class="big" style="font-size:1rem">1QB 4RB 7WR 2TE</span>
       <div class="sub">plus 1 D/ST, 1 K</div></div>
   </div>
 </header>
+<section>
+  <h2>Slot by slot</h2>
+  <p class="lede">Every starter against what the other nine teams average at the same slot,
+  and every reserve against the best player still sitting on the waiver wire at his position.</p>
+  <div class="bd">
+    <div class="tw"><table class="brk">
+      <thead><tr><th>Slot</th><th>Player</th><th class="vv">Value</th>
+      <th class="vv">Avg starter</th><th class="vv">Diff</th></tr></thead>
+      <tbody><tr><td class="sl">QB</td><td><a href="#pick-57">Drake Maye</a></td><td class="vv">34</td><td class="vv mut">26</td><td class="vv"><span class="val">+8</span></td></tr><tr><td class="sl">RB1</td><td><a href="#pick-37">Cam Skattebo</a></td><td class="vv">64</td><td class="vv mut">123</td><td class="vv"><span class="rea">-59</span></td></tr><tr><td class="sl">RB2</td><td><a href="#pick-44">Quinshon Judkins</a></td><td class="vv">52</td><td class="vv mut">67</td><td class="vv"><span class="rea">-15</span></td></tr><tr><td class="sl">WR1</td><td><a href="#pick-4">Puka Nacua</a></td><td class="vv">137</td><td class="vv mut">92</td><td class="vv"><span class="val">+44</span></td></tr><tr><td class="sl">WR2</td><td><a href="#pick-17">Justin Jefferson</a></td><td class="vv">88</td><td class="vv mut">53</td><td class="vv"><span class="val">+34</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-64">Harold Fannin Jr.</a></td><td class="vv">34</td><td class="vv mut">34</td><td class="vv"><span class="rea">-0</span></td></tr><tr><td class="sl">FLEX</td><td><a href="#pick-24">A.J. Brown</a></td><td class="vv">76</td><td class="vv mut">50</td><td class="vv"><span class="val">+26</span></td></tr><tr class="tot"><td colspan="4">Starters</td><td class="vv"><span class="val">+38</span></td></tr></tbody></table></div>
+    <div class="tw"><table class="brk">
+      <thead><tr><th>Pos</th><th>Reserve</th><th class="vv">Value</th>
+      <th class="vv">Best free agent</th><th class="vv">Worth</th></tr></thead>
+      <tbody><tr><td class="sl">RB</td><td><a href="#pick-84">Jonathon Brooks</a></td><td class="vv">10</td><td class="vv mut">-30</td><td class="vv"><span class="val">+39</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-77">Michael Pittman Jr.</a></td><td class="vv">0</td><td class="vv mut">-13</td><td class="vv"><span class="val">+13</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-137">Isaiah Likely</a></td><td class="vv">-2</td><td class="vv mut">-8</td><td class="vv"><span class="val">+6</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-104">Wan&#x27;Dale Robinson</a></td><td class="vv">-2</td><td class="vv mut">-13</td><td class="vv"><span class="val">+11</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-117">Jakobi Meyers</a></td><td class="vv">-6</td><td class="vv mut">-13</td><td class="vv"><span class="val">+7</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-97">Aaron Jones Sr.</a></td><td class="vv">-16</td><td class="vv mut">-30</td><td class="vv"><span class="val">+14</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-124">Travis Hunter</a></td><td class="vv">-48</td><td class="vv mut">-13</td><td class="vv"><span class="flat">+0</span></td></tr><tr class="tot"><td colspan="4">Bench</td><td class="vv"><span class="val">+89</span></td></tr></tbody></table></div>
+  </div>
+</section>
 <section>
   <h2>Pick by pick</h2>
   <div class="ledger">
@@ -538,8 +563,8 @@ font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:b
   <p><b>Starters</b> is how far the best legal lineup projects above or below an average
   starting lineup in this league &mdash; the average of what the ten teams actually start at
   each slot, so zero is a league-average roster. <b>Week 1 ready</b> is the same measure with
-  anyone who cannot take the field removed. <b>Bench over waivers</b> counts only reserves better than
-  a freely available player &mdash; anyone worse scores zero, since you would stream instead.
+  anyone who cannot take the field removed. <b>Bench over waivers</b> measures each reserve against the best player actually left on
+  the wire at his position &mdash; anyone no better scores zero, since you would stream instead.
   <b>Decision quality</b> is the weighted average of all sixteen pick grades and is the only
   measure that does not depend on draft slot.</p>
   <p>VORP comes from the Sleeper/FantasyPros/FFC blend, market ADP from that same weighted
