@@ -204,7 +204,7 @@ table.led tr.me td{background:var(--accent-soft)}
     <div><b>Draft slot</b><span class="big">6</span>
       <div class="sub">of 10 &middot; middle</div></div>
     <div><b>Starters</b><span class="big">550</span>
-      <div class="sub">5 of 10 &middot; league avg 552</div><div class="sub" style="color:var(--bad)">Cannot play in week one, so not eligible for a slot &mdash; the lineup counts whoever would actually play there: Tank Dell (injured reserve)</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+      <div class="sub">6 of 10 &middot; league avg 555</div><div class="sub" style="color:var(--bad)">Cannot play in week one, so not eligible for a slot &mdash; the lineup counts whoever would actually play there: Tank Dell (injured reserve)</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
     <div><b>Bench</b><span class="big">121</span>
       <div class="sub">4 of 10 &middot; league avg 114</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
     <div><b>Decision quality</b><span class="big">3.44</span>
@@ -222,8 +222,8 @@ table.led tr.me td{background:var(--accent-soft)}
   <h2>Slot by slot</h2>
   <p class="lede">What each player is worth over the best one still sitting on the waiver wire
   at his position &mdash; Matthew Stafford at QB, Samaje Perine at RB, Jalen Coker at WR, Juwan Johnson at TE, Minnesota Vikings at D/ST, Chris Boswell at K. The same yardstick for starters and reserves, so the two
-  columns can be read against each other. A starter counts below the line if he is under it;
-  a reserve floors at zero, because you would drop him.</p>
+  columns can be read against each other, and both floor at zero: a player worth less than a
+  free agent is not a liability, because you would drop him and sign the free agent.</p>
   <div class="bd">
     <div class="tw"><table class="brk">
       <thead><tr><th>Slot</th><th>Player</th><th class="vv">Worth</th></tr></thead>
@@ -465,11 +465,11 @@ table.led tr.me td{background:var(--accent-soft)}
 </section>
 <footer>
   <p>Every number here counts points above the best player still undrafted at that position,
-  so a starter and a reserve are on one scale. <b>Starters</b> is the best legal lineup summed;
-  a starter counts even below that line, because the slot has to be filled, and anyone who cannot
-  take the field is not eligible for a slot at all. <b>Bench</b> is the reserves summed and
-  floored at zero, since a reserve no better than a free agent would simply be dropped, and it
-  is where a stashed player lands. <b>Decision quality</b> is the weighted average of all sixteen pick grades and is the only
+  so a starter and a reserve are on one scale, and both floor at zero &mdash; a player worth
+  less than a free agent is worth nothing, because you would drop him and sign the free agent.
+  <b>Starters</b> is all nine slots of the best lineup that can actually be fielded; anyone who
+  cannot take the field is not eligible for one and falls to the bench, which is also where a
+  stashed player lands. <b>Decision quality</b> is the weighted average of all sixteen pick grades and is the only
   measure that does not depend on draft slot.</p>
   <p>VORP comes from the Sleeper/FantasyPros/FFC blend, market ADP from that same weighted blend, ECR from
   FantasyPros alone (106 experts, 2 September 2026). Grades are rule-based and identical across all ten
