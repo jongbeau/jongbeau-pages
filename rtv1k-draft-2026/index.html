@@ -1,0 +1,225 @@
+<title>RTV 1K Draft Report Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:60rem;margin:0 auto;display:flex;flex-direction:column;gap:2.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:600}h3{font-size:1.05rem;font-weight:600}
+a{color:var(--accent)}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+font-weight:600;margin:0 0 .4rem}
+.lede{color:var(--muted);max-width:64ch}
+.back{font-size:.8rem;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.5rem}
+.hero{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;margin-top:1.1rem}
+.bigmark{font-family:Fraunces,Georgia,serif;font-size:4rem;font-weight:700;line-height:.9;color:var(--accent)}
+.bigmark small{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem;flex:1}
+.stat .n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:600;
+font-variant-numeric:tabular-nums;display:block}
+.stat .l{font-size:.73rem;color:var(--muted)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:2rem}td.vv{text-align:right}
+tr.me td{background:var(--accent-soft);font-weight:600}
+td a{text-decoration:none;font-weight:600}
+.gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}.g-d{color:var(--bad)}
+.ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
+display:flex;flex-direction:column;gap:.65rem}
+.pick-head{display:flex;align-items:flex-start;gap:.85rem}
+.ovr{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;color:var(--muted);
+min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.who{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
+.pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
+.pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
+.need{font-size:.66rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+color:var(--accent);border:1px solid var(--accent);border-radius:2px;padding:.02rem .3rem}
+.grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
+min-width:2.5rem;text-align:right}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
+padding:.55rem .65rem;background:var(--paper);border-radius:2px}
+.sig{display:flex;flex-direction:column;gap:.08rem}
+.lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
+.flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
+.yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
+display:flex;flex-direction:column;gap:.18rem}
+.note-line{margin:0;font-size:.86rem}
+.swing{margin:0;font-size:.86rem;font-style:italic;color:var(--muted)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:1rem 1.2rem;
+border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
+.note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
+footer p{margin:0 0 .6rem}
+</style>
+<div class="wrap">
+<header>
+  <p class="eyebrow">RTV 26' 1K &middot; 2026 &middot; ten teams, 160 picks</p>
+  <h1>Draft Report Cards</h1>
+  <p class="lede">Every pick in the league graded against the same three boards
+  &mdash; value over replacement, real-draft ADP and expert consensus &mdash; then
+  weighted by how much value was still on the table when it was made. One rule,
+  applied identically to all ten teams.</p>
+</header>
+
+<section>
+  <h2>Two rankings, and they disagree</h2>
+  <p class="lede">Decision quality and roster value are not the same thing. A team can
+  make consistently sound choices and finish with less talent, or land two elite
+  players and waste the middle rounds.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem;margin-top:1.1rem">
+    <div class="tw"><table><thead><tr><th></th><th>By decision quality</th><th>grade</th>
+      <th class="vv">GPA</th></tr></thead><tbody>
+<tr><td class="rk">1</td><td><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></td><td class="gr g-a">A-</td><td class="vv">3.60</td></tr>
+<tr><td class="rk">2</td><td><a href="mike-byars.html">Mike Byars</a></td><td class="gr g-a">A-</td><td class="vv">3.57</td></tr>
+<tr><td class="rk">3</td><td><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="gr g-b">B+</td><td class="vv">3.51</td></tr>
+<tr><td class="rk">4</td><td><a href="infamous.html">Infamous</a></td><td class="gr g-b">B+</td><td class="vv">3.43</td></tr>
+<tr><td class="rk">5</td><td><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="gr g-b">B+</td><td class="vv">3.42</td></tr>
+<tr class="me"><td class="rk">6</td><td><a href="boston-market.html">Boston Market</a></td><td class="gr g-b">B+</td><td class="vv">3.37</td></tr>
+<tr><td class="rk">7</td><td><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></td><td class="gr g-b">B+</td><td class="vv">3.35</td></tr>
+<tr><td class="rk">8</td><td><a href="rtv-1k.html">RTV 1K</a></td><td class="gr g-b">B+</td><td class="vv">3.33</td></tr>
+<tr><td class="rk">9</td><td><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="gr g-b">B+</td><td class="vv">3.32</td></tr>
+<tr><td class="rk">10</td><td><a href="horribad.html">HoRriBaD</a></td><td class="gr g-b">B</td><td class="vv">3.12</td></tr>
+    </tbody></table></div>
+    <div class="tw"><table><thead><tr><th></th><th>By roster value</th><th>grade</th>
+      <th class="vv">starters</th></tr></thead><tbody>
+<tr class="me"><td class="rk">1</td><td><a href="boston-market.html">Boston Market</a></td><td class="gr g-b">B+</td><td class="vv">527</td></tr>
+<tr><td class="rk">2</td><td><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></td><td class="gr g-a">A-</td><td class="vv">484</td></tr>
+<tr><td class="rk">3</td><td><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="gr g-b">B+</td><td class="vv">470</td></tr>
+<tr><td class="rk">4</td><td><a href="mike-byars.html">Mike Byars</a></td><td class="gr g-a">A-</td><td class="vv">456</td></tr>
+<tr><td class="rk">5</td><td><a href="rtv-1k.html">RTV 1K</a></td><td class="gr g-b">B+</td><td class="vv">455</td></tr>
+<tr><td class="rk">6</td><td><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="gr g-b">B+</td><td class="vv">424</td></tr>
+<tr><td class="rk">7</td><td><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></td><td class="gr g-b">B+</td><td class="vv">415</td></tr>
+<tr><td class="rk">8</td><td><a href="horribad.html">HoRriBaD</a></td><td class="gr g-b">B</td><td class="vv">411</td></tr>
+<tr><td class="rk">9</td><td><a href="infamous.html">Infamous</a></td><td class="gr g-b">B+</td><td class="vv">410</td></tr>
+<tr><td class="rk">10</td><td><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="gr g-b">B+</td><td class="vv">409</td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <h2>Best and worst of each draft</h2>
+  <p class="lede">Skill positions only &mdash; kickers and defenses always look poor
+  against an overall ranking, which says nothing about the decision.</p>
+  <div class="tw" style="margin-top:1rem"><table>
+    <thead><tr><th>Team</th><th>grade</th><th>Best pick</th><th>Weakest pick</th></tr></thead>
+    <tbody>
+  <tr>
+    <td><a href="vijay-s-spirited-team.html">Vijay&#x27;s Spirited Team</a></td>
+    <td class="gr g-a">A-</td>
+    <td>Puka Nacua <span class="gr g-a">A</span></td>
+    <td>Travis Hunter <span class="gr g-d">D</span></td>
+  </tr>
+  <tr>
+    <td><a href="mike-byars.html">Mike Byars</a></td>
+    <td class="gr g-a">A-</td>
+    <td>Jonathan Taylor <span class="gr g-a">A</span></td>
+    <td>Ray Davis <span class="gr g-d">D</span></td>
+  </tr>
+  <tr>
+    <td><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td>
+    <td class="gr g-b">B+</td>
+    <td>Jaxon Smith-Njigba <span class="gr g-a">A</span></td>
+    <td>Jadarian Price <span class="gr g-c">C</span></td>
+  </tr>
+  <tr>
+    <td><a href="infamous.html">Infamous</a></td>
+    <td class="gr g-b">B+</td>
+    <td>James Cook III <span class="gr g-a">A</span></td>
+    <td>Alec Pierce <span class="gr g-c">C</span></td>
+  </tr>
+  <tr>
+    <td><a href="vikingnorseman4.html">Vikingnorseman4</a></td>
+    <td class="gr g-b">B+</td>
+    <td>Jahmyr Gibbs <span class="gr g-a">A</span></td>
+    <td>Justice Hill <span class="gr g-d">D</span></td>
+  </tr>
+  <tr class="me">
+    <td><a href="boston-market.html">Boston Market</a></td>
+    <td class="gr g-b">B+</td>
+    <td>Bijan Robinson <span class="gr g-a">A</span></td>
+    <td>Josh Jacobs <span class="gr g-d">D</span></td>
+  </tr>
+  <tr>
+    <td><a href="bryant-s-brilliant-team.html">bryant&#x27;s Brilliant Team</a></td>
+    <td class="gr g-b">B+</td>
+    <td>Ashton Jeanty <span class="gr g-a">A</span></td>
+    <td>Kenny Gainwell <span class="gr g-c">C-</span></td>
+  </tr>
+  <tr>
+    <td><a href="rtv-1k.html">RTV 1K</a></td>
+    <td class="gr g-b">B+</td>
+    <td>Ja&#x27;Marr Chase <span class="gr g-a">A</span></td>
+    <td>MarShawn Lloyd <span class="gr g-d">D</span></td>
+  </tr>
+  <tr>
+    <td><a href="threepeatgoat.html">Threepeatgoat </a></td>
+    <td class="gr g-b">B+</td>
+    <td>Breece Hall <span class="gr g-a">A</span></td>
+    <td>Jordan Mason <span class="gr g-c">C-</span></td>
+  </tr>
+  <tr>
+    <td><a href="horribad.html">HoRriBaD</a></td>
+    <td class="gr g-b">B</td>
+    <td>Christian McCaffrey <span class="gr g-a">A</span></td>
+    <td>Jacory Croskey-Merritt <span class="gr g-d">D</span></td>
+  </tr>
+    </tbody></table></div>
+</section>
+
+<section id="method">
+  <h2>How the grades work</h2>
+  <div class="note">
+    <p><strong>Every pick is weighed by what was at stake.</strong> The second overall
+    pick had 181 VORP on the table; the last pick had 10. Grading them equally would
+    say a kicker matters as much as a first-rounder.</p>
+    <p><strong>Three boards, because they disagree in useful ways.</strong> Market ADP
+    is a blend weighting FFC highest, since it comes from real 10-team PPR drafts.
+    ECR is FantasyPros alone. VORP is projected points above a replacement starter.
+    Where ADP and ECR sit more than 40 places apart, the pessimistic reading is used:
+    a gap that large almost always means news one source has absorbed and the other
+    has not.</p>
+    <p><strong>Taking the best player left is its own credit.</strong> Early on there
+    is no value to capture &mdash; nobody falls to pick two &mdash; so a pick that takes
+    the top player still on the board floors at A regardless of ADP. That floor is
+    suspended when the sources are split, because it is computed from VORP, and VORP
+    has no concept of a player being unable to play.</p>
+    <p><strong>Roster need moves a grade one step.</strong> Filling an empty starting
+    slot earns it; adding depth while a starting slot sits empty loses it.</p>
+    <p>Grades measure decision quality against what was knowable on the night.
+    Projection R&sup2; is about 0.24 &mdash; outcome noise is roughly twice the spread of
+    the projections &mdash; so none of this predicts the season.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Built from the completed ESPN draft, joined to a consensus board of 946 valued
+  players. Cheat-sheet notes and swing questions come from the RTV1K board as of
+  draft night and describe the player, not the team that drafted him.</p>
+</footer>
+</div>

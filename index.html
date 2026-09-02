@@ -1,0 +1,40 @@
+<title>jongbeau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.5rem,6vw,4rem)}
+.wrap{max-width:40rem;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(2rem,6vw,2.8rem);font-weight:600;
+letter-spacing:-.02em;margin:0}
+.lede{color:var(--muted);margin:0}
+.entry{display:block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
+padding:1.2rem 1.4rem;text-decoration:none;color:inherit}
+.entry:hover{border-color:var(--accent);background:var(--accent-soft)}
+.entry h2{font-family:Fraunces,Georgia,serif;font-size:1.2rem;font-weight:600;margin:0 0 .3rem}
+.entry p{margin:0;font-size:.9rem;color:var(--muted)}
+.when{font-family:"Public Sans",sans-serif;font-size:.7rem;letter-spacing:.12em;
+text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 .5rem}
+</style>
+<div class="wrap">
+  <header>
+    <h1>jongbeau</h1>
+    <p class="lede">Things worth putting somewhere permanent.</p>
+  </header>
+  <a class="entry" href="rtv1k-draft-2026/">
+    <p class="when">September 2026 &middot; fantasy football</p>
+    <h2>RTV 1K Draft Report Cards</h2>
+    <p>All 160 picks in a ten-team league, graded against value over replacement,
+    real-draft ADP and expert consensus &mdash; then weighted by what was still on
+    the board.</p>
+  </a>
+</div>
