@@ -113,6 +113,22 @@ letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
 .tw.scrolls::after{opacity:1}
 .scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
 .tw.scrolls ~ .scrollhint{display:block}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);
+gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+margin-top:1.6rem;overflow:hidden}
+.ctx > div{background:var(--card);padding:.9rem 1.05rem;display:flex;flex-direction:column;
+gap:.28rem;min-width:0}
+.ctx b{display:block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+color:var(--muted);font-weight:600;line-height:1.3}
+.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.55rem;font-weight:600;
+font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:break-word}
+.ctx .big a{color:var(--accent)}
+.ctx .sub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bars{display:flex;gap:2px;margin-top:.15rem}
+.bars span{flex:1;height:3px;border-radius:2px;background:var(--rule)}
+.bars span.on{background:var(--accent)}
+@media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
+.ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
 @media (max-width:34rem){
   /* let the table use the full screen width; the page padding was costing it
      exactly the 38px that forced a horizontal scroll */
@@ -125,8 +141,10 @@ letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
   #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
   #league td{padding:.4rem .28rem}
   #league th.sortable::after{margin-left:.15rem}
-  .ctx > div{padding:.75rem .85rem}
-  .ctx .big{font-size:1.2rem}
+  .ctx{grid-template-columns:1fr 1fr}
+  .ctx > div{padding:.7rem .8rem}
+  .ctx .big{font-size:1.15rem}
+  .ctx b{font-size:.6rem;letter-spacing:.08em}
   .signals{grid-template-columns:repeat(2,1fr)}
   .pick{padding:.85rem .9rem}
   .grade{font-size:1.35rem;min-width:2.1rem}
@@ -157,15 +175,15 @@ letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
   <div class="ctx">
     <div><b>Draft slot</b><span class="big">7</span>
       <div class="sub">of 10 &middot; middle</div></div>
-    <div><b>Starters</b><span class="big">456</span>
-      <div class="sub">4 of 10 &middot; league avg 446</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
-    <div><b>Week 1 ready</b><span class="big">456</span>
+    <div><b>Starters</b><span class="big">+10</span>
+      <div class="sub">4 of 10 &middot; vs an average lineup</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+    <div><b>Week 1 ready</b><span class="big">+10</span>
       <div class="sub">4 of 10</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
     <div><b>Bench over waivers</b><span class="big">62</span>
       <div class="sub">3 of 10 &middot; league avg 41</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span></div></div>
     <div><b>Decision quality</b><span class="big">3.57</span>
       <div class="sub">2 of 10 &middot; grade A-</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></div></div>
-    <div><b>Usable reserves</b><span class="big" style="font-size:.92rem"><a href="#pick-54">DJ Moore</a> +38 &middot; <a href="#pick-74">Mike Evans</a> +23 &middot; <a href="#pick-127">Dalton Kincaid</a> +1</span>
+    <div><b>Usable reserves</b><span class="big names"><a href="#pick-54">DJ Moore</a> +38 &middot; <a href="#pick-74">Mike Evans</a> +23 &middot; <a href="#pick-127">Dalton Kincaid</a> +1</span>
       <div class="sub">3 of 7 bench players beat the waiver wire</div></div>
     <div><b>Grade spread</b><span class="big" style="font-size:1rem">6&times;A &middot; 7&times;B &middot; 2&times;C &middot; 1&times;D</span>
       <div class="sub">across sixteen picks</div></div>
@@ -517,8 +535,10 @@ letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
 
 </section>
 <footer>
-  <p><b>Starters</b> is the best legal lineup's points above replacement; <b>Week 1 ready</b>
-  removes anyone who cannot play. <b>Bench over waivers</b> counts only reserves better than
+  <p><b>Starters</b> is how far the best legal lineup projects above or below an average
+  starting lineup in this league &mdash; the average of what the ten teams actually start at
+  each slot, so zero is a league-average roster. <b>Week 1 ready</b> is the same measure with
+  anyone who cannot take the field removed. <b>Bench over waivers</b> counts only reserves better than
   a freely available player &mdash; anyone worse scores zero, since you would stream instead.
   <b>Decision quality</b> is the weighted average of all sixteen pick grades and is the only
   measure that does not depend on draft slot.</p>
