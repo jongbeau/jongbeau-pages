@@ -172,6 +172,18 @@ color:var(--muted)}
   #league th{font-size:.54rem}
   .signals{grid-template-columns:1fr 1fr}
 }
+table.led{font-size:.88rem}
+table.led td.tm{color:var(--muted);font-size:.8rem}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led td.tm{display:none}
+  table.led th:nth-child(4){display:none}
+}
 </style>
 </head>
 <body>
@@ -237,7 +249,7 @@ color:var(--muted)}
         </div>
         <span class="grade g-a">A-</span>
       </div>
-      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">11</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">6</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">6</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">6</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-0 fair</span></span></div></div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">11</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">6</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">6</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">6</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">0 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 3&ndash;9 &middot; their tier 1</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">Reception floor is automatic in full PPR</p><p class="swing">Can he keep 130+ targets with Gibbs, Jamo and LaPorta all healthy?</p></div>
       <p class="verdict">Market price for the most automatic reception floor in full PPR. Nothing to argue with.</p>

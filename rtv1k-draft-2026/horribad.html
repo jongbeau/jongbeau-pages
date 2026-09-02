@@ -172,6 +172,18 @@ color:var(--muted)}
   #league th{font-size:.54rem}
   .signals{grid-template-columns:1fr 1fr}
 }
+table.led{font-size:.88rem}
+table.led td.tm{color:var(--muted);font-size:.8rem}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led td.tm{display:none}
+  table.led th:nth-child(4){display:none}
+}
 </style>
 </head>
 <body>

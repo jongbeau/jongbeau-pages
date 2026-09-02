@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RTV 1K Draft Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:60rem;margin:0 auto;display:flex;flex-direction:column;gap:2.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:600}h3{font-size:1.05rem;font-weight:600}
+a{color:var(--accent)}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+font-weight:600;margin:0 0 .4rem}
+.lede{color:var(--muted);max-width:64ch}
+.back{font-size:.8rem;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.5rem}
+.hero{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;margin-top:1.1rem}
+.bigmark{font-family:Fraunces,Georgia,serif;font-size:4rem;font-weight:700;line-height:.9;color:var(--accent)}
+.bigmark small{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem;flex:1}
+.stat .n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:600;
+font-variant-numeric:tabular-nums;display:block}
+.stat .l{font-size:.73rem;color:var(--muted)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:2rem}td.vv,th.vv{text-align:center}
+td.gr{text-align:center}
+tr.me td{background:var(--accent-soft);font-weight:600}
+td a{text-decoration:none;font-weight:600}
+.gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}.g-d{color:var(--bad)}
+.ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
+display:flex;flex-direction:column;gap:.65rem}
+.pick-head{display:flex;align-items:flex-start;gap:.85rem}
+.ovr{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;color:var(--muted);
+min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.who{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
+.pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
+.pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
+.need{font-size:.66rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+color:var(--accent);border:1px solid var(--accent);border-radius:2px;padding:.02rem .3rem}
+.grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
+min-width:2.5rem;text-align:right}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
+padding:.55rem .65rem;background:var(--paper);border-radius:2px}
+.sig{display:flex;flex-direction:column;gap:.08rem}
+.lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.verdict{margin:0;font-size:.95rem;padding-top:.55rem;border-top:1px solid var(--rule)}
+
+.spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
+.flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
+.yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
+display:flex;flex-direction:column;gap:.18rem}
+.note-line{margin:0;font-size:.86rem}
+.swing{margin:0;font-size:.86rem;font-style:italic;color:var(--muted)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:1rem 1.2rem;
+border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
+.note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
+footer p{margin:0 0 .6rem}
+
+.pick:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick h3 a{color:inherit;text-decoration:none}
+.pick h3 a:hover{color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.three .card{padding:1rem 1.1rem}
+.three h3{font-size:.95rem;margin:0 0 .5rem}
+.three ol{margin:0;padding-left:1.1rem;font-size:.86rem}
+.three li{margin-bottom:.35rem}
+.three a{text-decoration:none;font-weight:600}
+.gap{font-family:"JetBrains Mono",monospace;font-size:.8rem}
+
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--accent)}
+th.sortable::after{content:"";opacity:.35;margin-left:.3rem}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:.9}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:.9}
+th.sortable:not([aria-sort])::after{content:"\21C5"}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;
+margin-top:1rem;font-size:.83rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
+letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
+
+/* --- narrow screens ------------------------------------------------ */
+.tw{position:relative}
+.tw::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1.6rem;
+  pointer-events:none;background:linear-gradient(to right,transparent,var(--paper));
+  opacity:0;transition:opacity .15s}
+.tw.scrolls::after{opacity:1}
+.scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
+.tw.scrolls ~ .scrollhint{display:block}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);
+gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+margin-top:1.6rem;overflow:hidden}
+.ctx > div{background:var(--card);padding:.9rem 1.05rem;display:flex;flex-direction:column;
+gap:.28rem;min-width:0}
+.ctx b{display:block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+color:var(--muted);font-weight:600;line-height:1.3}
+.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.55rem;font-weight:600;
+font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:break-word}
+.ctx .big a{color:var(--accent)}
+.ctx .sub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bars{display:flex;gap:2px;margin-top:.15rem}
+.bars span{flex:1;height:3px;border-radius:2px;background:var(--rule)}
+.bars span.on{background:var(--accent)}
+@media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
+.ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
+.bd{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.1rem}
+@media (min-width:62rem){.bd{grid-template-columns:1fr 1fr}}
+table.brk{font-size:.85rem}
+table.brk td.sl{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);
+letter-spacing:.04em;width:3.1rem}
+table.brk td.mut{color:var(--muted)}
+table.brk tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:600;
+padding-top:.5rem}
+table.brk tr.tot td:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted)}
+.gpaval{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:34rem){
+  /* let the table use the full screen width; the page padding was costing it
+     exactly the 38px that forced a horizontal scroll */
+  .tw{margin-inline:calc(-1 * clamp(1.2rem,4vw,3rem))}
+  #league{font-size:.8rem;width:100%}
+  #league td:first-child,#league th:first-child{padding-left:.55rem}
+  #league td:last-child,#league th:last-child{padding-right:.4rem}
+  #league th{padding:.4rem .22rem}
+  #league td{padding:.42rem .22rem}
+  #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
+  #league td{padding:.4rem .28rem}
+  #league th.sortable::after{margin-left:.15rem}
+  .ctx{grid-template-columns:1fr 1fr}
+  .ctx > div{padding:.7rem .8rem}
+  .ctx .big{font-size:1.15rem}
+  .ctx b{font-size:.6rem;letter-spacing:.08em}
+  .signals{grid-template-columns:repeat(2,1fr)}
+  .pick{padding:.85rem .9rem}
+  .grade{font-size:1.35rem;min-width:2.1rem}
+  .who h3{font-size:1rem}
+  .hero{gap:1rem}
+  .bigmark{font-size:3rem}
+  .three ol{padding-left:1rem}
+}
+@media (max-width:24rem){
+  #league{font-size:.74rem}
+  #league th{font-size:.54rem}
+  .signals{grid-template-columns:1fr 1fr}
+}
+table.led{font-size:.88rem}
+table.led td.tm{color:var(--muted);font-size:.8rem}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led td.tm{display:none}
+  table.led th:nth-child(4){display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow"><a class="back" href="index.html">&larr; all ten teams</a></p>
+  <h1>The whole draft</h1>
+  <p class="lede">All 160 picks in the order they were made. The same grades as the team
+  cards, read down the board instead of across one roster &mdash; which is where a run on a
+  position, or the round the value ran out, actually shows up.</p>
+</header>
+  <section class="rnd">
+    <h2>Round 1</h2>
+    <p class="lede rshape"><span class="pos pos-RB">RB</span>&nbsp;5 &middot; <span class="pos pos-WR">WR</span>&nbsp;5</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">1</td><td><a href="vikingnorseman4.html#pick-1">Jahmyr Gibbs</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr class="me"><td class="vv mono">2</td><td><a href="boston-market.html#pick-2">Bijan Robinson</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">3</td><td><a href="rtv-1k.html#pick-3">Ja'Marr Chase</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">4</td><td><a href="vijay-s-spirited-team.html#pick-4">Puka Nacua</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">+1</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">5</td><td><a href="horribad.html#pick-5">Christian McCaffrey</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">6</td><td><a href="bryant-s-brilliant-team.html#pick-6">Amon-Ra St. Brown</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">7</td><td><a href="mike-byars.html#pick-7">Jonathan Taylor</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">8</td><td><a href="infamous.html#pick-8">James Cook III</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">9</td><td><a href="about-to-be-7k-richer.html#pick-9">Jaxon Smith-Njigba</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">10</td><td><a href="threepeatgoat.html#pick-10">CeeDee Lamb</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 2</h2>
+    <p class="lede rshape"><span class="pos pos-RB">RB</span>&nbsp;7 &middot; <span class="pos pos-WR">WR</span>&nbsp;2 &middot; <span class="pos pos-TE">TE</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">11</td><td><a href="threepeatgoat.html#pick-11">Kenneth Walker III</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">-10</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">12</td><td><a href="about-to-be-7k-richer.html#pick-12">De'Von Achane</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">13</td><td><a href="infamous.html#pick-13">Saquon Barkley</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-6</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">14</td><td><a href="mike-byars.html#pick-14">Chase Brown</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="flat">-1</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">15</td><td><a href="bryant-s-brilliant-team.html#pick-15">Ashton Jeanty</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">-6</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">16</td><td><a href="horribad.html#pick-16">Brock Bowers</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">-8</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">17</td><td><a href="vijay-s-spirited-team.html#pick-17">Justin Jefferson</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="val">+6</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">18</td><td><a href="rtv-1k.html#pick-18">Omarion Hampton</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr class="me"><td class="vv mono">19</td><td><a href="boston-market.html#pick-19">Derrick Henry</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">20</td><td><a href="vikingnorseman4.html#pick-20">Drake London</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="val">+7</span></td><td class="vv"><span class="gr g-a">A</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 3</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;6 &middot; <span class="pos pos-RB">RB</span>&nbsp;2 &middot; <span class="pos pos-QB">QB</span>&nbsp;1 &middot; <span class="pos pos-TE">TE</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">21</td><td><a href="vikingnorseman4.html#pick-21">Josh Allen</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">-5</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr class="me"><td class="vv mono">22</td><td><a href="boston-market.html#pick-22">Nico Collins</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">+1</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">23</td><td><a href="rtv-1k.html#pick-23">Trey McBride</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-1</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">24</td><td><a href="vijay-s-spirited-team.html#pick-24">A.J. Brown</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="val">+7</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">25</td><td><a href="horribad.html#pick-25">Garrett Wilson</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">-5</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">26</td><td><a href="bryant-s-brilliant-team.html#pick-26">Jeremiyah Love</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">27</td><td><a href="mike-byars.html#pick-27">Chris Olave</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+8</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">28</td><td><a href="infamous.html#pick-28">George Pickens</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="val">+8</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">29</td><td><a href="about-to-be-7k-richer.html#pick-29">Rashee Rice</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">+2</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">30</td><td><a href="threepeatgoat.html#pick-30">Breece Hall</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-a">A</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 4</h2>
+    <p class="lede rshape"><span class="pos pos-RB">RB</span>&nbsp;5 &middot; <span class="pos pos-WR">WR</span>&nbsp;3 &middot; <span class="pos pos-QB">QB</span>&nbsp;1 &middot; <span class="pos pos-TE">TE</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">31</td><td><a href="threepeatgoat.html#pick-31">Malik Nabers</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">+5</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">32</td><td><a href="about-to-be-7k-richer.html#pick-32">Javonte Williams</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">33</td><td><a href="infamous.html#pick-33">Kyren Williams</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">+1</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">34</td><td><a href="mike-byars.html#pick-34">DeVonta Smith</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="flat">+5</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">35</td><td><a href="bryant-s-brilliant-team.html#pick-35">Travis Etienne Jr.</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">-9</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">36</td><td><a href="horribad.html#pick-36">Lamar Jackson</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">37</td><td><a href="vijay-s-spirited-team.html#pick-37">Cam Skattebo</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">-6</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">38</td><td><a href="rtv-1k.html#pick-38">D'Andre Swift</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-14</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr class="me"><td class="vv mono">39</td><td><a href="boston-market.html#pick-39">Colston Loveland</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">40</td><td><a href="vikingnorseman4.html#pick-40">Ladd McConkey</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 5</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;6 &middot; <span class="pos pos-RB">RB</span>&nbsp;3 &middot; <span class="pos pos-TE">TE</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">41</td><td><a href="vikingnorseman4.html#pick-41">Tee Higgins</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="val">+5</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr class="me"><td class="vv mono">42</td><td><a href="boston-market.html#pick-42">Jaylen Waddle</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">43</td><td><a href="rtv-1k.html#pick-43">Bhayshul Tuten</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="rea">-19</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">44</td><td><a href="vijay-s-spirited-team.html#pick-44">Quinshon Judkins</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">-9</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">45</td><td><a href="horribad.html#pick-45">Tetairoa McMillan</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="val">+10</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">46</td><td><a href="bryant-s-brilliant-team.html#pick-46">Zay Flowers</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="val">+16</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">47</td><td><a href="mike-byars.html#pick-47">Emeka Egbuka</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+8</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">48</td><td><a href="infamous.html#pick-48">Davante Adams</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">49</td><td><a href="about-to-be-7k-richer.html#pick-49">Tyler Warren</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">-5</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">50</td><td><a href="threepeatgoat.html#pick-50">Bucky Irving</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 6</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;5 &middot; <span class="pos pos-RB">RB</span>&nbsp;4 &middot; <span class="pos pos-QB">QB</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">51</td><td><a href="threepeatgoat.html#pick-51">Luther Burden III</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">-3</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">52</td><td><a href="about-to-be-7k-richer.html#pick-52">Jadarian Price</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="rea">-16</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">53</td><td><a href="infamous.html#pick-53">David Montgomery</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-3</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">54</td><td><a href="mike-byars.html#pick-54">DJ Moore</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="flat">+2</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">55</td><td><a href="bryant-s-brilliant-team.html#pick-55">Terry McLaurin</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="val">+6</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">56</td><td><a href="horribad.html#pick-56">TreVeyon Henderson</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">-8</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">57</td><td><a href="vijay-s-spirited-team.html#pick-57">Drake Maye</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="val">+9</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">58</td><td><a href="rtv-1k.html#pick-58">Rome Odunze</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-1</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr class="me"><td class="vv mono">59</td><td><a href="boston-market.html#pick-59">Jameson Williams</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="val">+6</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">60</td><td><a href="vikingnorseman4.html#pick-60">Rhamondre Stevenson</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">-14</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 7</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;5 &middot; <span class="pos pos-TE">TE</span>&nbsp;3 &middot; <span class="pos pos-QB">QB</span>&nbsp;2</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">61</td><td><a href="vikingnorseman4.html#pick-61">Courtland Sutton</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="rea">-18</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr class="me"><td class="vv mono">62</td><td><a href="boston-market.html#pick-62">Christian Watson</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">63</td><td><a href="rtv-1k.html#pick-63">Joe Burrow</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="val">+10</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">64</td><td><a href="vijay-s-spirited-team.html#pick-64">Harold Fannin Jr.</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">-11</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">65</td><td><a href="horribad.html#pick-65">Parker Washington</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">+2</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">66</td><td><a href="bryant-s-brilliant-team.html#pick-66">Marvin Harrison Jr.</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">-3</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">67</td><td><a href="mike-byars.html#pick-67">Jalen Hurts</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+7</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">68</td><td><a href="infamous.html#pick-68">Kyle Pitts Sr.</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-11</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">69</td><td><a href="about-to-be-7k-richer.html#pick-69">Carnell Tate</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">+1</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">70</td><td><a href="threepeatgoat.html#pick-70">Sam LaPorta</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="rea">-15</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 8</h2>
+    <p class="lede rshape"><span class="pos pos-RB">RB</span>&nbsp;5 &middot; <span class="pos pos-WR">WR</span>&nbsp;3 &middot; <span class="pos pos-QB">QB</span>&nbsp;2</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">71</td><td><a href="threepeatgoat.html#pick-71">Jayden Daniels</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">+5</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">72</td><td><a href="about-to-be-7k-richer.html#pick-72">Dak Prescott</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">-5</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">73</td><td><a href="infamous.html#pick-73">DK Metcalf</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-3</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">74</td><td><a href="mike-byars.html#pick-74">Mike Evans</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+15</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">75</td><td><a href="bryant-s-brilliant-team.html#pick-75">Kenny Gainwell</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="rea">-24</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">76</td><td><a href="horribad.html#pick-76">Jacory Croskey-Merritt</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="rea">-39</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr><td class="vv mono">77</td><td><a href="vijay-s-spirited-team.html#pick-77">Michael Pittman Jr.</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">78</td><td><a href="rtv-1k.html#pick-78">MarShawn Lloyd</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="rea">-52</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr class="me"><td class="vv mono">79</td><td><a href="boston-market.html#pick-79">Josh Jacobs</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="val">+36</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr><td class="vv mono">80</td><td><a href="vikingnorseman4.html#pick-80">Tony Pollard</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-b">B</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 9</h2>
+    <p class="lede rshape"><span class="pos pos-RB">RB</span>&nbsp;5 &middot; <span class="pos pos-WR">WR</span>&nbsp;3 &middot; <span class="pos pos-QB">QB</span>&nbsp;1 &middot; <span class="pos pos-TE">TE</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">81</td><td><a href="vikingnorseman4.html#pick-81">Jaylen Warren</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="val">+10</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr class="me"><td class="vv mono">82</td><td><a href="boston-market.html#pick-82">Caleb Williams</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="val">+11</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">83</td><td><a href="rtv-1k.html#pick-83">Rico Dowdle</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">84</td><td><a href="vijay-s-spirited-team.html#pick-84">Jonathon Brooks</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">-10</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">85</td><td><a href="horribad.html#pick-85">J.K. Dobbins</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">-8</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">86</td><td><a href="bryant-s-brilliant-team.html#pick-86">George Kittle</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">-7</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">87</td><td><a href="mike-byars.html#pick-87">Kyle Monangai</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="rea">-24</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">88</td><td><a href="infamous.html#pick-88">Alec Pierce</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-9</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">89</td><td><a href="about-to-be-7k-richer.html#pick-89">Michael Wilson</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">+3</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">90</td><td><a href="threepeatgoat.html#pick-90">Brian Thomas Jr.</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="val">+15</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 10</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;5 &middot; <span class="pos pos-RB">RB</span>&nbsp;3 &middot; <span class="pos pos-TE">TE</span>&nbsp;1 &middot; <span class="pos pos-QB">QB</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">91</td><td><a href="threepeatgoat.html#pick-91">Jordan Mason</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="rea">-23</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">92</td><td><a href="about-to-be-7k-richer.html#pick-92">Chuba Hubbard</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="val">+9</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">93</td><td><a href="infamous.html#pick-93">Stefon Diggs</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-2</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr><td class="vv mono">94</td><td><a href="mike-byars.html#pick-94">Tucker Kraft</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+16</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">95</td><td><a href="bryant-s-brilliant-team.html#pick-95">Justin Herbert</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="val">+13</span></td><td class="vv"><span class="gr g-a">A</span></td></tr><tr><td class="vv mono">96</td><td><a href="horribad.html#pick-96">Josh Downs</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="val">+6</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">97</td><td><a href="vijay-s-spirited-team.html#pick-97">Aaron Jones Sr.</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="rea">-20</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">98</td><td><a href="rtv-1k.html#pick-98">Matthew Golden</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="rea">-27</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr class="me"><td class="vv mono">99</td><td><a href="boston-market.html#pick-99">Chris Godwin Jr.</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="val">+20</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">100</td><td><a href="vikingnorseman4.html#pick-100">Jordan Addison</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">-4</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 11</h2>
+    <p class="lede rshape"><span class="pos pos-RB">RB</span>&nbsp;4 &middot; <span class="pos pos-QB">QB</span>&nbsp;2 &middot; <span class="pos pos-WR">WR</span>&nbsp;2 &middot; <span class="pos pos-TE">TE</span>&nbsp;1 &middot; <span class="pos pos-K">K</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">101</td><td><a href="vikingnorseman4.html#pick-101">Travis Kelce</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">+2</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr class="me"><td class="vv mono">102</td><td><a href="boston-market.html#pick-102">Jaxson Dart</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">103</td><td><a href="rtv-1k.html#pick-103">Blake Corum</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-7</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">104</td><td><a href="vijay-s-spirited-team.html#pick-104">Wan'Dale Robinson</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="val">+18</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">105</td><td><a href="horribad.html#pick-105">De'Zhaun Stribling</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="rea">-22</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">106</td><td><a href="bryant-s-brilliant-team.html#pick-106">Brandon Aubrey</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">107</td><td><a href="mike-byars.html#pick-107">Tyjae Spears</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="rea">-34</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">108</td><td><a href="infamous.html#pick-108">Patrick Mahomes</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">109</td><td><a href="about-to-be-7k-richer.html#pick-109">RJ Harvey</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="val">+14</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">110</td><td><a href="threepeatgoat.html#pick-110">Rachaad White</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">-6</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 12</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;6 &middot; <span class="pos pos-DST">D/ST</span>&nbsp;2 &middot; <span class="pos pos-RB">RB</span>&nbsp;1 &middot; <span class="pos pos-TE">TE</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">111</td><td><a href="threepeatgoat.html#pick-111">Jayden Reed</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="val">+7</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">112</td><td><a href="about-to-be-7k-richer.html#pick-112">Makai Lemon</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">113</td><td><a href="infamous.html#pick-113">Xavier Worthy</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="rea">-16</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">114</td><td><a href="mike-byars.html#pick-114">Quentin Johnston</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+19</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">115</td><td><a href="bryant-s-brilliant-team.html#pick-115">Tyler Allgeier</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="rea">-30</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">116</td><td><a href="horribad.html#pick-116">Texans D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">117</td><td><a href="vijay-s-spirited-team.html#pick-117">Jakobi Meyers</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="val">+10</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">118</td><td><a href="rtv-1k.html#pick-118">Khalil Shakir</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">-5</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr><tr class="me"><td class="vv mono">119</td><td><a href="boston-market.html#pick-119">Broncos D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C-</span></td></tr><tr><td class="vv mono">120</td><td><a href="vikingnorseman4.html#pick-120">Dallas Goedert</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-b">B-</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 13</h2>
+    <p class="lede rshape"><span class="pos pos-WR">WR</span>&nbsp;3 &middot; <span class="pos pos-QB">QB</span>&nbsp;2 &middot; <span class="pos pos-TE">TE</span>&nbsp;2 &middot; <span class="pos pos-RB">RB</span>&nbsp;1 &middot; <span class="pos pos-DST">D/ST</span>&nbsp;1 &middot; <span class="pos pos-K">K</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">121</td><td><a href="vikingnorseman4.html#pick-121">Kyler Murray</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">-13</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr class="me"><td class="vv mono">122</td><td><a href="boston-market.html#pick-122">Deebo Samuel Sr.</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">-9</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">123</td><td><a href="rtv-1k.html#pick-123">Bo Nix</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="val">+11</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">124</td><td><a href="vijay-s-spirited-team.html#pick-124">Travis Hunter</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="rea">-43</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr><td class="vv mono">125</td><td><a href="horribad.html#pick-125">Woody Marks</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="rea">-15</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">126</td><td><a href="bryant-s-brilliant-team.html#pick-126">Rams D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">127</td><td><a href="mike-byars.html#pick-127">Dalton Kincaid</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="val">+16</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">128</td><td><a href="infamous.html#pick-128">Jake Ferguson</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="val">+10</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">129</td><td><a href="about-to-be-7k-richer.html#pick-129">KC Concepcion</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="val">+10</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">130</td><td><a href="threepeatgoat.html#pick-130">Cameron Dicker</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 14</h2>
+    <p class="lede rshape"><span class="pos pos-K">K</span>&nbsp;3 &middot; <span class="pos pos-RB">RB</span>&nbsp;3 &middot; <span class="pos pos-DST">D/ST</span>&nbsp;2 &middot; <span class="pos pos-TE">TE</span>&nbsp;1 &middot; <span class="pos pos-WR">WR</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">131</td><td><a href="threepeatgoat.html#pick-131">Steelers D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">132</td><td><a href="about-to-be-7k-richer.html#pick-132">Ka'imi Fairbairn</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">133</td><td><a href="infamous.html#pick-133">Seahawks D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">134</td><td><a href="mike-byars.html#pick-134">Ray Davis</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="rea">-59</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr><td class="vv mono">135</td><td><a href="bryant-s-brilliant-team.html#pick-135">Mike Washington Jr.</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="rea">-20</span></td><td class="vv"><span class="gr g-c">C+</span></td></tr><tr><td class="vv mono">136</td><td><a href="horribad.html#pick-136">Jason Myers</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">137</td><td><a href="vijay-s-spirited-team.html#pick-137">Isaiah Likely</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="val">+19</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">138</td><td><a href="rtv-1k.html#pick-138">Cam Little</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr class="me"><td class="vv mono">139</td><td><a href="boston-market.html#pick-139">Romeo Doubs</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="val">+12</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">140</td><td><a href="vikingnorseman4.html#pick-140">Justice Hill</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="rea">-29</span></td><td class="vv"><span class="gr g-d">D</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 15</h2>
+    <p class="lede rshape"><span class="pos pos-DST">D/ST</span>&nbsp;3 &middot; <span class="pos pos-RB">RB</span>&nbsp;2 &middot; <span class="pos pos-WR">WR</span>&nbsp;2 &middot; <span class="pos pos-TE">TE</span>&nbsp;1 &middot; <span class="pos pos-K">K</span>&nbsp;1 &middot; <span class="pos pos-QB">QB</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">141</td><td><a href="vikingnorseman4.html#pick-141">Ravens D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr class="me"><td class="vv mono">142</td><td><a href="boston-market.html#pick-142">Isiah Pacheco</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="rea">-37</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr><td class="vv mono">143</td><td><a href="rtv-1k.html#pick-143">Tank Bigsby</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="rea">-29</span></td><td class="vv"><span class="gr g-d">D</span></td></tr><tr><td class="vv mono">144</td><td><a href="vijay-s-spirited-team.html#pick-144">Patriots D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">145</td><td><a href="horribad.html#pick-145">Jalen McMillan</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="rea">-30</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">146</td><td><a href="bryant-s-brilliant-team.html#pick-146">Mark Andrews</a></td><td><span class="pos pos-TE">TE</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="val">+14</span></td><td class="vv"><span class="gr g-a">A-</span></td></tr><tr><td class="vv mono">147</td><td><a href="mike-byars.html#pick-147">Lions D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">148</td><td><a href="infamous.html#pick-148">Harrison Mevis</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">149</td><td><a href="about-to-be-7k-richer.html#pick-149">Jordyn Tyson</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="val">+12</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">150</td><td><a href="threepeatgoat.html#pick-150">Trevor Lawrence</a></td><td><span class="pos pos-QB">QB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="val">+58</span></td><td class="vv"><span class="gr g-a">A</span></td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="rnd">
+    <h2>Round 16</h2>
+    <p class="lede rshape"><span class="pos pos-K">K</span>&nbsp;4 &middot; <span class="pos pos-RB">RB</span>&nbsp;3 &middot; <span class="pos pos-DST">D/ST</span>&nbsp;2 &middot; <span class="pos pos-WR">WR</span>&nbsp;1</p>
+    <div class="tw"><table class="led">
+      <thead><tr><th class="vv">#</th><th>Player</th><th>Pos</th><th>Team</th>
+      <th class="vv">vs market</th><th class="vv">Grade</th></tr></thead>
+      <tbody><tr><td class="vv mono">151</td><td><a href="threepeatgoat.html#pick-151">Zach Charbonnet</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="threepeatgoat.html">Threepeatgoat </a></td><td class="vv mono"><span class="flat">0</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">152</td><td><a href="about-to-be-7k-richer.html#pick-152">Eagles D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="about-to-be-7k-richer.html">About to be $7k Richer</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">153</td><td><a href="infamous.html#pick-153">Alvin Kamara</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="infamous.html">Infamous</a></td><td class="vv mono"><span class="flat">-13</span></td><td class="vv"><span class="gr g-c">C+</span></td></tr><tr><td class="vv mono">154</td><td><a href="mike-byars.html#pick-154">Eddy Pineiro</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="mike-byars.html">Mike Byars</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">155</td><td><a href="bryant-s-brilliant-team.html#pick-155">Tank Dell</a></td><td><span class="pos pos-WR">WR</span></td><td class="tm"><a href="bryant-s-brilliant-team.html">bryant's Brilliant Team</a></td><td class="vv mono"><span class="rea">-34</span></td><td class="vv"><span class="gr g-c">C</span></td></tr><tr><td class="vv mono">156</td><td><a href="horribad.html#pick-156">Jonah Coleman</a></td><td><span class="pos pos-RB">RB</span></td><td class="tm"><a href="horribad.html">HoRriBaD</a></td><td class="vv mono"><span class="flat">+4</span></td><td class="vv"><span class="gr g-b">B+</span></td></tr><tr><td class="vv mono">157</td><td><a href="vijay-s-spirited-team.html#pick-157">Harrison Butker</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="vijay-s-spirited-team.html">Vijay's Spirited Team</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">158</td><td><a href="rtv-1k.html#pick-158">Chargers D/ST</a></td><td><span class="pos pos-DST">D/ST</span></td><td class="tm"><a href="rtv-1k.html">RTV 1K</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr class="me"><td class="vv mono">159</td><td><a href="boston-market.html#pick-159">Evan McPherson</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="boston-market.html">Boston Market</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr><tr><td class="vv mono">160</td><td><a href="vikingnorseman4.html#pick-160">Will Reichard</a></td><td><span class="pos pos-K">K</span></td><td class="tm"><a href="vikingnorseman4.html">Vikingnorseman4</a></td><td class="vv mono"><span class="flat">&mdash;</span></td><td class="vv"><span class="gr g-b">B</span></td></tr></tbody>
+    </table></div>
+  </section>
+<footer>
+  <p>Every row links to the full explanation on that team's card. <b>vs market</b> is places
+  of value found: positive means he lasted past his ADP.</p>
+</footer>
+</div>
+<script>
+document.querySelectorAll("th.sortable").forEach(function(th){
+  th.addEventListener("click", function(){
+    var table = th.closest("table"), body = table.tBodies[0];
+    var i = [].indexOf.call(th.parentNode.cells, th);
+    var num = th.dataset.type === "num";
+    var desc = th.getAttribute("aria-sort") !== "descending";
+    [].forEach.call(table.tHead.rows[0].cells, function(c){ c.removeAttribute("aria-sort"); });
+    th.setAttribute("aria-sort", desc ? "descending" : "ascending");
+    var rows = [].slice.call(body.rows);
+    rows.sort(function(a, b){
+      var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+      if (num) { x = parseFloat(x); y = parseFloat(y); }
+      return (x < y ? -1 : x > y ? 1 : 0) * (desc ? -1 : 1);
+    });
+    rows.forEach(function(r){ body.appendChild(r); });
+  });
+});
+(function(){
+  function mark(){
+    document.querySelectorAll(".tw").forEach(function(w){
+      var t = w.querySelector("table");
+      if (t) w.classList.toggle("scrolls", t.scrollWidth > w.clientWidth + 2);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -172,6 +172,18 @@ color:var(--muted)}
   #league th{font-size:.54rem}
   .signals{grid-template-columns:1fr 1fr}
 }
+table.led{font-size:.88rem}
+table.led td.tm{color:var(--muted);font-size:.8rem}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led td.tm{display:none}
+  table.led th:nth-child(4){display:none}
+}
 </style>
 </head>
 <body>
@@ -237,7 +249,7 @@ color:var(--muted)}
         </div>
         <span class="grade g-a">A</span>
       </div>
-      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">2</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">2</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">4</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">2</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-0 fair</span></span></div></div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">2</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">2</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">4</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">2</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">0 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 2&ndash;5 &middot; their tier 1</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">Elite three-down workload</p><p class="swing">Does Atlanta finally give him 20+ touches every single week?</p></div>
       <p class="verdict">Gibbs went first; you took the only other back in his tier. All three boards agree at #2.</p>
@@ -282,7 +294,7 @@ color:var(--muted)}
         </div>
         <span class="grade g-a">A-</span>
       </div>
-      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">41</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">40</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">35</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">33</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-0 fair</span></span></div></div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">41</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">40</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">35</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">33</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">0 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 22&ndash;85 &middot; their tier 4 &middot; the panel is split</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">25.6% target share over final five games; second-year leap</p><p class="swing">Was the late-season eruption a true breakout signal?</p></div>
       <p class="verdict">VORP 41, ECR 36, your sheet 33 — taken 39. Priced almost exactly right, at the position you still needed.</p>
