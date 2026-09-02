@@ -62,8 +62,6 @@ min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
 .pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
 .pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
 .pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
-.need{font-size:.66rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-color:var(--accent);border:1px solid var(--accent);border-radius:2px;padding:.02rem .3rem}
 .grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
 min-width:2.5rem;text-align:right}
 .signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
@@ -224,18 +222,17 @@ table.led tr.me td{background:var(--accent-soft)}
 </header>
 <section>
   <h2>Slot by slot</h2>
-  <p class="lede">Every player against the best one still sitting on the waiver wire at his
-  position &mdash; the same yardstick for starters and reserves, so the two columns can be read
-  against each other.</p>
+  <p class="lede">What each player is worth over the best one still sitting on the waiver wire
+  at his position &mdash; Matthew Stafford at QB, Samaje Perine at RB, Jalen Coker at WR, Juwan Johnson at TE. The same yardstick for starters and reserves, so the two
+  columns can be read against each other. A starter counts below the line if he is under it;
+  a reserve floors at zero, because you would drop him.</p>
   <div class="bd">
     <div class="tw"><table class="brk">
-      <thead><tr><th>Slot</th><th>Player</th><th class="vv">Value</th>
-      <th class="vv">Best free agent</th><th class="vv">Worth</th></tr></thead>
-      <tbody><tr><td class="sl">QB</td><td><a href="#pick-21">Josh Allen</a></td><td class="vv">75</td><td class="vv mut">10</td><td class="vv"><span class="val">+65</span></td></tr><tr><td class="sl">RB1</td><td><a href="#pick-1">Jahmyr Gibbs</a></td><td class="vv">187</td><td class="vv mut">-30</td><td class="vv"><span class="val">+217</span></td></tr><tr><td class="sl">RB2</td><td><a href="#pick-81">Jaylen Warren</a></td><td class="vv">25</td><td class="vv mut">-30</td><td class="vv"><span class="val">+54</span></td></tr><tr><td class="sl">WR1</td><td><a href="#pick-20">Drake London</a></td><td class="vv">76</td><td class="vv mut">-13</td><td class="vv"><span class="val">+89</span></td></tr><tr><td class="sl">WR2</td><td><a href="#pick-41">Tee Higgins</a></td><td class="vv">50</td><td class="vv mut">-13</td><td class="vv"><span class="val">+63</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-101">Travis Kelce</a></td><td class="vv">7</td><td class="vv mut">-8</td><td class="vv"><span class="val">+14</span></td></tr><tr><td class="sl">FLEX</td><td><a href="#pick-40">Ladd McConkey</a></td><td class="vv">50</td><td class="vv mut">-13</td><td class="vv"><span class="val">+62</span></td></tr><tr class="tot"><td colspan="4">Starters</td><td class="vv"><span class="val">+565</span></td></tr></tbody></table></div>
+      <thead><tr><th>Slot</th><th>Player</th><th class="vv">Worth</th></tr></thead>
+      <tbody><tr><td class="sl">QB</td><td><a href="#pick-21">Josh Allen</a></td><td class="vv"><span class="val">+65</span></td></tr><tr><td class="sl">RB1</td><td><a href="#pick-1">Jahmyr Gibbs</a></td><td class="vv"><span class="val">+217</span></td></tr><tr><td class="sl">RB2</td><td><a href="#pick-81">Jaylen Warren</a></td><td class="vv"><span class="val">+54</span></td></tr><tr><td class="sl">WR1</td><td><a href="#pick-20">Drake London</a></td><td class="vv"><span class="val">+89</span></td></tr><tr><td class="sl">WR2</td><td><a href="#pick-41">Tee Higgins</a></td><td class="vv"><span class="val">+63</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-101">Travis Kelce</a></td><td class="vv"><span class="val">+14</span></td></tr><tr><td class="sl">FLEX</td><td><a href="#pick-40">Ladd McConkey</a></td><td class="vv"><span class="val">+62</span></td></tr><tr class="tot"><td colspan="2">Starters</td><td class="vv"><span class="val">+565</span></td></tr></tbody></table></div>
     <div class="tw"><table class="brk">
-      <thead><tr><th>Pos</th><th>Reserve</th><th class="vv">Value</th>
-      <th class="vv">Best free agent</th><th class="vv">Worth</th></tr></thead>
-      <tbody><tr><td class="sl">RB</td><td><a href="#pick-60">Rhamondre Stevenson</a></td><td class="vv">17</td><td class="vv mut">-30</td><td class="vv"><span class="val">+46</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-80">Tony Pollard</a></td><td class="vv">16</td><td class="vv mut">-30</td><td class="vv"><span class="val">+46</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-61">Courtland Sutton</a></td><td class="vv">3</td><td class="vv mut">-13</td><td class="vv"><span class="val">+16</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-120">Dallas Goedert</a></td><td class="vv">-3</td><td class="vv mut">-8</td><td class="vv"><span class="val">+5</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-100">Jordan Addison</a></td><td class="vv">-5</td><td class="vv mut">-13</td><td class="vv"><span class="val">+8</span></td></tr><tr><td class="sl">QB</td><td><a href="#pick-121">Kyler Murray</a></td><td class="vv">-8</td><td class="vv mut">10</td><td class="vv"><span class="flat">+0</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-140">Justice Hill</a></td><td class="vv">-79</td><td class="vv mut">-30</td><td class="vv"><span class="flat">+0</span></td></tr><tr class="tot"><td colspan="4">Bench</td><td class="vv"><span class="val">+120</span></td></tr><tr class="tot"><td colspan="4">Roster total</td><td class="vv"><span class="val">+685</span></td></tr></tbody></table></div>
+      <thead><tr><th>Pos</th><th>Reserve</th><th class="vv">Worth</th></tr></thead>
+      <tbody><tr><td class="sl">RB</td><td><a href="#pick-60">Rhamondre Stevenson</a></td><td class="vv"><span class="val">+46</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-80">Tony Pollard</a></td><td class="vv"><span class="val">+46</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-61">Courtland Sutton</a></td><td class="vv"><span class="val">+16</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-120">Dallas Goedert</a></td><td class="vv"><span class="val">+5</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-100">Jordan Addison</a></td><td class="vv"><span class="val">+8</span></td></tr><tr><td class="sl">QB</td><td><a href="#pick-121">Kyler Murray</a></td><td class="vv"><span class="flat">+0</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-140">Justice Hill</a></td><td class="vv"><span class="flat">+0</span></td></tr><tr class="tot"><td colspan="2">Bench</td><td class="vv"><span class="val">+120</span></td></tr><tr class="tot"><td colspan="2">Roster total</td><td class="vv"><span class="val">+685</span></td></tr></tbody></table></div>
   </div>
 </section>
 
@@ -248,7 +245,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-1">Jahmyr Gibbs</a></h3>
           <span class="pos pos-RB">RB</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-a">A</span>
       </div>
@@ -263,7 +259,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-20">Drake London</a></h3>
           <span class="pos pos-WR">WR</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-a">A+</span>
       </div>
@@ -278,7 +273,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-21">Josh Allen</a></h3>
           <span class="pos pos-QB">QB</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-c">C+</span>
       </div>
@@ -293,7 +287,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-40">Ladd McConkey</a></h3>
           <span class="pos pos-WR">WR</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-a">A-</span>
       </div>
@@ -308,7 +301,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-41">Tee Higgins</a></h3>
           <span class="pos pos-WR">WR</span>
-          
         </div>
         <span class="grade g-a">A-</span>
       </div>
@@ -323,7 +315,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-60">Rhamondre Stevenson</a></h3>
           <span class="pos pos-RB">RB</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-c">C-</span>
       </div>
@@ -338,7 +329,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-61">Courtland Sutton</a></h3>
           <span class="pos pos-WR">WR</span>
-          
         </div>
         <span class="grade g-c">C-</span>
       </div>
@@ -353,7 +343,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-80">Tony Pollard</a></h3>
           <span class="pos pos-RB">RB</span>
-          
         </div>
         <span class="grade g-c">C+</span>
       </div>
@@ -368,7 +357,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-81">Jaylen Warren</a></h3>
           <span class="pos pos-RB">RB</span>
-          
         </div>
         <span class="grade g-a">A</span>
       </div>
@@ -383,7 +371,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-100">Jordan Addison</a></h3>
           <span class="pos pos-WR">WR</span>
-          
         </div>
         <span class="grade g-b">B-</span>
       </div>
@@ -398,7 +385,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-101">Travis Kelce</a></h3>
           <span class="pos pos-TE">TE</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-b">B+</span>
       </div>
@@ -413,7 +399,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-120">Dallas Goedert</a></h3>
           <span class="pos pos-TE">TE</span>
-          
         </div>
         <span class="grade g-b">B</span>
       </div>
@@ -428,7 +413,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-121">Kyler Murray</a></h3>
           <span class="pos pos-QB">QB</span>
-          
         </div>
         <span class="grade g-c">C+</span>
       </div>
@@ -443,7 +427,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-140">Justice Hill</a></h3>
           <span class="pos pos-RB">RB</span>
-          
         </div>
         <span class="grade g-f">F</span>
       </div>
@@ -458,7 +441,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-141">Ravens D/ST</a></h3>
           <span class="pos pos-DST">D/ST</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-b">B</span>
       </div>
@@ -473,7 +455,6 @@ table.led tr.me td{background:var(--accent-soft)}
         <div class="who">
           <h3><a href="#pick-160">Will Reichard</a></h3>
           <span class="pos pos-K">K</span>
-          <span class="need">filled a starting slot</span>
         </div>
         <span class="grade g-b">B</span>
       </div>
