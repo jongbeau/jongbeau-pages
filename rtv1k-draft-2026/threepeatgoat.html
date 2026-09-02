@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Threepeatgoat  Draft Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +42,8 @@ th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase
 font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
 td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
 td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
-td.rk{color:var(--muted);width:2rem}td.vv{text-align:right}
+td.rk{color:var(--muted);width:2rem}td.vv,th.vv{text-align:center}
+td.gr{text-align:center}
 tr.me td{background:var(--accent-soft);font-weight:600}
 td a{text-decoration:none;font-weight:600}
 .gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
@@ -102,26 +105,48 @@ margin-top:1rem;font-size:.83rem}
 .legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
 letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
 
-.ctx{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem;
-margin-top:1.1rem}
-.ctx > div{background:var(--card);border:1px solid var(--rule);border-radius:3px;
-padding:.9rem 1rem}
-.ctx b{display:block;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
-color:var(--muted);font-weight:600;margin-bottom:.25rem}
-.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.35rem;font-weight:600;
-font-variant-numeric:tabular-nums;line-height:1.15}
-.ctx .sub{font-size:.76rem;color:var(--muted);margin-top:.15rem}
-.bars{display:flex;gap:2px;margin-top:.4rem}
-.bars span{height:.42rem;flex:1;border-radius:1px;background:var(--rule)}
-.bars .on{background:var(--accent)}
+/* --- narrow screens ------------------------------------------------ */
+.tw{position:relative}
+.tw::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1.6rem;
+  pointer-events:none;background:linear-gradient(to right,transparent,var(--paper));
+  opacity:0;transition:opacity .15s}
+.tw.scrolls::after{opacity:1}
+.scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
+.tw.scrolls ~ .scrollhint{display:block}
+@media (max-width:34rem){
+  /* let the table use the full screen width; the page padding was costing it
+     exactly the 38px that forced a horizontal scroll */
+  .tw{margin-inline:calc(-1 * clamp(1.2rem,4vw,3rem))}
+  #league{font-size:.8rem;width:100%}
+  #league td:first-child,#league th:first-child{padding-left:.55rem}
+  #league td:last-child,#league th:last-child{padding-right:.4rem}
+  #league th{padding:.4rem .22rem}
+  #league td{padding:.42rem .22rem}
+  #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
+  #league td{padding:.4rem .28rem}
+  #league th.sortable::after{margin-left:.15rem}
+  .ctx > div{padding:.75rem .85rem}
+  .ctx .big{font-size:1.2rem}
+  .signals{grid-template-columns:repeat(2,1fr)}
+  .pick{padding:.85rem .9rem}
+  .grade{font-size:1.35rem;min-width:2.1rem}
+  .who h3{font-size:1rem}
+  .hero{gap:1rem}
+  .bigmark{font-size:3rem}
+  .three ol{padding-left:1rem}
+}
+@media (max-width:24rem){
+  #league{font-size:.74rem}
+  #league th{font-size:.54rem}
+  .signals{grid-template-columns:1fr 1fr}
+}
 </style>
 <div class="wrap">
 <header>
   <p class="eyebrow"><a class="back" href="index.html">&larr; all ten teams</a></p>
   <h1>Threepeatgoat </h1>
-  <p class="lede">Sixteen picks graded against value over replacement, real-draft ADP
-  and expert consensus, weighted by what was still on the board. Cheat-sheet notes come
-  from the RTV1K board and describe the player, whoever drafted him.</p>
+  <p class="lede">Sixteen picks graded against value over replacement, real-draft ADP and
+  expert consensus, weighted by what was still on the board.</p>
   <div class="card hero">
     <div class="bigmark">B+<small>draft grade</small></div>
     <div class="stats">
@@ -132,26 +157,20 @@ font-variant-numeric:tabular-nums;line-height:1.15}
   <div class="ctx">
     <div><b>Draft slot</b><span class="big">10</span>
       <div class="sub">of 10 &middot; late</div></div>
-    <div><b>Starter strength</b><span class="big">409</span>
+    <div><b>Starters</b><span class="big">409</span>
       <div class="sub">10 of 10 &middot; league avg 446</div><div class="bars"><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
-    <div><b>Bench cover</b><span class="big">-24</span>
-      <div class="sub">2 of 10 &middot; league avg -79</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span></div></div>
+    <div><b>Week 1 ready</b><span class="big">409</span>
+      <div class="sub">10 of 10</div><div class="bars"><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+    <div><b>Bench over waivers</b><span class="big">55</span>
+      <div class="sub">4 of 10 &middot; league avg 41</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
     <div><b>Decision quality</b><span class="big">3.32</span>
       <div class="sub">9 of 10 &middot; grade B+</div><div class="bars"><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+    <div><b>Usable reserves</b><span class="big" style="font-size:.92rem"><a href="#pick-51">Luther Burden III</a> +34 &middot; <a href="#pick-150">Trevor Lawrence</a> +13 &middot; <a href="#pick-90">Brian Thomas Jr.</a> +9</span>
+      <div class="sub">3 of 7 bench players beat the waiver wire</div></div>
     <div><b>Grade spread</b><span class="big" style="font-size:1rem">5&times;A &middot; 9&times;B &middot; 2&times;C</span>
       <div class="sub">across sixteen picks</div></div>
     <div><b>Roster shape</b><span class="big" style="font-size:1rem">2QB 6RB 5WR 1TE</span>
       <div class="sub">plus 1 D/ST, 1 K</div></div>
-  </div>
-  <div class="legend">
-    <div><b>Starter strength</b> Points the best legal lineup projects above a
-    replacement-level player at each slot. Higher is better.</div>
-    <div><b>Bench cover</b> The same for everyone not starting. Negative for every team
-    &mdash; reserves sit below replacement by definition &mdash; so closer to zero is
-    better cover.</div>
-    <div><b>Decision quality</b> Weighted average of all sixteen pick grades, each
-    counting for how much value was on the board at the time. The only measure here that
-    does not depend on draft slot.</div>
   </div>
 </header>
 <section>
@@ -494,12 +513,38 @@ font-variant-numeric:tabular-nums;line-height:1.15}
       <p class="verdict">Market price on the last pick for a back whose split is clouded. Free.</p>
     </article>
   </div>
+
+
 </section>
 <footer>
-  <p>VORP is projected season points above a replacement-level starter, from the
-  Sleeper/FantasyPros/FFC blend. Market ADP is that same weighted blend, FFC highest
-  because it comes from real ten-team PPR drafts. ECR is FantasyPros alone, 106 experts,
-  updated 2 September 2026. Grades are rule-based and applied identically to all ten
-  teams &mdash; see <a href="index.html#method">the method</a>.</p>
+  <p><b>Starters</b> is the best legal lineup's points above replacement; <b>Week 1 ready</b>
+  removes anyone who cannot play. <b>Bench over waivers</b> counts only reserves better than
+  a freely available player &mdash; anyone worse scores zero, since you would stream instead.
+  <b>Decision quality</b> is the weighted average of all sixteen pick grades and is the only
+  measure that does not depend on draft slot.</p>
+  <p>VORP comes from the Sleeper/FantasyPros/FFC blend, market ADP from that same weighted
+  blend, ECR from FantasyPros alone (106 experts, 2 September 2026). Grades are rule-based
+  and identical across all ten teams &mdash; see <a href="index.html#method">the method</a>.</p>
 </footer>
 </div>
+
+<script>
+(function(){
+  function mark(){
+    document.querySelectorAll('.tw').forEach(function(w){
+      var t = w.querySelector('table');
+      if(!t) return;
+      w.classList.toggle('scrolls', t.scrollWidth > w.clientWidth + 2);
+    });
+  }
+  mark();
+  window.addEventListener('resize', mark);
+  document.querySelectorAll('.tw').forEach(function(w){
+    w.addEventListener('scroll', function(){
+      var t = w.querySelector('table');
+      w.classList.toggle('scrolls',
+        t.scrollWidth - w.clientWidth - w.scrollLeft > 2);
+    });
+  });
+})();
+</script>
