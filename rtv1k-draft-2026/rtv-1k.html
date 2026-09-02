@@ -50,7 +50,8 @@ td.gr{text-align:center}
 tr.me td{background:var(--accent-soft);font-weight:600}
 td a{text-decoration:none;font-weight:600}
 .gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
-.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}.g-d{color:var(--bad)}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}
+.g-d{color:var(--bad)}.g-f{color:var(--bad);font-weight:700}
 .ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
 .pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
 display:flex;flex-direction:column;gap:.65rem}
@@ -198,7 +199,7 @@ table.led tr.me td{background:var(--accent-soft)}
     <div class="bigmark">B+<small>draft grade</small></div>
     <div class="stats">
       <div class="stat"><span class="n">Best</span><span class="l"><a href="#pick-123">Bo Nix</a> <span class="gap">+11</span> &middot; <a href="#pick-63">Joe Burrow</a> <span class="gap">+10</span> &middot; <a href="#pick-3">Ja'Marr Chase</a> <span class="gap">0</span></span></div>
-      <div class="stat"><span class="n">Weakest</span><span class="l"><a href="#pick-78">MarShawn Lloyd</a> <span class="gr g-d">D</span> &middot; <a href="#pick-143">Tank Bigsby</a> <span class="gr g-d">D</span> &middot; <a href="#pick-98">Matthew Golden</a> <span class="gr g-c">C-</span></span></div>
+      <div class="stat"><span class="n">Weakest</span><span class="l"><a href="#pick-43">Bhayshul Tuten</a> <span class="gr g-d">D</span> &middot; <a href="#pick-143">Tank Bigsby</a> <span class="gr g-c">C-</span> &middot; <a href="#pick-98">Matthew Golden</a> <span class="gr g-c">C-</span></span></div>
     </div>
   </div>
   <div class="ctx">
@@ -210,11 +211,12 @@ table.led tr.me td{background:var(--accent-soft)}
       <div class="sub">3 of 10</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span></div></div>
     <div><b>Bench</b><span class="big">89</span>
       <div class="sub">8 of 10 &middot; league avg 109</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
-    <div><b>Decision quality</b><span class="big">3.33</span>
-      <div class="sub">8 of 10 &middot; grade B+</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+    <div><b>Decision quality</b><span class="big">3.18</span>
+      <div class="sub">9 of 10 &middot; grade B+</div>
+      <div class="sub">&plusmn;0.22, so the middle of the table is a tie</div><div class="bars"><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div></div>
     <div><b>Usable reserves</b><span class="big names"><a href="#pick-83">Rico Dowdle</a> +40 &middot; <a href="#pick-103">Blake Corum</a> +33 &middot; <a href="#pick-78">MarShawn Lloyd</a> +13 &middot; <a href="#pick-118">Khalil Shakir</a> +2</span>
       <div class="sub">4 of 7 bench players beat the best free agent</div></div>
-    <div><b>Grade spread</b><span class="big" style="font-size:1rem">6&times;A &middot; 5&times;B &middot; 3&times;C &middot; 2&times;D</span>
+    <div><b>Grade spread</b><span class="big" style="font-size:1rem">4&times;A &middot; 7&times;B &middot; 4&times;C &middot; 1&times;D</span>
       <div class="sub">across sixteen picks</div></div>
     <div><b>Roster shape</b><span class="big" style="font-size:1rem">2QB 7RB 4WR 1TE</span>
       <div class="sub">plus 1 D/ST, 1 K</div></div>
@@ -248,7 +250,7 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-WR">WR</span>
           <span class="need">filled a starting slot</span>
         </div>
-        <span class="grade g-a">A</span>
+        <span class="grade g-a">A-</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">4</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">3</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">1</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">3</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">0 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 1&ndash;4 &middot; their tier 1</p>
@@ -263,7 +265,7 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           <span class="need">filled a starting slot</span>
         </div>
-        <span class="grade g-a">A</span>
+        <span class="grade g-b">B+</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">18</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">22</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">24</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">18</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-4 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 7&ndash;43 &middot; their tier 4 &middot; the panel is split</p>
@@ -293,12 +295,12 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           <span class="need">filled a starting slot</span>
         </div>
-        <span class="grade g-a">A-</span>
+        <span class="grade g-b">B+</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">40</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">52</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">50</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">41</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-14 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 37&ndash;77 &middot; their tier 6 &middot; the panel is split</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">Lead back with Monangai (knee) week-to-week</p><p class="swing">Does Monangai's knee gift him a bell-cow September?</p></div>
-      <p class="verdict">Fourteen ahead of market, but it filled a starting slot and the competition is week-to-week with a knee.</p>
+      <p class="verdict">Fourteen early on a back drafts agree about within five picks, which is nearly three deviations ahead of the market, with a better player still on the board. The competition being week-to-week with a knee is the real argument for going early, and it is a good one.</p>
     </article>
     <article class="pick" id="pick-43">
       <div class="pick-head">
@@ -308,12 +310,12 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           
         </div>
-        <span class="grade g-c">C</span>
+        <span class="grade g-d">D</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">60</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">62</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">64</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">57</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="rea">-19 reach</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 43&ndash;89 &middot; their tier 6 &middot; the panel is split</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">Inherits ~260-carry vacancy in Coen's top-7 EP backfield</p><p class="swing">Can a 3.7-YPC rookie profile handle a 260-carry inheritance?</p></div>
-      <p class="verdict">Nineteen ahead of market on an inherited-workload bet, with a quarterback and second receiver still unfilled.</p>
+      <p class="verdict">Nineteen ahead of a market that agrees within six picks — the third-largest reach in the draft. The inherited-workload thesis is sound and the price was not: three better backs were on the board.</p>
     </article>
     <article class="pick" id="pick-58">
       <div class="pick-head">
@@ -323,12 +325,12 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-WR">WR</span>
           <span class="need">filled a starting slot</span>
         </div>
-        <span class="grade g-a">A-</span>
+        <span class="grade g-b">B</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">58</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">59</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">58</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">61</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-1 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 40&ndash;91 &middot; their tier 6 &middot; the panel is split</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">Year-3 leap candidate in loaded offense</p><p class="swing">Does he beat Burden and Loveland to the No. 1 target role?</p></div>
-      <p class="verdict">Market price for a year-three leap candidate in a loaded offence. Filled the second receiver slot.</p>
+      <p class="verdict">Bought at market, to the tenth of a deviation. A year-three leap candidate in a loaded offence at exactly the price everyone else had on him — no edge found, none given away.</p>
     </article>
     <article class="pick" id="pick-63">
       <div class="pick-head">
@@ -353,12 +355,12 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           
         </div>
-        <span class="grade g-d">D</span>
+        <span class="grade g-c">C</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">131</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">130</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">103</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">72</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="rea">-52 reach</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 61&ndash;275 &middot; their tier 8 &middot; the panel is split</p>
       <div class="yourtake"><span class="lbl">From the RTV1K cheat sheet</span><p class="note-line">TARGET: Week 1 lead back with Jacobs on the exempt list; only competition is Kaleb Johnson (just traded for) and Chris Brooks</p><p class="swing">Can he hold the lead role over Kaleb Johnson until Jacobs returns — and stay healthy doing it?</p></div>
-      <p class="verdict">Fifty-two ahead of market and twenty-five ahead of the experts. The sheet flagged him TARGET as the Week 1 lead back with Jacobs exempt — a defensible thesis bought at an indefensible price.</p>
+      <p class="verdict">Fifty-two picks ahead of ADP sounds damning and is softer than it looks: real drafts disagree about him by thirty picks, so this is under two deviations early. Still a reach, with six better backs on the board, but the TARGET flag — Week 1 lead back with Jacobs exempt — was a real thesis.</p>
     </article>
     <article class="pick" id="pick-83">
       <div class="pick-head">
@@ -368,7 +370,7 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           
         </div>
-        <span class="grade g-b">B</span>
+        <span class="grade g-b">B+</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">80</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">87</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">85</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">80</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-4 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 66&ndash;122 &middot; their tier 7 &middot; the panel is split</p>
@@ -398,7 +400,7 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           
         </div>
-        <span class="grade g-b">B</span>
+        <span class="grade g-b">B+</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">93</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">110</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">109</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">70</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-7 fair</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 79&ndash;141 &middot; their tier 8 &middot; the panel is split</p>
@@ -428,7 +430,7 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-QB">QB</span>
           
         </div>
-        <span class="grade g-b">B+</span>
+        <span class="grade g-a">A-</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">110</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">112</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">93</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">136</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+11 value</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 70&ndash;120 &middot; their tier 8 &middot; the panel is split</p>
@@ -458,7 +460,7 @@ table.led tr.me td{background:var(--accent-soft)}
           <span class="pos pos-RB">RB</span>
           
         </div>
-        <span class="grade g-d">D</span>
+        <span class="grade g-c">C-</span>
       </div>
       <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">200</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">172</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">160</span></div><div class="sig"><span class="lbl">RTV1K sheet</span><span class="num">147</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="rea">-29 reach</span></span></div></div>
       <p class="spread"><span class="lbl">Expert range</span> 131&ndash;257 &middot; their tier 10 &middot; the panel is split</p>
