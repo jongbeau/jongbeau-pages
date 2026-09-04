@@ -173,6 +173,10 @@ color:var(--muted)}
   table.val td,table.val th{padding:.45rem .3rem;white-space:nowrap}
   table.val td:first-child,table.val td:nth-child(2){white-space:normal}
   table.val td:nth-child(2){font-size:.72rem;line-height:1.3}
+  /* the grade span's desktop min-width was taking 82px for two characters,
+     which is what pushed the player names onto a second line */
+  table.val .grade{font-size:1.05rem;min-width:0}
+  table.val td:last-child,table.val th:last-child{width:2.2rem}
 }
 @media (max-width:24rem){
   #league{font-size:.74rem}
