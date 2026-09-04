@@ -1,83 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Club CH — Bragging Rights 2K4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
 --accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
---rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64}
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
 --paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
 --accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
---rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0}}
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}}
 :root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
 --rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
---bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0}
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
 line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
-.wrap{max-width:56rem;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
+.wrap{max-width:60rem;margin:0 auto;display:flex;flex-direction:column;gap:2.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:600}h3{font-size:1.05rem;font-weight:600}
 a{color:var(--accent)}
-h1{font-family:Fraunces,Georgia,serif;font-size:clamp(1.9rem,5vw,2.7rem);font-weight:600;
-letter-spacing:-.02em;margin:0}
-h2{font-family:Fraunces,Georgia,serif;font-size:1.25rem;font-weight:600;margin:0 0 .7rem}
-.lede{color:var(--muted);margin:.4rem 0 0;max-width:44rem}
-.bar{display:flex;flex-wrap:wrap;gap:1.4rem;padding:.9rem 1.1rem;background:var(--card);
-border:1px solid var(--rule);border-radius:3px}
-.bar div{display:flex;flex-direction:column}
-.bar .k{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.bar .v{font-size:1.15rem;font-weight:600;font-variant-numeric:tabular-nums}
-table{width:100%;border-collapse:collapse;font-size:.92rem}
-th{font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
-text-align:left;font-weight:600;padding:.45rem .55rem;border-bottom:1px solid var(--rule)}
-td{padding:.45rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
-tr:last-child td{border-bottom:none}
-.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.muted{color:var(--muted)}
-.scroll{overflow-x:auto;background:var(--card);border:1px solid var(--rule);border-radius:3px}
-.g{font-weight:700;font-variant-numeric:tabular-nums}
-.g.good{color:var(--good)}.g.poor{color:var(--bad)}
-.pos{font-size:.7rem;font-weight:600;letter-spacing:.04em}
-.QB{color:var(--qb)}.RB{color:var(--rb)}.WR{color:var(--wr)}.TE{color:var(--te)}
-.DST{color:var(--dst)}.K{color:var(--k)}
-.team{display:block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
-padding:1rem 1.1rem;text-decoration:none;color:inherit}
-.team:hover{border-color:var(--accent);background:var(--accent-soft)}
-.team .top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.team h3{font-family:Fraunces,Georgia,serif;font-size:1.05rem;margin:0;font-weight:600}
-.team .stats{display:flex;gap:1.1rem;font-size:.8rem;color:var(--muted);margin-top:.35rem;
-flex-wrap:wrap}
-.flag{font-size:.78rem;color:var(--warn)}
-.foot{font-size:.78rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1rem}
-</style>
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+font-weight:600;margin:0 0 .4rem}
+.lede{color:var(--muted);max-width:64ch}
+.back{font-size:.8rem;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.5rem}
+.hero{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;margin-top:1.1rem}
+.bigmark{font-family:Fraunces,Georgia,serif;font-size:4rem;font-weight:700;line-height:.9;color:var(--accent)}
+.bigmark small{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem;flex:1}
+.stat .n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:600;
+font-variant-numeric:tabular-nums;display:block}
+.stat .l{font-size:.73rem;color:var(--muted)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:2rem}td.vv,th.vv{text-align:center}
+td.gr{text-align:center}
+tr.me td{background:var(--accent-soft);font-weight:600}
+td a{text-decoration:none;font-weight:600}
+.gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}
+.g-d{color:var(--bad)}.g-f{color:var(--bad);font-weight:700}
+.ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
+display:flex;flex-direction:column;gap:.65rem}
+.pick-head{display:flex;align-items:flex-start;gap:.85rem}
+.ovr{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;color:var(--muted);
+min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.who{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
+.pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
+.pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
+.grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
+min-width:2.5rem;text-align:right}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
+padding:.55rem .65rem;background:var(--paper);border-radius:2px}
+.sig{display:flex;flex-direction:column;gap:.08rem}
+.lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.verdict{margin:0;font-size:.95rem;padding-top:.55rem;border-top:1px solid var(--rule)}
 
+.spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
+.flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
+.yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
+display:flex;flex-direction:column;gap:.18rem}
+.note-line{margin:0;font-size:.86rem}
+.swing{margin:0;font-size:.86rem;font-style:italic;color:var(--muted)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:1rem 1.2rem;
+border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
+.note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
+footer p{margin:0 0 .6rem}
+
+.pick:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick h3 a{color:inherit;text-decoration:none}
+.pick h3 a:hover{color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.three .card{padding:1rem 1.1rem}
+.three h3{font-size:.95rem;margin:0 0 .5rem}
+.three ol{margin:0;padding-left:1.1rem;font-size:.86rem}
+.three li{margin-bottom:.35rem}
+.three a{text-decoration:none;font-weight:600}
+.gap{font-family:"JetBrains Mono",monospace;font-size:.8rem}
+
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--accent)}
+th.sortable::after{content:"";opacity:.35;margin-left:.3rem}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:.9}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:.9}
+th.sortable:not([aria-sort])::after{content:"\21C5"}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;
+margin-top:1rem;font-size:.83rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
+letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
+
+/* --- narrow screens ------------------------------------------------ */
+.tw{position:relative}
+.tw::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1.6rem;
+  pointer-events:none;background:linear-gradient(to right,transparent,var(--paper));
+  opacity:0;transition:opacity .15s}
+.tw.scrolls::after{opacity:1}
+.scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
+.tw.scrolls ~ .scrollhint{display:block}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);
+gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+margin-top:1.6rem;overflow:hidden}
+.ctx > div{background:var(--card);padding:.9rem 1.05rem;display:flex;flex-direction:column;
+gap:.28rem;min-width:0}
+.ctx b{display:block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+color:var(--muted);font-weight:600;line-height:1.3}
+.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.55rem;font-weight:600;
+font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:break-word}
+.ctx .big a{color:var(--accent)}
+.ctx .sub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bars{display:flex;gap:2px;margin-top:.15rem}
+.bars span{flex:1;height:3px;border-radius:2px;background:var(--rule)}
+.bars span.on{background:var(--accent)}
+@media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
+.ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
+.bd{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.1rem}
+@media (min-width:62rem){.bd{grid-template-columns:1fr 1fr}}
+table.brk{font-size:.85rem}
+table.brk td.sl{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);
+letter-spacing:.04em;width:3.1rem}
+table.brk td.mut{color:var(--muted)}
+table.brk tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:600;
+padding-top:.5rem}
+table.brk tr.tot td:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted)}
+.gpaval{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:34rem){
+  /* let the table use the full screen width; the page padding was costing it
+     exactly the 38px that forced a horizontal scroll */
+  .tw{margin-inline:calc(-1 * clamp(1.2rem,4vw,3rem))}
+  #league{font-size:.8rem;width:100%}
+  #league td:first-child,#league th:first-child{padding-left:.55rem}
+  #league td:last-child,#league th:last-child{padding-right:.4rem}
+  #league th{padding:.4rem .22rem}
+  #league td{padding:.42rem .22rem}
+  #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
+  #league td{padding:.4rem .28rem}
+  #league th.sortable::after{margin-left:.15rem}
+  .ctx{grid-template-columns:1fr 1fr}
+  .ctx > div{padding:.7rem .8rem}
+  .ctx .big{font-size:1.15rem}
+  .ctx b{font-size:.6rem;letter-spacing:.08em}
+  .signals{grid-template-columns:repeat(2,1fr)}
+  .pick{padding:.85rem .9rem}
+  .grade{font-size:1.35rem;min-width:2.1rem}
+  .who h3{font-size:1rem}
+  .hero{gap:1rem}
+  .bigmark{font-size:3rem}
+  .three ol{padding-left:1rem}
+}
+@media (max-width:24rem){
+  #league{font-size:.74rem}
+  #league th{font-size:.54rem}
+  .signals{grid-template-columns:1fr 1fr}
+}
+table.led{font-size:.88rem}
+table.led a.tm{display:block;color:var(--muted);font-size:.74rem;text-decoration:none;
+margin-top:.1rem}
+table.led a.tm:hover{color:var(--accent);text-decoration:underline}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led a.tm{font-size:.68rem}
+}
+</style>
+</head>
+<body>
 <div class="wrap">
+<p><a class="back" href="index.html">&larr; all fourteen teams</a></p>
 <header>
-  <p><a href="index.html">&larr; Bragging Rights 2K4</a></p>
   <h1>Club CH</h1>
-  <p class="lede">Graded on the roster it finished with, and what it paid to
-  get there. Every manager started with $200.</p>
+  <p class="lede">Fourteen lots graded on price against
+  what this room was paying, and the roster graded against everyone else&rsquo;s
+  &mdash; which in an auction is a fair fight, because all fourteen managers
+  started with $200.</p>
+  <div class="hero">
+    <div class="bigmark">B<small>auction grade</small></div>
+    <div class="three">
+      <div class="card"><h3>Best value</h3><ol><li><a href="#lot-bhayshul-tuten">Bhayshul Tuten</a> <span class="gap">+$4</span> &middot; A-</li><li><a href="#lot-jonathon-brooks">Jonathon Brooks</a> <span class="gap">+$3</span> &middot; A-</li><li><a href="#lot-wan-dale-robinson">Wan'Dale Robinson</a> <span class="gap">+$1</span> &middot; A-</li></ol></div>
+      <div class="card"><h3>Paid up</h3><ol><li><a href="#lot-nico-collins">Nico Collins</a> <span class="gap">&minus;$19</span> &middot; D+</li><li><a href="#lot-james-cook">James Cook</a> <span class="gap">&minus;$9</span> &middot; C+</li><li><a href="#lot-d-andre-swift">D'Andre Swift</a> <span class="gap">&minus;$7</span> &middot; C</li></ol></div>
+    </div>
+  </div>
 </header>
-<div class="bar">
-  <div><span class="k">grade</span><span class="v g ">B</span></div>
-  <div><span class="k">spent</span><span class="v">$199</span></div>
-  <div><span class="k">starters</span><span class="v">957</span></div>
-  <div><span class="k">bench</span><span class="v">229</span></div>
-  <div><span class="k">value per $</span><span class="v">0.78</span></div>
+
+<div class="ctx">
+  <div><b>Spent</b><span class="big">$199</span>
+    <span>of $200 &middot; 14 players</span></div>
+  <div><b>Starters</b><span class="big">957</span>
+    <span>5th of 14 &middot; league avg
+    884</span></div>
+  <div><b>Bench</b><span class="big">229</span>
+    <span>4th of 14 &middot; league avg
+    150</span></div>
+  <div><b>Value per dollar</b><span class="big">0.78</span>
+    <span>10th of 14 &middot; league avg
+    0.82</span></div>
+  <div><b>Grade spread</b><span class="big">4&times;A &middot; 4&times;B &middot; 4&times;C &middot; 1&times;D</span>
+    <span>across 14 lots</span></div>
+  <div><b>Roster shape</b><span class="big">2QB 6RB 4WR 1TE</span>
+    <span>plus 1 D/ST &middot; 5 of
+    5 reserves beat the wire</span></div>
 </div>
-<section><h2>The lineup</h2>
-  <div class="scroll"><table><tr><td class="muted">QB</td><td>Dak Prescott</td></tr><tr><td class="muted">RB</td><td>James Cook III</td></tr><tr><td class="muted">WR</td><td>Nico Collins</td></tr><tr><td class="muted">TE</td><td>Tucker Kraft</td></tr><tr><td class="muted">D/ST</td><td>Texans D/ST</td></tr><tr><td class="muted">RB/WR</td><td>D&#x27;Andre Swift</td></tr><tr><td class="muted">WR/TE</td><td>Terry McLaurin</td></tr><tr><td class="muted">OP</td><td>Tyler Shough</td></tr><tr><td class="muted">RB/WR/TE</td><td>Bhayshul Tuten</td></tr></table></div>
-  <p class="lede">Bench: Rhamondre Stevenson, Jonathon Brooks, Matthew Golden, Wan&#x27;Dale Robinson, MarShawn Lloyd</p></section>
-<section><h2>Every lot</h2>
-  <div class="scroll"><table>
-  <tr><th>player</th><th class="num">paid</th><th class="num">worth</th><th class="num">grade</th></tr>
-  <tr><td>James Cook <span class="pos RB">RB</span></td><td class="num">$46</td><td class="num muted">$37</td><td class="num g ">C+</td></tr><tr><td>Nico Collins <span class="pos WR">WR</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$41</td><td class="num muted">$22</td><td class="num g poor">D+</td></tr><tr><td>Dak Prescott <span class="pos QB">QB</span></td><td class="num">$41</td><td class="num muted">$36</td><td class="num g ">B-</td></tr><tr><td>D&#x27;Andre Swift <span class="pos RB">RB</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$17</td><td class="num muted">$10</td><td class="num g ">C</td></tr><tr><td>Tyler Shough <span class="pos QB">QB</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$14</td><td class="num muted">$8</td><td class="num g poor">C-</td></tr><tr><td>Terry McLaurin <span class="pos WR">WR</span></td><td class="num">$11</td><td class="num muted">$7</td><td class="num g ">C+</td></tr><tr><td>Tucker Kraft <span class="pos TE">TE</span></td><td class="num">$7</td><td class="num muted">$5</td><td class="num g ">B-</td></tr><tr><td>Rhamondre Stevenson <span class="pos RB">RB</span></td><td class="num">$6</td><td class="num muted">$6</td><td class="num g ">B+</td></tr><tr><td>Bhayshul Tuten <span class="pos RB">RB</span></td><td class="num">$5</td><td class="num muted">$9</td><td class="num g good">A-</td></tr><tr><td>Jonathon Brooks <span class="pos RB">RB</span></td><td class="num">$4</td><td class="num muted">$7</td><td class="num g good">A-</td></tr><tr><td>Texans D/ST <span class="pos DST">D/ST</span><br><span class="flag">not on the board</span></td><td class="num">$2</td><td class="num muted">&mdash;</td><td class="num g ">&mdash;</td></tr><tr><td>Matthew Golden <span class="pos WR">WR</span></td><td class="num">$2</td><td class="num muted">$2</td><td class="num g ">B+</td></tr><tr><td>MarShawn Lloyd <span class="pos RB">RB</span></td><td class="num">$2</td><td class="num muted">$3</td><td class="num g good">A-</td></tr><tr><td>Wan&#x27;Dale Robinson <span class="pos WR">WR</span></td><td class="num">$1</td><td class="num muted">$2</td><td class="num g good">A-</td></tr></table></div></section>
-<p class="foot">Worth is what a player at this price actually went for in this room,
-fitted across every lot &mdash; not our sheet&rsquo;s number, because an auction does not
-mark the whole board up evenly: this one paid a third of sheet for five-dollar players
-and well over it for the studs. Starters and bench are points above the
-best player left undrafted at each position &mdash;
-QB Michael Penix Jr., RB Samaje Perine, WR Ja&#x27;Kobi Lane, TE Brenton Strange.</p>
-</div>
+
+<section>
+  <h2>Slot by slot</h2>
+  <p class="lede">What each player is worth over the best one still sitting on the
+  waiver wire at his position &mdash; Michael Penix Jr. at QB, Samaje Perine at RB, Ja'Kobi Lane at WR, Brenton Strange at TE. The same yardstick for starters and
+  reserves, so the two can be read against each other, and both floor at zero: a
+  player worth less than a free agent is not a liability, because you would drop him
+  and sign the free agent.</p>
+  <div class="tw"><table class="brk">
+    <tr><th>slot</th><th>player</th><th class="vv">worth</th></tr>
+    <tr><td>QB</td><td>Dak Prescott</td><td class="vv">+206</td></tr><tr><td>RB</td><td>James Cook III</td><td class="vv">+163</td></tr><tr><td>WR</td><td>Nico Collins</td><td class="vv">+109</td></tr><tr><td>TE</td><td>Tucker Kraft</td><td class="vv">+30</td></tr><tr><td>D/ST</td><td>Texans D/ST</td><td class="vv">+0</td></tr><tr><td>RB/WR</td><td>D'Andre Swift</td><td class="vv">+104</td></tr><tr><td>WR/TE</td><td>Terry McLaurin</td><td class="vv">+94</td></tr><tr><td>OP</td><td>Tyler Shough</td><td class="vv">+178</td></tr><tr><td>RB/WR/TE</td><td>Bhayshul Tuten</td><td class="vv">+74</td></tr><tr><td class="mut">bench</td><td>Rhamondre Stevenson</td><td class="vv">+64</td></tr><tr><td class="mut">bench</td><td>Jonathon Brooks</td><td class="vv">+56</td></tr><tr><td class="mut">bench</td><td>Wan'Dale Robinson</td><td class="vv">+45</td></tr><tr><td class="mut">bench</td><td>Matthew Golden</td><td class="vv">+34</td></tr><tr><td class="mut">bench</td><td>MarShawn Lloyd</td><td class="vv">+30</td></tr>
+    <tr class="tot"><td>total</td><td></td>
+    <td class="vv">1186</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Every lot, dearest first</h2>
+      <article class="pick" id="lot-james-cook">
+      <div class="pick-head">
+        <span class="ovr">$46</span>
+        <div class="who">
+          <h3><a href="#lot-james-cook">James Cook</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-c">C+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$46</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$37</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$9</span></div><div class="sig"><span class="lbl">tier</span><span class="num">2</span></div></div>
+      
+      <p class="verdict">$9 over the going rate at $46, against $37 for comparable lots. Reigning rushing champ backfield. Does Buffalo keep giving him the goal-line work?</p>
+    </article>
+    <article class="pick" id="lot-nico-collins">
+      <div class="pick-head">
+        <span class="ovr">$41</span>
+        <div class="who">
+          <h3><a href="#lot-nico-collins">Nico Collins</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-d">D+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$41</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$22</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$19</span></div><div class="sig"><span class="lbl">tier</span><span class="num">3</span></div></div>
+      <p class="flagline">paid past the ceiling set for him before the draft</p>
+      <p class="verdict">$19 over the going rate at $41, against $22 for comparable lots. Clear No.1 with Higgins (ACL) out for year. Does he finally stay healthy for 17 games?</p>
+    </article>
+    <article class="pick" id="lot-dak-prescott">
+      <div class="pick-head">
+        <span class="ovr">$41</span>
+        <div class="who">
+          <h3><a href="#lot-dak-prescott">Dak Prescott</a></h3>
+          <span class="pos pos-QB">QB</span>
+        </div>
+        <span class="grade g-b">B-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$41</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$36</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$5</span></div><div class="sig"><span class="lbl">tier</span><span class="num">3</span></div></div>
+      
+      <p class="verdict">$5 over the going rate at $41, against $36 for comparable lots. Pure pocket volume; fine QB2 price anchor. Can pure passing volume overcome 4-pt TDs and zero rushing?</p>
+    </article>
+    <article class="pick" id="lot-d-andre-swift">
+      <div class="pick-head">
+        <span class="ovr">$17</span>
+        <div class="who">
+          <h3><a href="#lot-d-andre-swift">D'Andre Swift</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-c">C</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$17</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$10</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$7</span></div><div class="sig"><span class="lbl">tier</span><span class="num">4</span></div></div>
+      <p class="flagline">paid past the ceiling set for him before the draft</p>
+      <p class="verdict">$7 over the going rate at $17, against $10 for comparable lots. Lead back with Monangai (knee) week-to-week. Does Monangai's knee gift him a bell-cow September?</p>
+    </article>
+    <article class="pick" id="lot-tyler-shough">
+      <div class="pick-head">
+        <span class="ovr">$14</span>
+        <div class="who">
+          <h3><a href="#lot-tyler-shough">Tyler Shough</a></h3>
+          <span class="pos pos-QB">QB</span>
+        </div>
+        <span class="grade g-c">C-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$14</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$8</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$6</span></div><div class="sig"><span class="lbl">tier</span><span class="num">5</span></div></div>
+      <p class="flagline">paid past the ceiling set for him before the draft</p>
+      <p class="verdict">$6 over the going rate at $14, against $8 for comparable lots. Full-time starter, Olave/Johnson chemistry all camp. Does the rookie-year efficiency survive September game plans?</p>
+    </article>
+    <article class="pick" id="lot-terry-mclaurin">
+      <div class="pick-head">
+        <span class="ovr">$11</span>
+        <div class="who">
+          <h3><a href="#lot-terry-mclaurin">Terry McLaurin</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-c">C+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$11</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$7</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$4</span></div><div class="sig"><span class="lbl">tier</span><span class="num">5</span></div></div>
+      
+      <p class="verdict">$4 over the going rate at $11, against $7 for comparable lots. Tunsil loss dings whole WAS passing game. Does losing Tunsil sink the whole Washington passing game?</p>
+    </article>
+    <article class="pick" id="lot-tucker-kraft">
+      <div class="pick-head">
+        <span class="ovr">$7</span>
+        <div class="who">
+          <h3><a href="#lot-tucker-kraft">Tucker Kraft</a></h3>
+          <span class="pos pos-TE">TE</span>
+        </div>
+        <span class="grade g-b">B-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$7</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$5</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$2</span></div><div class="sig"><span class="lbl">tier</span><span class="num">2</span></div></div>
+      
+      <p class="verdict">$2 over the going rate at $7, against $5 for comparable lots. TARGET: full go post-ACL; absurd efficiency. Is the ACL truly full-go — and does the insane efficiency scale with volume?</p>
+    </article>
+    <article class="pick" id="lot-rhamondre-stevenson">
+      <div class="pick-head">
+        <span class="ovr">$6</span>
+        <div class="who">
+          <h3><a href="#lot-rhamondre-stevenson">Rhamondre Stevenson</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-b">B+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$6</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$6</span></div><div class="sig"><span class="lbl">difference</span><span class="num flat">+$0</span></div><div class="sig"><span class="lbl">tier</span><span class="num">5</span></div></div>
+      
+      <p class="verdict">Went for about what the room was paying, $6. TARGET: 70% playoff snaps; cheap lead back. Does the committee tilt 70-30 his way like it did in the playoffs?</p>
+    </article>
+    <article class="pick" id="lot-bhayshul-tuten">
+      <div class="pick-head">
+        <span class="ovr">$5</span>
+        <div class="who">
+          <h3><a href="#lot-bhayshul-tuten">Bhayshul Tuten</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$5</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$9</span></div><div class="sig"><span class="lbl">difference</span><span class="num val">+$4</span></div><div class="sig"><span class="lbl">tier</span><span class="num">5</span></div></div>
+      
+      <p class="verdict">$4 under the going rate at $5, against the $9 players at his price were fetching. Inherits ~260-carry vacancy. Can a 3.7-YPC rookie profile handle a 260-carry inheritance?</p>
+    </article>
+    <article class="pick" id="lot-jonathon-brooks">
+      <div class="pick-head">
+        <span class="ovr">$4</span>
+        <div class="who">
+          <h3><a href="#lot-jonathon-brooks">Jonathon Brooks</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$4</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$7</span></div><div class="sig"><span class="lbl">difference</span><span class="num val">+$3</span></div><div class="sig"><span class="lbl">tier</span><span class="num">6</span></div></div>
+      
+      <p class="verdict">$3 under the going rate at $4, against the $7 players at his price were fetching. TARGET: team expressing Week 1 optimism (9/3); three-down path live with Hubbard hamstring. Two knee recoveries later, is the burst still there?</p>
+    </article>
+    <article class="pick" id="lot-texans-d-st">
+      <div class="pick-head">
+        <span class="ovr">$2</span>
+        <div class="who">
+          <h3><a href="#lot-texans-d-st">Texans D/ST</a></h3>
+          <span class="pos pos-DST">D/ST</span>
+        </div>
+        <span class="grade g-d">&mdash;</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$2</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">difference</span><span class="num rea">&minus;$2</span></div></div>
+      <p class="flagline">not on the board</p>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="lot-matthew-golden">
+      <div class="pick-head">
+        <span class="ovr">$2</span>
+        <div class="who">
+          <h3><a href="#lot-matthew-golden">Matthew Golden</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-b">B+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$2</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$2</span></div><div class="sig"><span class="lbl">difference</span><span class="num flat">+$0</span></div><div class="sig"><span class="lbl">tier</span><span class="num">6</span></div></div>
+      
+      <p class="verdict">Went for about what the room was paying, $2. Talent bet in crowded room. Does he finally separate from the crowded Green Bay rotation?</p>
+    </article>
+    <article class="pick" id="lot-marshawn-lloyd">
+      <div class="pick-head">
+        <span class="ovr">$2</span>
+        <div class="who">
+          <h3><a href="#lot-marshawn-lloyd">MarShawn Lloyd</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$2</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$3</span></div><div class="sig"><span class="lbl">difference</span><span class="num flat">+$1</span></div><div class="sig"><span class="lbl">tier</span><span class="num">6</span></div></div>
+      
+      <p class="verdict">Went for about what the room was paying, $2. Top three GB backs now Lloyd/Kaleb Johnson/Chris Brooks with Jacobs on exempt list; lead-role claim contested but live. Is he still the next man up now that GB traded for Kaleb Johnson?</p>
+    </article>
+    <article class="pick" id="lot-wan-dale-robinson">
+      <div class="pick-head">
+        <span class="ovr">$1</span>
+        <div class="who">
+          <h3><a href="#lot-wan-dale-robinson">Wan'Dale Robinson</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">paid</span><span class="num">$1</span></div><div class="sig"><span class="lbl">going rate</span><span class="num">$2</span></div><div class="sig"><span class="lbl">difference</span><span class="num val">+$1</span></div><div class="sig"><span class="lbl">tier</span><span class="num">6</span></div></div>
+      
+      <p class="verdict">$1 under the going rate at $1, against the $2 players at his price were fetching. 140-target profile worth less at 0.5 PPR; concussion cleared. Cleared from the concussion — and does 140-target volume travel to Tennessee?</p>
+    </article>
+</section>
+
+<footer>
+  <p>Worth is what a player at this price actually went for in this room, fitted
+  across every lot &mdash; not expert consensus itself, because an auction does not
+  mark the whole board up evenly: this one paid a third of consensus for
+  five-dollar players and well over it for the studs.</p>
+  <p>Grades are three parts roster to one part buying, with bench points at half
+  &mdash; depth is worth having and does not score on Sunday.</p>
+</footer></div>
+<script>
+document.querySelectorAll("th.sortable").forEach(function(th){
+  th.addEventListener("click", function(){
+    var table = th.closest("table"), body = table.tBodies[0];
+    var i = [].indexOf.call(th.parentNode.cells, th);
+    var num = th.dataset.type === "num";
+    var desc = th.getAttribute("aria-sort") !== "descending";
+    [].forEach.call(table.tHead.rows[0].cells, function(c){ c.removeAttribute("aria-sort"); });
+    th.setAttribute("aria-sort", desc ? "descending" : "ascending");
+    var rows = [].slice.call(body.rows);
+    rows.sort(function(a, b){
+      var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+      if (num) { x = parseFloat(x); y = parseFloat(y); }
+      return (x < y ? -1 : x > y ? 1 : 0) * (desc ? -1 : 1);
+    });
+    rows.forEach(function(r){ body.appendChild(r); });
+  });
+});
+(function(){
+  function mark(){
+    document.querySelectorAll(".tw").forEach(function(w){
+      var t = w.querySelector("table");
+      if (t) w.classList.toggle("scrolls", t.scrollWidth > w.clientWidth + 2);
+    });
+  }
+})();
+</script>
+</body>
+</html>
