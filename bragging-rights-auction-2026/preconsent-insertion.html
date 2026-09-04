@@ -171,8 +171,7 @@ color:var(--muted)}
   table.val{font-size:.8rem}
   table.val .opt{display:none}
   table.val td,table.val th{padding:.45rem .3rem;white-space:nowrap}
-  table.val td:first-child,table.val td:nth-child(2){white-space:normal}
-  table.val td:nth-child(2){font-size:.72rem;line-height:1.3}
+  table.val td:first-child{white-space:normal}
   /* the grade span's desktop min-width was taking 82px for two characters,
      which is what pushed the player names onto a second line */
   table.val .grade{font-size:1.05rem;min-width:0}
@@ -183,6 +182,12 @@ color:var(--muted)}
   #league th{font-size:.54rem}
   .signals{grid-template-columns:1fr 1fr}
 }
+/* who bought the lot rides under the player name rather than in a column of
+   its own, the same way the ledger reads — a team name is the widest thing on
+   the row and a column for it squeezed every other one. */
+table.val a.tm{display:block;color:var(--muted);font-size:.76rem;text-decoration:none;
+margin-top:.12rem}
+table.val a.tm:hover{color:var(--accent);text-decoration:underline}
 table.led{font-size:.88rem}
 table.led a.tm{display:block;color:var(--muted);font-size:.74rem;text-decoration:none;
 margin-top:.1rem}
