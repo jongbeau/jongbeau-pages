@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RTV 500 Draft Report Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:60rem;margin:0 auto;display:flex;flex-direction:column;gap:2.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:600}h3{font-size:1.05rem;font-weight:600}
+a{color:var(--accent)}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+font-weight:600;margin:0 0 .4rem}
+.lede{color:var(--muted);max-width:64ch}
+.back{font-size:.8rem;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.5rem}
+.hero{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;margin-top:1.1rem}
+.bigmark{font-family:Fraunces,Georgia,serif;font-size:4rem;font-weight:700;line-height:.9;color:var(--accent)}
+.bigmark small{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem;flex:1}
+.stat .n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:600;
+font-variant-numeric:tabular-nums;display:block}
+.stat .l{font-size:.73rem;color:var(--muted)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:2rem}td.vv,th.vv{text-align:center}
+td.gr{text-align:center}
+tr.me td{background:var(--accent-soft);font-weight:600}
+td a{text-decoration:none;font-weight:600}
+.gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}
+.g-d{color:var(--bad)}.g-f{color:var(--bad);font-weight:700}
+.ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
+display:flex;flex-direction:column;gap:.65rem}
+.pick-head{display:flex;align-items:flex-start;gap:.85rem}
+.ovr{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;color:var(--muted);
+min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.who{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
+.pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
+.pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
+.grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
+min-width:2.5rem;text-align:right}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
+padding:.55rem .65rem;background:var(--paper);border-radius:2px}
+.sig{display:flex;flex-direction:column;gap:.08rem}
+.lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.verdict{margin:0;font-size:.95rem;padding-top:.55rem;border-top:1px solid var(--rule)}
+
+.spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
+.flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
+.yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
+display:flex;flex-direction:column;gap:.18rem}
+.note-line{margin:0;font-size:.86rem}
+.swing{margin:0;font-size:.86rem;font-style:italic;color:var(--muted)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:1rem 1.2rem;
+border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
+.note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
+footer p{margin:0 0 .6rem}
+
+.pick:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick h3 a{color:inherit;text-decoration:none}
+.pick h3 a:hover{color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.three .card{padding:1rem 1.1rem}
+.three h3{font-size:.95rem;margin:0 0 .5rem}
+.three ol{margin:0;padding-left:1.1rem;font-size:.86rem}
+.three li{margin-bottom:.35rem}
+.three a{text-decoration:none;font-weight:600}
+.gap{font-family:"JetBrains Mono",monospace;font-size:.8rem}
+
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--accent)}
+th.sortable::after{content:"";opacity:.35;margin-left:.3rem}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:.9}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:.9}
+th.sortable:not([aria-sort])::after{content:"\21C5"}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;
+margin-top:1rem;font-size:.83rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
+letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
+
+/* --- narrow screens ------------------------------------------------ */
+.tw{position:relative}
+.tw::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1.6rem;
+  pointer-events:none;background:linear-gradient(to right,transparent,var(--paper));
+  opacity:0;transition:opacity .15s}
+.tw.scrolls::after{opacity:1}
+.scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
+.tw.scrolls ~ .scrollhint{display:block}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);
+gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+margin-top:1.6rem;overflow:hidden}
+.ctx > div{background:var(--card);padding:.9rem 1.05rem;display:flex;flex-direction:column;
+gap:.28rem;min-width:0}
+.ctx b{display:block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+color:var(--muted);font-weight:600;line-height:1.3}
+.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.55rem;font-weight:600;
+font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:break-word}
+.ctx .big a{color:var(--accent)}
+.ctx .sub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bars{display:flex;gap:2px;margin-top:.15rem}
+.bars span{flex:1;height:3px;border-radius:2px;background:var(--rule)}
+.bars span.on{background:var(--accent)}
+@media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
+.ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
+.bd{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.1rem}
+@media (min-width:62rem){.bd{grid-template-columns:1fr 1fr}}
+table.brk{font-size:.85rem}
+table.brk td.sl{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);
+letter-spacing:.04em;width:3.1rem}
+table.brk td.mut{color:var(--muted)}
+table.brk tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:600;
+padding-top:.5rem}
+table.brk tr.tot td:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted)}
+.gpaval{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:34rem){
+  /* let the table use the full screen width; the page padding was costing it
+     exactly the 38px that forced a horizontal scroll */
+  .tw{margin-inline:calc(-1 * clamp(1.2rem,4vw,3rem))}
+  #league{font-size:.8rem;width:100%}
+  #league td:first-child,#league th:first-child{padding-left:.55rem}
+  #league td:last-child,#league th:last-child{padding-right:.4rem}
+  #league th{padding:.4rem .22rem}
+  #league td{padding:.42rem .22rem}
+  #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
+  #league td{padding:.4rem .28rem}
+  #league th.sortable::after{margin-left:.15rem}
+  .ctx{grid-template-columns:1fr 1fr}
+  .ctx > div{padding:.7rem .8rem}
+  .ctx .big{font-size:1.15rem}
+  .ctx b{font-size:.6rem;letter-spacing:.08em}
+  .signals{grid-template-columns:repeat(2,1fr)}
+  .pick{padding:.85rem .9rem}
+  .grade{font-size:1.35rem;min-width:2.1rem}
+  .who h3{font-size:1rem}
+  .hero{gap:1rem}
+  .bigmark{font-size:3rem}
+  .three ol{padding-left:1rem}
+}
+@media (max-width:24rem){
+  #league{font-size:.74rem}
+  #league th{font-size:.54rem}
+  .signals{grid-template-columns:1fr 1fr}
+}
+table.led{font-size:.88rem}
+table.led a.tm{display:block;color:var(--muted);font-size:.74rem;text-decoration:none;
+margin-top:.1rem}
+table.led a.tm:hover{color:var(--accent);text-decoration:underline}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led a.tm{font-size:.68rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">RTV 500 &middot; 2026 &middot; ten teams, 160 picks</p>
+  <h1>Draft Report Cards</h1>
+  <p class="lede">Every pick in the league graded against the same three boards &mdash;
+  value over replacement, real-draft ADP and expert consensus &mdash; then weighted by how
+  much value was still on the table when it was made. One rule, applied identically to all
+  ten teams.</p>
+</header>
+
+<section>
+  <h2>The league at a glance</h2>
+  <p class="lede">Tap any column to sort.</p>
+  <div class="tw"><table id="league">
+    <thead><tr>
+      <th class="sortable" data-type="text">Team</th>
+      <th class="sortable vv" data-type="num" aria-sort="descending">Starters</th>
+      <th class="sortable vv" data-type="num">Bench</th>
+      <th class="sortable vv" data-type="num">Total</th>
+      <th class="sortable vv" data-type="num">Grade</th>
+    </tr></thead>
+    <tbody>
+  <tr>
+    <td data-v="Mike Byars"><a href="mike-byars.html">Mike Byars</a></td>
+    <td class="vv" data-v="732">732</td>
+    <td class="vv" data-v="266">266</td>
+    <td class="vv" data-v="998"><b>998</b></td>
+    <td class="vv" data-v="3.79"><span class="gr g-a">A-</span>
+      <span class="gpaval">3.79</span></td>
+  </tr>
+  <tr>
+    <td data-v="About to be $4k richer"><a href="about-to-be-4k-richer.html">About to be $4k richer</a></td>
+    <td class="vv" data-v="730">730</td>
+    <td class="vv" data-v="181">181</td>
+    <td class="vv" data-v="911"><b>911</b></td>
+    <td class="vv" data-v="3.38"><span class="gr g-b">B+</span>
+      <span class="gpaval">3.38</span></td>
+  </tr>
+  <tr>
+    <td data-v="OJ"><a href="oj.html">OJ</a></td>
+    <td class="vv" data-v="717">717</td>
+    <td class="vv" data-v="272">272</td>
+    <td class="vv" data-v="988"><b>988</b></td>
+    <td class="vv" data-v="3.76"><span class="gr g-a">A-</span>
+      <span class="gpaval">3.76</span></td>
+  </tr>
+  <tr class="me">
+    <td data-v="Popeyes"><a href="popeyes.html">Popeyes</a></td>
+    <td class="vv" data-v="693">693</td>
+    <td class="vv" data-v="201">201</td>
+    <td class="vv" data-v="894"><b>894</b></td>
+    <td class="vv" data-v="3.35"><span class="gr g-b">B+</span>
+      <span class="gpaval">3.35</span></td>
+  </tr>
+  <tr>
+    <td data-v="Super Ja'Maaaaaaarrriioooooooo"><a href="super-ja-maaaaaaarrriioooooooo.html">Super Ja'Maaaaaaarrriioooooooo</a></td>
+    <td class="vv" data-v="686">686</td>
+    <td class="vv" data-v="213">213</td>
+    <td class="vv" data-v="898"><b>898</b></td>
+    <td class="vv" data-v="3.27"><span class="gr g-b">B+</span>
+      <span class="gpaval">3.27</span></td>
+  </tr>
+  <tr>
+    <td data-v="Zeebz"><a href="zeebz.html">Zeebz</a></td>
+    <td class="vv" data-v="685">685</td>
+    <td class="vv" data-v="282">282</td>
+    <td class="vv" data-v="968"><b>968</b></td>
+    <td class="vv" data-v="3.7"><span class="gr g-a">A-</span>
+      <span class="gpaval">3.70</span></td>
+  </tr>
+  <tr>
+    <td data-v="ThreePeatGoat"><a href="threepeatgoat.html">ThreePeatGoat</a></td>
+    <td class="vv" data-v="682">682</td>
+    <td class="vv" data-v="221">221</td>
+    <td class="vv" data-v="904"><b>904</b></td>
+    <td class="vv" data-v="3.37"><span class="gr g-b">B+</span>
+      <span class="gpaval">3.37</span></td>
+  </tr>
+  <tr>
+    <td data-v="Dave's Dangerous Team"><a href="dave-s-dangerous-team.html">Dave's Dangerous Team</a></td>
+    <td class="vv" data-v="666">666</td>
+    <td class="vv" data-v="260">260</td>
+    <td class="vv" data-v="926"><b>926</b></td>
+    <td class="vv" data-v="3.38"><span class="gr g-b">B+</span>
+      <span class="gpaval">3.38</span></td>
+  </tr>
+  <tr>
+    <td data-v="RTV"><a href="rtv.html">RTV</a></td>
+    <td class="vv" data-v="662">662</td>
+    <td class="vv" data-v="213">213</td>
+    <td class="vv" data-v="875"><b>875</b></td>
+    <td class="vv" data-v="3.07"><span class="gr g-b">B</span>
+      <span class="gpaval">3.07</span></td>
+  </tr>
+  <tr>
+    <td data-v="Christian's Competitive Team"><a href="christian-s-competitive-team.html">Christian's Competitive Team</a></td>
+    <td class="vv" data-v="642">642</td>
+    <td class="vv" data-v="224">224</td>
+    <td class="vv" data-v="866"><b>866</b></td>
+    <td class="vv" data-v="3.4"><span class="gr g-b">B+</span>
+      <span class="gpaval">3.40</span></td>
+  </tr>
+    </tbody>
+  </table></div>
+  <div class="legend">
+    <div><b>One yardstick</b> Every number on this page counts points above the best player
+    <em>actually left undrafted</em> at that position &mdash; Jared Goff at QB, Samaje Perine at RB, Rashid Shaheed at WR, Juwan Johnson at TE, Minnesota Vikings at D/ST, Will Reichard at K. That is what the roster
+    is worth over one assembled for nothing off the waiver wire, and it means a starter and a
+    reserve can be compared directly.</div>
+    <div><b>Starters</b> All nine slots of the best lineup that could actually be fielded,
+    kicker and defense included, each floored at zero: a starter worth less than a free agent
+    is worth nothing, not something negative, because you would drop him and sign the free
+    agent. A player who cannot play is not eligible for a slot at all and falls to the bench.
+    Kickers and defenses are valued on projected points rather than value over replacement,
+    which nobody computes for them; the difference from the best one left undrafted is on the
+    same scale either way.</div>
+    <div><b>Bench</b> The reserves, summed, floored at zero &mdash; a reserve no better than a
+    free agent is worth nothing, since you would simply drop him.</div>
+    <div><b>Total</b> Starters plus bench: the whole roster's value over free agents.</div>
+    <div><b>Grade</b> Weighted average of all sixteen pick grades, each
+    counting for how much value was on the board when it was made. The only column not partly a
+    function of draft slot &mdash; and the one to read least literally: it carries an error of
+    about &plusmn;0.21, which is as large as the gap between first and last, so
+    treat the middle of this table as a tie.</div>
+  </div>
+</section>
+
+<section>
+  <h2>The whole draft, pick by pick</h2>
+  <p class="lede">The same 160 picks read down the board
+  instead of across one roster &mdash; where a run on a position, or the round the value ran
+  out, actually shows up. <a href="ledger.html">Open the draft ledger &rarr;</a></p>
+</section>
+
+<section>
+  <h2>Three best picks, by value found</h2>
+  <p class="lede">Ranked by how far past the market each pick came, not by how good the player is &mdash; otherwise every team's best pick is its first-rounder.</p>
+  <div class="threes"><div class="three"><h3>Mike Byars</h3><ol><li><a href="mike-byars.html#pick-125">Dalton Kincaid</a> <span class="gr g-a">A-</span> <span class="mono">pick 125 &middot; +14</span></li><li><a href="mike-byars.html#pick-116">Jayden Reed</a> <span class="gr g-a">A</span> <span class="mono">pick 116 &middot; +13</span></li><li><a href="mike-byars.html#pick-105">Quentin Johnston</a> <span class="gr g-a">A-</span> <span class="mono">pick 105 &middot; +10</span></li></ol></div><div class="three"><h3>About to be $4k richer</h3><ol><li><a href="about-to-be-4k-richer.html#pick-119">Patrick Mahomes</a> <span class="gr g-a">A-</span> <span class="mono">pick 119 &middot; +15</span></li><li><a href="about-to-be-4k-richer.html#pick-59">Drake Maye</a> <span class="gr g-a">A-</span> <span class="mono">pick 59 &middot; +10</span></li><li><a href="about-to-be-4k-richer.html#pick-42">Tee Higgins</a> <span class="gr g-a">A</span> <span class="mono">pick 42 &middot; +6</span></li></ol></div><div class="three"><h3>OJ</h3><ol><li><a href="oj.html#pick-160">Baker Mayfield</a> <span class="gr g-a">A+</span> <span class="mono">pick 160 &middot; +30</span></li><li><a href="oj.html#pick-141">Isaiah Likely</a> <span class="gr g-a">A</span> <span class="mono">pick 141 &middot; +22</span></li><li><a href="oj.html#pick-120">Jordan Addison</a> <span class="gr g-a">A</span> <span class="mono">pick 120 &middot; +17</span></li></ol></div><div class="three"><h3>Popeyes</h3><ol><li><a href="popeyes.html#pick-90">Caleb Williams</a> <span class="gr g-a">A</span> <span class="mono">pick 90 &middot; +18</span></li><li><a href="popeyes.html#pick-91">Brian Thomas Jr.</a> <span class="gr g-a">A</span> <span class="mono">pick 91 &middot; +16</span></li><li><a href="popeyes.html#pick-111">Brock Purdy</a> <span class="gr g-a">A-</span> <span class="mono">pick 111 &middot; +15</span></li></ol></div><div class="three"><h3>Super Ja'Maaaaaaarrriioooooooo</h3><ol><li><a href="super-ja-maaaaaaarrriioooooooo.html#pick-158">Jalen Coker</a> <span class="gr g-a">A+</span> <span class="mono">pick 158 &middot; +33</span></li><li><a href="super-ja-maaaaaaarrriioooooooo.html#pick-38">Lamar Jackson</a> <span class="gr g-a">A-</span> <span class="mono">pick 38 &middot; +6</span></li><li><a href="super-ja-maaaaaaarrriioooooooo.html#pick-23">Nico Collins</a> <span class="gr g-b">B+</span> <span class="mono">pick 23 &middot; +2</span></li></ol></div><div class="three"><h3>Zeebz</h3><ol><li><a href="zeebz.html#pick-147">Bo Nix</a> <span class="gr g-a">A+</span> <span class="mono">pick 147 &middot; +35</span></li><li><a href="zeebz.html#pick-114">RJ Harvey</a> <span class="gr g-a">A</span> <span class="mono">pick 114 &middot; +19</span></li><li><a href="zeebz.html#pick-94">Dak Prescott</a> <span class="gr g-a">A</span> <span class="mono">pick 94 &middot; +16</span></li></ol></div><div class="three"><h3>ThreePeatGoat</h3><ol><li><a href="threepeatgoat.html#pick-144">Mark Andrews</a> <span class="gr g-a">A-</span> <span class="mono">pick 144 &middot; +13</span></li><li><a href="threepeatgoat.html#pick-137">Romeo Doubs</a> <span class="gr g-a">A-</span> <span class="mono">pick 137 &middot; +10</span></li><li><a href="threepeatgoat.html#pick-97">Trevor Lawrence</a> <span class="gr g-a">A</span> <span class="mono">pick 97 &middot; +5</span></li></ol></div><div class="three"><h3>Dave's Dangerous Team</h3><ol><li><a href="dave-s-dangerous-team.html#pick-115">Josh Downs</a> <span class="gr g-a">A+</span> <span class="mono">pick 115 &middot; +24</span></li><li><a href="dave-s-dangerous-team.html#pick-106">Wan'Dale Robinson</a> <span class="gr g-a">A+</span> <span class="mono">pick 106 &middot; +20</span></li><li><a href="dave-s-dangerous-team.html#pick-95">Chris Godwin Jr.</a> <span class="gr g-a">A</span> <span class="mono">pick 95 &middot; +16</span></li></ol></div><div class="three"><h3>RTV</h3><ol><li><a href="rtv.html#pick-132">Matthew Stafford</a> <span class="gr g-a">A+</span> <span class="mono">pick 132 &middot; +37</span></li><li><a href="rtv.html#pick-92">Rico Dowdle</a> <span class="gr g-a">A-</span> <span class="mono">pick 92 &middot; +6</span></li><li><a href="rtv.html#pick-32">Rashee Rice</a> <span class="gr g-a">A</span> <span class="mono">pick 32 &middot; +5</span></li></ol></div><div class="three"><h3>Christian's Competitive Team</h3><ol><li><a href="christian-s-competitive-team.html#pick-148">Khalil Shakir</a> <span class="gr g-a">A+</span> <span class="mono">pick 148 &middot; +25</span></li><li><a href="christian-s-competitive-team.html#pick-128">Jake Ferguson</a> <span class="gr g-b">B+</span> <span class="mono">pick 128 &middot; +8</span></li><li><a href="christian-s-competitive-team.html#pick-113">Makai Lemon</a> <span class="gr g-b">B+</span> <span class="mono">pick 113 &middot; +5</span></li></ol></div></div>
+</section>
+<section>
+  <h2>Three weakest picks</h2>
+  <p class="lede">Lowest graded, ties broken by how far ahead of the market they came. Kickers and defenses excluded.</p>
+  <div class="threes"><div class="three"><h3>Mike Byars</h3><ol><li><a href="mike-byars.html#pick-76">Jonathon Brooks</a> <span class="gr g-c">C</span> <span class="mono">pick 76 &middot; -17</span></li><li><a href="mike-byars.html#pick-145">Keaton Mitchell</a> <span class="gr g-c">C+</span> <span class="mono">pick 145 &middot; -14</span></li><li><a href="mike-byars.html#pick-96">Kyle Monangai</a> <span class="gr g-c">C+</span> <span class="mono">pick 96 &middot; -14</span></li></ol></div><div class="three"><h3>About to be $4k richer</h3><ol><li><a href="about-to-be-4k-richer.html#pick-159">Tank Dell</a> <span class="gr g-f">F</span> <span class="mono">pick 159 &middot; -30</span></li><li><a href="about-to-be-4k-richer.html#pick-19">Jeremiyah Love</a> <span class="gr g-c">C-</span> <span class="mono">pick 19 &middot; -8</span></li><li><a href="about-to-be-4k-richer.html#pick-99">Aaron Jones Sr.</a> <span class="gr g-c">C</span> <span class="mono">pick 99 &middot; -19</span></li></ol></div><div class="three"><h3>OJ</h3><ol><li><a href="oj.html#pick-80">Travis Kelce</a> <span class="gr g-c">C+</span> <span class="mono">pick 80 &middot; -18</span></li><li><a href="oj.html#pick-81">Michael Pittman Jr.</a> <span class="gr g-b">B</span> <span class="mono">pick 81 &middot; -1</span></li><li><a href="oj.html#pick-61">Jalen Hurts</a> <span class="gr g-b">B</span> <span class="mono">pick 61 &middot; +1</span></li></ol></div><div class="three"><h3>Popeyes</h3><ol><li><a href="popeyes.html#pick-110">Travis Hunter</a> <span class="gr g-f">F</span> <span class="mono">pick 110 &middot; -59</span></li><li><a href="popeyes.html#pick-71">Chuba Hubbard</a> <span class="gr g-c">C+</span> <span class="mono">pick 71 &middot; -11</span></li><li><a href="popeyes.html#pick-31">Colston Loveland</a> <span class="gr g-c">C+</span> <span class="mono">pick 31 &middot; -10</span></li></ol></div><div class="three"><h3>Super Ja'Maaaaaaarrriioooooooo</h3><ol><li><a href="super-ja-maaaaaaarrriioooooooo.html#pick-118">Mike Washington Jr.</a> <span class="gr g-c">C</span> <span class="mono">pick 118 &middot; -34</span></li><li><a href="super-ja-maaaaaaarrriioooooooo.html#pick-103">De'Zhaun Stribling</a> <span class="gr g-c">C</span> <span class="mono">pick 103 &middot; -23</span></li><li><a href="super-ja-maaaaaaarrriioooooooo.html#pick-83">Kenny Gainwell</a> <span class="gr g-c">C</span> <span class="mono">pick 83 &middot; -15</span></li></ol></div><div class="three"><h3>Zeebz</h3><ol><li><a href="zeebz.html#pick-47">Bhayshul Tuten</a> <span class="gr g-c">C-</span> <span class="mono">pick 47 &middot; -14</span></li><li><a href="zeebz.html#pick-107">Rachaad White</a> <span class="gr g-c">C+</span> <span class="mono">pick 107 &middot; -10</span></li><li><a href="zeebz.html#pick-54">DJ Moore</a> <span class="gr g-b">B+</span> <span class="mono">pick 54 &middot; +2</span></li></ol></div><div class="three"><h3>ThreePeatGoat</h3><ol><li><a href="threepeatgoat.html#pick-117">Tyjae Spears</a> <span class="gr g-c">C</span> <span class="mono">pick 117 &middot; -23</span></li><li><a href="threepeatgoat.html#pick-64">Rhamondre Stevenson</a> <span class="gr g-c">C</span> <span class="mono">pick 64 &middot; -10</span></li><li><a href="threepeatgoat.html#pick-84">Stefon Diggs</a> <span class="gr g-c">C+</span> <span class="mono">pick 84 &middot; -10</span></li></ol></div><div class="three"><h3>Dave's Dangerous Team</h3><ol><li><a href="dave-s-dangerous-team.html#pick-135">Tre Tucker</a> <span class="gr g-d">D+</span> <span class="mono">pick 135 &middot; -24</span></li><li><a href="dave-s-dangerous-team.html#pick-86">Josh Jacobs</a> <span class="gr g-c">C-</span> <span class="mono">pick 86 &middot; +30</span></li><li><a href="dave-s-dangerous-team.html#pick-75">MarShawn Lloyd</a> <span class="gr g-c">C</span> <span class="mono">pick 75 &middot; -50</span></li></ol></div><div class="three"><h3>RTV</h3><ol><li><a href="rtv.html#pick-129">Tank Bigsby</a> <span class="gr g-d">D+</span> <span class="mono">pick 129 &middot; -42</span></li><li><a href="rtv.html#pick-12">Omarion Hampton</a> <span class="gr g-c">C-</span> <span class="mono">pick 12 &middot; -10</span></li><li><a href="rtv.html#pick-112">Woody Marks</a> <span class="gr g-c">C</span> <span class="mono">pick 112 &middot; -28</span></li></ol></div><div class="three"><h3>Christian's Competitive Team</h3><ol><li><a href="christian-s-competitive-team.html#pick-93">Matthew Golden</a> <span class="gr g-d">D</span> <span class="mono">pick 93 &middot; -32</span></li><li><a href="christian-s-competitive-team.html#pick-73">George Kittle</a> <span class="gr g-c">C</span> <span class="mono">pick 73 &middot; -21</span></li><li><a href="christian-s-competitive-team.html#pick-48">Rome Odunze</a> <span class="gr g-c">C</span> <span class="mono">pick 48 &middot; -11</span></li></ol></div></div>
+</section>
+
+<section id="method">
+  <h2>How the grades work</h2>
+  <div class="note">
+    <p><strong>Every pick is weighed by what was at stake.</strong> The one
+    overall pick had 187 points of value on the table; the last pick had
+    106.</p>
+    <p><strong>Three boards, because they disagree in useful ways.</strong> Market ADP is a
+    blend weighting FFC highest, since it comes from real ten-team PPR
+    drafts. ECR is FantasyPros alone. VORP is projected points above a replacement starter.
+    Where ADP and ECR sit more than forty places apart, the pessimistic reading is used.</p>
+    <p><strong>The gap is measured in standard deviations, not places.</strong> Real drafts
+    agree to within about three picks on a first-rounder and disagree by nearly twenty on a
+    fifteenth, so a fixed &ldquo;twenty picks early&rdquo; is a seven-sigma call in round one
+    and inside the noise in round fifteen. Dividing by each player&rsquo;s own spread puts
+    every round on the same scale.</p>
+    <p><strong>Roster need plays no part.</strong> Filling a starting slot is what a draft is
+    for, not a decision worth credit; and taking depth while a slot sits open is often correct,
+    because a fourth receiver really can beat the best quarterback left. The one exception is
+    hoarding: past a second quarterback or tight end, or a sixth back or receiver, a pick costs
+    a grade.</p>
+    <p><strong>Taking the best player left is its own credit.</strong> Early on there is no
+    value to capture, so a pick that takes the top player on the board floors at A. That
+    floor is suspended when the sources split, because it is computed from VORP, and VORP
+    has no concept of a player being unable to play.</p>
+    <p><strong>Bench counts what beats the waiver wire.</strong> Not a theoretical
+    replacement level &mdash; the best player genuinely left undrafted at each position. A
+    reserve no better than that is worth zero, because picking him up is free. It is why a
+    backup quarterback scores nothing here while a fourth running back can be worth a great
+    deal.</p>
+    <p><strong>Draft slot is not skill.</strong> Slots 1&ndash;3 averaged 711 points of
+    starting lineup; slots 8&ndash;10 averaged 666. The
+    grade controls for that; the starters column does not.</p>
+    <p><strong>The ten drafts are closer than the grades look.</strong> A team GPA averages
+    sixteen noisy numbers and carries an error of about
+    &plusmn;0.21 &mdash; the same size as the spread between first and last.
+    Shuffling all 160 picks at random between the teams
+    reproduces a spread this wide about two times in five. The ranking is real; the distances
+    inside it mostly are not.</p>
+    <p>Grades measure decision quality against what was knowable on the night. Projection
+    R&sup2; is about 0.24, so outcome noise is roughly twice the spread of the projections.
+    None of this predicts the season.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Built from the completed ESPN draft, joined to a consensus board of 946 valued
+  players. Cheat-sheet notes and swing questions come from the RTV500 as of draft
+  night and describe the player, not the team that drafted him.</p>
+</footer>
+</div>
+<script>
+document.querySelectorAll("th.sortable").forEach(function(th){
+  th.addEventListener("click", function(){
+    var table = th.closest("table"), body = table.tBodies[0];
+    var i = [].indexOf.call(th.parentNode.cells, th);
+    var num = th.dataset.type === "num";
+    var desc = th.getAttribute("aria-sort") !== "descending";
+    [].forEach.call(table.tHead.rows[0].cells, function(c){ c.removeAttribute("aria-sort"); });
+    th.setAttribute("aria-sort", desc ? "descending" : "ascending");
+    var rows = [].slice.call(body.rows);
+    rows.sort(function(a, b){
+      var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+      if (num) { x = parseFloat(x); y = parseFloat(y); }
+      return (x < y ? -1 : x > y ? 1 : 0) * (desc ? -1 : 1);
+    });
+    rows.forEach(function(r){ body.appendChild(r); });
+  });
+});
+(function(){
+  function mark(){
+    document.querySelectorAll(".tw").forEach(function(w){
+      var t = w.querySelector("table");
+      if (t) w.classList.toggle("scrolls", t.scrollWidth > w.clientWidth + 2);
+    });
+  }
+})();
+</script>
+</body>
+</html>

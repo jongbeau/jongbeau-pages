@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mike Byars Draft Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:60rem;margin:0 auto;display:flex;flex-direction:column;gap:2.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:600}h3{font-size:1.05rem;font-weight:600}
+a{color:var(--accent)}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+font-weight:600;margin:0 0 .4rem}
+.lede{color:var(--muted);max-width:64ch}
+.back{font-size:.8rem;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.5rem}
+.hero{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;margin-top:1.1rem}
+.bigmark{font-family:Fraunces,Georgia,serif;font-size:4rem;font-weight:700;line-height:.9;color:var(--accent)}
+.bigmark small{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem;flex:1}
+.stat .n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:600;
+font-variant-numeric:tabular-nums;display:block}
+.stat .l{font-size:.73rem;color:var(--muted)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:2rem}td.vv,th.vv{text-align:center}
+td.gr{text-align:center}
+tr.me td{background:var(--accent-soft);font-weight:600}
+td a{text-decoration:none;font-weight:600}
+.gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}
+.g-d{color:var(--bad)}.g-f{color:var(--bad);font-weight:700}
+.ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
+display:flex;flex-direction:column;gap:.65rem}
+.pick-head{display:flex;align-items:flex-start;gap:.85rem}
+.ovr{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;color:var(--muted);
+min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.who{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
+.pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
+.pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
+.grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
+min-width:2.5rem;text-align:right}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
+padding:.55rem .65rem;background:var(--paper);border-radius:2px}
+.sig{display:flex;flex-direction:column;gap:.08rem}
+.lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.verdict{margin:0;font-size:.95rem;padding-top:.55rem;border-top:1px solid var(--rule)}
+
+.spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
+.flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
+.yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
+display:flex;flex-direction:column;gap:.18rem}
+.note-line{margin:0;font-size:.86rem}
+.swing{margin:0;font-size:.86rem;font-style:italic;color:var(--muted)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:1rem 1.2rem;
+border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
+.note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
+footer p{margin:0 0 .6rem}
+
+.pick:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick h3 a{color:inherit;text-decoration:none}
+.pick h3 a:hover{color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.three .card{padding:1rem 1.1rem}
+.three h3{font-size:.95rem;margin:0 0 .5rem}
+.three ol{margin:0;padding-left:1.1rem;font-size:.86rem}
+.three li{margin-bottom:.35rem}
+.three a{text-decoration:none;font-weight:600}
+.gap{font-family:"JetBrains Mono",monospace;font-size:.8rem}
+
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--accent)}
+th.sortable::after{content:"";opacity:.35;margin-left:.3rem}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:.9}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:.9}
+th.sortable:not([aria-sort])::after{content:"\21C5"}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;
+margin-top:1rem;font-size:.83rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
+letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
+
+/* --- narrow screens ------------------------------------------------ */
+.tw{position:relative}
+.tw::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1.6rem;
+  pointer-events:none;background:linear-gradient(to right,transparent,var(--paper));
+  opacity:0;transition:opacity .15s}
+.tw.scrolls::after{opacity:1}
+.scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
+.tw.scrolls ~ .scrollhint{display:block}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);
+gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+margin-top:1.6rem;overflow:hidden}
+.ctx > div{background:var(--card);padding:.9rem 1.05rem;display:flex;flex-direction:column;
+gap:.28rem;min-width:0}
+.ctx b{display:block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+color:var(--muted);font-weight:600;line-height:1.3}
+.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.55rem;font-weight:600;
+font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:break-word}
+.ctx .big a{color:var(--accent)}
+.ctx .sub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bars{display:flex;gap:2px;margin-top:.15rem}
+.bars span{flex:1;height:3px;border-radius:2px;background:var(--rule)}
+.bars span.on{background:var(--accent)}
+@media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
+.ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
+.bd{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.1rem}
+@media (min-width:62rem){.bd{grid-template-columns:1fr 1fr}}
+table.brk{font-size:.85rem}
+table.brk td.sl{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);
+letter-spacing:.04em;width:3.1rem}
+table.brk td.mut{color:var(--muted)}
+table.brk tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:600;
+padding-top:.5rem}
+table.brk tr.tot td:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted)}
+.gpaval{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:34rem){
+  /* let the table use the full screen width; the page padding was costing it
+     exactly the 38px that forced a horizontal scroll */
+  .tw{margin-inline:calc(-1 * clamp(1.2rem,4vw,3rem))}
+  #league{font-size:.8rem;width:100%}
+  #league td:first-child,#league th:first-child{padding-left:.55rem}
+  #league td:last-child,#league th:last-child{padding-right:.4rem}
+  #league th{padding:.4rem .22rem}
+  #league td{padding:.42rem .22rem}
+  #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
+  #league td{padding:.4rem .28rem}
+  #league th.sortable::after{margin-left:.15rem}
+  .ctx{grid-template-columns:1fr 1fr}
+  .ctx > div{padding:.7rem .8rem}
+  .ctx .big{font-size:1.15rem}
+  .ctx b{font-size:.6rem;letter-spacing:.08em}
+  .signals{grid-template-columns:repeat(2,1fr)}
+  .pick{padding:.85rem .9rem}
+  .grade{font-size:1.35rem;min-width:2.1rem}
+  .who h3{font-size:1rem}
+  .hero{gap:1rem}
+  .bigmark{font-size:3rem}
+  .three ol{padding-left:1rem}
+}
+@media (max-width:24rem){
+  #league{font-size:.74rem}
+  #league th{font-size:.54rem}
+  .signals{grid-template-columns:1fr 1fr}
+}
+table.led{font-size:.88rem}
+table.led a.tm{display:block;color:var(--muted);font-size:.74rem;text-decoration:none;
+margin-top:.1rem}
+table.led a.tm:hover{color:var(--accent);text-decoration:underline}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led a.tm{font-size:.68rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow"><a class="back" href="index.html">&larr; all ten teams</a></p>
+  <h1>Mike Byars</h1>
+  <p class="lede">Sixteen picks graded against value over replacement, real-draft ADP and
+  expert consensus, weighted by what was still on the board.</p>
+  <div class="card hero">
+    <div class="bigmark">A-<small>draft grade</small></div>
+    <div class="stats">
+      <div class="stat"><span class="n">Best</span><span class="l"><a href="#pick-125">Dalton Kincaid</a> <span class="gap">+14</span> &middot; <a href="#pick-116">Jayden Reed</a> <span class="gap">+13</span> &middot; <a href="#pick-105">Quentin Johnston</a> <span class="gap">+10</span></span></div>
+      <div class="stat"><span class="n">Weakest</span><span class="l"><a href="#pick-76">Jonathon Brooks</a> <span class="gr g-c">C</span> &middot; <a href="#pick-145">Keaton Mitchell</a> <span class="gr g-c">C+</span> &middot; <a href="#pick-96">Kyle Monangai</a> <span class="gr g-c">C+</span></span></div>
+    </div>
+  </div>
+  <div class="ctx">
+    <div><b>Draft slot</b><span class="big">5</span>
+      <div class="sub">of 10 &middot; middle</div></div>
+    <div><b>Starters</b><span class="big">732</span>
+      <div class="sub">1 of 10 &middot; league avg 690</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
+    <div><b>Bench</b><span class="big">266</span>
+      <div class="sub">3 of 10 &middot; league avg 233</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span><span class=""></span></div></div>
+    <div><b>Decision quality</b><span class="big">3.79</span>
+      <div class="sub">1 of 10 &middot; grade A-</div>
+      <div class="sub">&plusmn;0.21, so the middle of the table is a tie</div><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
+    <div><b>Usable reserves</b><span class="big names"><a href="#pick-65">Christian Watson</a> +76 &middot; <a href="#pick-76">Jonathon Brooks</a> +56 &middot; <a href="#pick-96">Kyle Monangai</a> +47 &middot; <a href="#pick-105">Quentin Johnston</a> +39 &middot; <a href="#pick-116">Jayden Reed</a> +39 &middot; <a href="#pick-125">Dalton Kincaid</a> +9</span>
+      <div class="sub">6 of 7 bench players beat the best free agent</div></div>
+    <div><b>Grade spread</b><span class="big" style="font-size:1rem">9&times;A &middot; 4&times;B &middot; 3&times;C</span>
+      <div class="sub">across sixteen picks</div></div>
+    <div><b>Roster shape</b><span class="big" style="font-size:1rem">1QB 6RB 5WR 2TE</span>
+      <div class="sub">plus 1 D/ST, 1 K</div></div>
+  </div>
+</header>
+<section>
+  <h2>Slot by slot</h2>
+  <p class="lede">What each player is worth over the best one still sitting on the waiver wire
+  at his position &mdash; Jared Goff at QB, Samaje Perine at RB, Rashid Shaheed at WR, Juwan Johnson at TE, Minnesota Vikings at D/ST, Will Reichard at K. The same yardstick for starters and reserves, so the two
+  columns can be read against each other, and both floor at zero: a player worth less than a
+  free agent is not a liability, because you would drop him and sign the free agent.</p>
+  <div class="bd">
+    <div class="tw"><table class="brk">
+      <thead><tr><th>Slot</th><th>Player</th><th class="vv">Worth</th></tr></thead>
+      <tbody><tr><td class="sl">QB</td><td><a href="#pick-85">Justin Herbert</a></td><td class="vv"><span class="val">+20</span></td></tr><tr><td class="sl">RB1</td><td><a href="#pick-5">Christian McCaffrey</a></td><td class="vv"><span class="val">+194</span></td></tr><tr><td class="sl">RB2</td><td><a href="#pick-16">Derrick Henry</a></td><td class="vv"><span class="val">+149</span></td></tr><tr><td class="sl">WR1</td><td><a href="#pick-25">Chris Olave</a></td><td class="vv"><span class="val">+116</span></td></tr><tr><td class="sl">WR2</td><td><a href="#pick-36">Zay Flowers</a></td><td class="vv"><span class="val">+97</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-56">Tyler Warren</a></td><td class="vv"><span class="val">+46</span></td></tr><tr><td class="sl">FLEX</td><td><a href="#pick-45">Cam Skattebo</a></td><td class="vv"><span class="val">+110</span></td></tr><tr><td class="sl">D/ST</td><td><a href="#pick-136">Steelers D/ST</a></td><td class="vv"><span class="flat">+0</span></td></tr><tr><td class="sl">K</td><td><a href="#pick-156">Tyler Loop</a></td><td class="vv"><span class="flat">+0</span></td></tr><tr class="tot"><td colspan="2">Starters</td><td class="vv"><span class="val">+732</span></td></tr></tbody></table></div>
+    <div class="tw"><table class="brk">
+      <thead><tr><th>Pos</th><th>Reserve</th><th class="vv">Worth</th></tr></thead>
+      <tbody><tr><td class="sl">WR</td><td><a href="#pick-65">Christian Watson</a></td><td class="vv"><span class="val">+76</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-76">Jonathon Brooks</a></td><td class="vv"><span class="val">+56</span></td></tr><tr><td class="sl">TE</td><td><a href="#pick-125">Dalton Kincaid</a></td><td class="vv"><span class="val">+9</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-96">Kyle Monangai</a></td><td class="vv"><span class="val">+47</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-105">Quentin Johnston</a></td><td class="vv"><span class="val">+39</span></td></tr><tr><td class="sl">WR</td><td><a href="#pick-116">Jayden Reed</a></td><td class="vv"><span class="val">+39</span></td></tr><tr><td class="sl">RB</td><td><a href="#pick-145">Keaton Mitchell</a></td><td class="vv"><span class="flat">+0</span></td></tr><tr class="tot"><td colspan="2">Bench</td><td class="vv"><span class="val">+266</span></td></tr><tr class="tot"><td colspan="2">Roster total</td><td class="vv"><span class="val">+998</span></td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <h2>Pick by pick</h2>
+  <div class="ledger">
+    <article class="pick" id="pick-5">
+      <div class="pick-head">
+        <span class="ovr">5</span>
+        <div class="who">
+          <h3><a href="#pick-5">Christian McCaffrey</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-a">A</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">3</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">6</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">9</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">8</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-1 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 5&ndash;24 &middot; their tier 2</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Went through drills Tuesday 9/1 — camp ramp on schedule; age-30 workload still the question</p><p class="swing">Does the age-30 body survive another 400-touch ask?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-16">
+      <div class="pick-head">
+        <span class="ovr">16</span>
+        <div class="who">
+          <h3><a href="#pick-16">Derrick Henry</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-a">A</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">13</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">19</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">38</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">22</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-3 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 20&ndash;50 &middot; their tier 5</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Age fade in PPR but goal-line king</p><p class="swing">Does age-32 finally show, or is he ageless one more year?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-25">
+      <div class="pick-head">
+        <span class="ovr">25</span>
+        <div class="who">
+          <h3><a href="#pick-25">Chris Olave</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-a">A</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">23</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">19</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">16</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">25</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+6 value</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 9&ndash;36 &middot; their tier 3</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">156 targets last year; volume secure with Shough</p><p class="swing">Does Shough sustain last year's volume — and does Olave stay healthy?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-36">
+      <div class="pick-head">
+        <span class="ovr">36</span>
+        <div class="who">
+          <h3><a href="#pick-36">Zay Flowers</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-a">A</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">39</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">30</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">29</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">34</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+6 value</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 12&ndash;48 &middot; their tier 4 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Lower-body injury: full practice expected next week, on track for 9/13 opener</p><p class="swing">Does Andrews' revival cap his target share?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-45">
+      <div class="pick-head">
+        <span class="ovr">45</span>
+        <div class="who">
+          <h3><a href="#pick-45">Cam Skattebo</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-a">A</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">30</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">42</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">56</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">49</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">+3 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 39&ndash;80 &middot; their tier 6 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Ankle recovery + NYG scoring environment cap the ceiling</p><p class="swing">Is the surgically repaired ankle all the way back?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-56">
+      <div class="pick-head">
+        <span class="ovr">56</span>
+        <div class="who">
+          <h3><a href="#pick-56">Tyler Warren</a></h3>
+          <span class="pos pos-TE">TE</span>
+        </div>
+        <span class="grade g-b">B+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">51</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">53</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">52</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">59</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">+3 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 22&ndash;73 &middot; their tier 5 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">21% rookie target share; groin strain adds mild Sept risk</p><p class="swing">Does Indy route the passing game through him, or through Taylor's legs?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-65">
+      <div class="pick-head">
+        <span class="ovr">65</span>
+        <div class="who">
+          <h3><a href="#pick-65">Christian Watson</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">57</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">58</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">53</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">47</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+7 value</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 38&ndash;88 &middot; their tier 6 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">17.5 PPG career in full role; week-winning vertical ceiling</p><p class="swing">Do his routes stay above 75%, where he's scored 15+ PPG?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-76">
+      <div class="pick-head">
+        <span class="ovr">76</span>
+        <div class="who">
+          <h3><a href="#pick-76">Jonathon Brooks</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-c">C</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">83</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">93</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">88</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">70</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="rea">-17 reach</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 56&ndash;182 &middot; their tier 7 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">TARGET: team expressing Week 1 optimism (9/3); three-down path live with Hubbard hamstring</p><p class="swing">Two knee recoveries later, is the burst still there?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-85">
+      <div class="pick-head">
+        <span class="ovr">85</span>
+        <div class="who">
+          <h3><a href="#pick-85">Justin Herbert</a></h3>
+          <span class="pos pos-QB">QB</span>
+        </div>
+        <span class="grade g-b">B+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">74</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">82</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">69</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">91</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">+3 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 37&ndash;104 &middot; their tier 6 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Uncharacteristically high INTs in 2025 sting more at -2/INT</p><p class="swing">Do the 2025 turnovers regress — or is this who he is now?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-96">
+      <div class="pick-head">
+        <span class="ovr">96</span>
+        <div class="who">
+          <h3><a href="#pick-96">Kyle Monangai</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-c">C+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">98</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">110</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">122</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">123</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-14 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 86&ndash;162 &middot; their tier 8 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">RISK: knee — Ben Johnson confirmed 'week-to-week' on 9/1; Swift locked into early bell-cow work</p><p class="swing">Does the knee heal fast enough to reclaim the split from Swift?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-105">
+      <div class="pick-head">
+        <span class="ovr">105</span>
+        <div class="who">
+          <h3><a href="#pick-105">Quentin Johnston</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">109</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">95</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">89</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">102</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+10 value</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 68&ndash;149 &middot; their tier 7 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Big-bodied WR3 with TD access</p><p class="swing">Are the drops actually fixed for good?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-116">
+      <div class="pick-head">
+        <span class="ovr">116</span>
+        <div class="who">
+          <h3><a href="#pick-116">Jayden Reed</a></h3>
+          <span class="pos pos-WR">WR</span>
+        </div>
+        <span class="grade g-a">A</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">111</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">103</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">102</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">94</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+13 value</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 64&ndash;140 &middot; their tier 8 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">Healthy after clavicle/foot; slot + designed-rush role intact</p><p class="swing">Healthy again, does the 850-yard + designed-rush role return?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-125">
+      <div class="pick-head">
+        <span class="ovr">125</span>
+        <div class="who">
+          <h3><a href="#pick-125">Dalton Kincaid</a></h3>
+          <span class="pos pos-TE">TE</span>
+        </div>
+        <span class="grade g-a">A-</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">96</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">111</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">111</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">89</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="val">+14 value</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 85&ndash;144 &middot; their tier 8 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">TARGET: TE5 scoring pace whenever routes cleared 50%</p><p class="swing">Do his routes finally clear 50% for a full season?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-136">
+      <div class="pick-head">
+        <span class="ovr">136</span>
+        <div class="who">
+          <h3><a href="#pick-136">Steelers D/ST</a></h3>
+          <span class="pos pos-DST">D/ST</span>
+        </div>
+        <span class="grade g-b">B</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">&mdash;</span></span></div></div>
+      
+      
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-145">
+      <div class="pick-head">
+        <span class="ovr">145</span>
+        <div class="who">
+          <h3><a href="#pick-145">Keaton Mitchell</a></h3>
+          <span class="pos pos-RB">RB</span>
+        </div>
+        <span class="grade g-c">C+</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">185</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">159</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">145</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">145</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">-14 fair</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 102&ndash;314 &middot; their tier 9 &middot; the panel is split</p>
+      <div class="yourtake"><span class="lbl">From the RTV500 cheat sheet</span><p class="note-line">RISK: still off to the side 8/31 (undisclosed); 6.3 career ypc if he ever gets touches</p><p class="swing">Is the setback minor — and does 6.3 career YPC ever get real touches?</p></div>
+      <p class="verdict"></p>
+    </article>
+    <article class="pick" id="pick-156">
+      <div class="pick-head">
+        <span class="ovr">156</span>
+        <div class="who">
+          <h3><a href="#pick-156">Tyler Loop</a></h3>
+          <span class="pos pos-K">K</span>
+        </div>
+        <span class="grade g-b">B</span>
+      </div>
+      <div class="signals"><div class="sig"><span class="lbl">VORP rank</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">Market ADP</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">Expert ECR</span><span class="num">208</span></div><div class="sig"><span class="lbl">RTV500 sheet</span><span class="num">&mdash;</span></div><div class="sig"><span class="lbl">vs market</span><span class="num"><span class="flat">&mdash;</span></span></div></div>
+      <p class="spread"><span class="lbl">Expert range</span> 181&ndash;328 &middot; their tier 11 &middot; the panel is split</p>
+      
+      <p class="verdict"></p>
+    </article>
+  </div>
+</section>
+<footer>
+  <p>Every number here counts points above the best player still undrafted at that position,
+  so a starter and a reserve are on one scale, and both floor at zero &mdash; a player worth
+  less than a free agent is worth nothing, because you would drop him and sign the free agent.
+  <b>Starters</b> is all nine slots of the best lineup that can actually be fielded; anyone who
+  cannot take the field is not eligible for one and falls to the bench, which is also where a
+  stashed player lands. <b>Decision quality</b> is the weighted average of all sixteen pick grades and is the only
+  measure that does not depend on draft slot.</p>
+  <p>VORP comes from the Sleeper/FantasyPros/FFC blend, market ADP from that same weighted blend, ECR from
+  FantasyPros alone (9/04). Grades are rule-based and identical across all ten
+  teams &mdash; see <a href="index.html#method">the method</a>.</p>
+</footer>
+</div>
+<script>
+document.querySelectorAll("th.sortable").forEach(function(th){
+  th.addEventListener("click", function(){
+    var table = th.closest("table"), body = table.tBodies[0];
+    var i = [].indexOf.call(th.parentNode.cells, th);
+    var num = th.dataset.type === "num";
+    var desc = th.getAttribute("aria-sort") !== "descending";
+    [].forEach.call(table.tHead.rows[0].cells, function(c){ c.removeAttribute("aria-sort"); });
+    th.setAttribute("aria-sort", desc ? "descending" : "ascending");
+    var rows = [].slice.call(body.rows);
+    rows.sort(function(a, b){
+      var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+      if (num) { x = parseFloat(x); y = parseFloat(y); }
+      return (x < y ? -1 : x > y ? 1 : 0) * (desc ? -1 : 1);
+    });
+    rows.forEach(function(r){ body.appendChild(r); });
+  });
+});
+(function(){
+  function mark(){
+    document.querySelectorAll(".tw").forEach(function(w){
+      var t = w.querySelector("table");
+      if (t) w.classList.toggle("scrolls", t.scrollWidth > w.clientWidth + 2);
+    });
+  }
+})();
+</script>
+</body>
+</html>
