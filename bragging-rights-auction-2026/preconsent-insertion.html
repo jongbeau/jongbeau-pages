@@ -165,6 +165,14 @@ color:var(--muted)}
   .hero{gap:1rem}
   .bigmark{font-size:3rem}
   .three ol{padding-left:1rem}
+  /* Seven columns will not fit a phone, and a table squeezed to fit wraps
+     every name over three lines instead of overflowing. Returned and typical
+     are the two the diff column already carries, so they go first. */
+  table.val{font-size:.8rem}
+  table.val .opt{display:none}
+  table.val td,table.val th{padding:.45rem .3rem;white-space:nowrap}
+  table.val td:first-child,table.val td:nth-child(2){white-space:normal}
+  table.val td:nth-child(2){font-size:.72rem;line-height:1.3}
 }
 @media (max-width:24rem){
   #league{font-size:.74rem}
