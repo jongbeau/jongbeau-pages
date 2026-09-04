@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Must CTE Vee — Bragging Rights 2K4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:56rem;margin:0 auto;display:flex;flex-direction:column;gap:2rem}
+a{color:var(--accent)}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(1.9rem,5vw,2.7rem);font-weight:600;
+letter-spacing:-.02em;margin:0}
+h2{font-family:Fraunces,Georgia,serif;font-size:1.25rem;font-weight:600;margin:0 0 .7rem}
+.lede{color:var(--muted);margin:.4rem 0 0;max-width:44rem}
+.bar{display:flex;flex-wrap:wrap;gap:1.4rem;padding:.9rem 1.1rem;background:var(--card);
+border:1px solid var(--rule);border-radius:3px}
+.bar div{display:flex;flex-direction:column}
+.bar .k{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bar .v{font-size:1.15rem;font-weight:600;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+text-align:left;font-weight:600;padding:.45rem .55rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.muted{color:var(--muted)}
+.scroll{overflow-x:auto;background:var(--card);border:1px solid var(--rule);border-radius:3px}
+.g{font-weight:700;font-variant-numeric:tabular-nums}
+.g.good{color:var(--good)}.g.poor{color:var(--bad)}
+.pos{font-size:.7rem;font-weight:600;letter-spacing:.04em}
+.QB{color:var(--qb)}.RB{color:var(--rb)}.WR{color:var(--wr)}.TE{color:var(--te)}
+.DST{color:var(--dst)}.K{color:var(--k)}
+.team{display:block;background:var(--card);border:1px solid var(--rule);border-radius:3px;
+padding:1rem 1.1rem;text-decoration:none;color:inherit}
+.team:hover{border-color:var(--accent);background:var(--accent-soft)}
+.team .top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.team h3{font-family:Fraunces,Georgia,serif;font-size:1.05rem;margin:0;font-weight:600}
+.team .stats{display:flex;gap:1.1rem;font-size:.8rem;color:var(--muted);margin-top:.35rem;
+flex-wrap:wrap}
+.flag{font-size:.78rem;color:var(--warn)}
+.foot{font-size:.78rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:1rem}
+</style>
+
+<div class="wrap">
+<header>
+  <p><a href="index.html">&larr; Bragging Rights 2K4</a></p>
+  <h1>Must CTE Vee</h1>
+  <p class="lede">Graded on the roster it finished with, and what it paid to
+  get there. Every manager started with $200.</p>
+</header>
+<div class="bar">
+  <div><span class="k">grade</span><span class="v g ">B-</span></div>
+  <div><span class="k">spent</span><span class="v">$200</span></div>
+  <div><span class="k">starters</span><span class="v">881</span></div>
+  <div><span class="k">bench</span><span class="v">109</span></div>
+  <div><span class="k">value per $</span><span class="v">0.81</span></div>
+</div>
+<section><h2>The lineup</h2>
+  <div class="scroll"><table><tr><td class="muted">QB</td><td>Kyler Murray</td></tr><tr><td class="muted">RB</td><td>Jonathan Taylor</td></tr><tr><td class="muted">WR</td><td>CeeDee Lamb</td></tr><tr><td class="muted">TE</td><td>T.J. Hockenson</td></tr><tr><td class="muted">D/ST</td><td>Bills D/ST</td></tr><tr><td class="muted">RB/WR</td><td>Derrick Henry</td></tr><tr><td class="muted">WR/TE</td><td>Emeka Egbuka</td></tr><tr><td class="muted">OP</td><td>Fernando Mendoza</td></tr><tr><td class="muted">RB/WR/TE</td><td>Rico Dowdle</td></tr></table></div>
+  <p class="lede">Bench: Jacoby Brissett, KC Concepcion, Jordyn Tyson, Tank Bigsby, Cooper Kupp</p></section>
+<section><h2>Every lot</h2>
+  <div class="scroll"><table>
+  <tr><th>player</th><th class="num">paid</th><th class="num">worth</th><th class="num">grade</th></tr>
+  <tr><td>Jonathan Taylor <span class="pos RB">RB</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$63</td><td class="num muted">$53</td><td class="num g ">C</td></tr><tr><td>CeeDee Lamb <span class="pos WR">WR</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$50</td><td class="num muted">$39</td><td class="num g ">C</td></tr><tr><td>Derrick Henry <span class="pos RB">RB</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$44</td><td class="num muted">$20</td><td class="num g poor">F</td></tr><tr><td>Kyler Murray <span class="pos QB">QB</span></td><td class="num">$16</td><td class="num muted">$27</td><td class="num g good">A</td></tr><tr><td>Emeka Egbuka <span class="pos WR">WR</span><br><span class="flag">paid past the sheet&#x27;s own Max Bid</span></td><td class="num">$15</td><td class="num muted">$9</td><td class="num g ">C</td></tr><tr><td>Fernando Mendoza <span class="pos QB">QB</span><br><span class="flag">not on the board</span></td><td class="num">$3</td><td class="num muted">&mdash;</td><td class="num g ">&mdash;</td></tr><tr><td>Rico Dowdle <span class="pos RB">RB</span></td><td class="num">$2</td><td class="num muted">$4</td><td class="num g good">A-</td></tr><tr><td>T.J. Hockenson <span class="pos TE">TE</span><br><span class="flag">not on the board</span></td><td class="num">$1</td><td class="num muted">&mdash;</td><td class="num g ">&mdash;</td></tr><tr><td>Jacoby Brissett <span class="pos QB">QB</span><br><span class="flag">not on the board</span></td><td class="num">$1</td><td class="num muted">&mdash;</td><td class="num g ">&mdash;</td></tr><tr><td>KC Concepcion <span class="pos WR">WR</span></td><td class="num">$1</td><td class="num muted">$4</td><td class="num g good">A-</td></tr><tr><td>Jordyn Tyson <span class="pos WR">WR</span></td><td class="num">$1</td><td class="num muted">$0</td><td class="num g ">B</td></tr><tr><td>Tank Bigsby <span class="pos RB">RB</span></td><td class="num">$1</td><td class="num muted">$0</td><td class="num g ">B</td></tr><tr><td>Bills D/ST <span class="pos DST">D/ST</span><br><span class="flag">not on the board</span></td><td class="num">$1</td><td class="num muted">&mdash;</td><td class="num g ">&mdash;</td></tr><tr><td>Cooper Kupp <span class="pos WR">WR</span></td><td class="num">$1</td><td class="num muted">$1</td><td class="num g ">B+</td></tr></table></div></section>
+<p class="foot">Worth is what a player at this price actually went for in this room,
+fitted across every lot &mdash; not our sheet&rsquo;s number, because an auction does not
+mark the whole board up evenly: this one paid a third of sheet for five-dollar players
+and well over it for the studs. Starters and bench are points above the
+best player left undrafted at each position &mdash;
+QB Michael Penix Jr., RB Samaje Perine, WR Ja&#x27;Kobi Lane, TE Brenton Strange.</p>
+</div>
