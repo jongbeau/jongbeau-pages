@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bragging Rights 2K4 Auction Report Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--paper:#f5f5f1;--card:#fffffd;--ink:#1a1d1b;--muted:#5f6b64;--rule:#dcdcd4;
+--accent:#0f6e5c;--accent-soft:#e3efe9;--good:#2f7d54;--warn:#a8761f;--bad:#a63b2f;
+--rb:#b07d18;--wr:#166f7a;--te:#7c4a86;--qb:#2f5fa8;--dst:#5f6b64;--k:#5f6b64;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;--rule:#2c3236;
+--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;--bad:#e0796a;
+--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}}
+:root[data-theme="dark"]{--paper:#14171a;--card:#1b1f22;--ink:#eceee9;--muted:#9aa8a0;
+--rule:#2c3236;--accent:#5bbfa4;--accent-soft:#1d2f2a;--good:#6fc492;--warn:#d6a44e;
+--bad:#e0796a;--rb:#d4a03d;--wr:#4fb3c0;--te:#b98cc4;--qb:#7aa2e0;--dst:#9aa8a0;--k:#9aa8a0;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+line-height:1.55;margin:0;padding:clamp(1.2rem,4vw,3rem)}
+.wrap{max-width:60rem;margin:0 auto;display:flex;flex-direction:column;gap:2.4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.02em}
+h2{font-size:1.4rem;font-weight:600}h3{font-size:1.05rem;font-weight:600}
+a{color:var(--accent)}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+font-weight:600;margin:0 0 .4rem}
+.lede{color:var(--muted);max-width:64ch}
+.back{font-size:.8rem;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:1.3rem 1.5rem}
+.hero{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;margin-top:1.1rem}
+.bigmark{font-family:Fraunces,Georgia,serif;font-size:4rem;font-weight:700;line-height:.9;color:var(--accent)}
+.bigmark small{display:block;font-family:"Public Sans",sans-serif;font-size:.68rem;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem;flex:1}
+.stat .n{font-family:"JetBrains Mono",monospace;font-size:1.4rem;font-weight:600;
+font-variant-numeric:tabular-nums;display:block}
+.stat .l{font-size:.73rem;color:var(--muted)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+font-weight:600;padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td{padding:.45rem .5rem;border-bottom:1px solid var(--rule)}
+td.rk,td.vv{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+td.rk{color:var(--muted);width:2rem}td.vv,th.vv{text-align:center}
+td.gr{text-align:center}
+tr.me td{background:var(--accent-soft);font-weight:600}
+td a{text-decoration:none;font-weight:600}
+.gr{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.05rem}
+.g-a{color:var(--good)}.g-b{color:var(--accent)}.g-c{color:var(--warn)}
+.g-d{color:var(--bad)}.g-f{color:var(--bad);font-weight:700}
+.ledger{display:flex;flex-direction:column;gap:.8rem;margin-top:1.1rem}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:.95rem 1.1rem;
+display:flex;flex-direction:column;gap:.65rem}
+.pick-head{display:flex;align-items:flex-start;gap:.85rem}
+.ovr{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;color:var(--muted);
+min-width:2.4rem;font-variant-numeric:tabular-nums;padding-top:.15rem}
+.who{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.pos{font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.1rem .4rem;border-radius:2px;color:var(--card)}
+.pos-RB{background:var(--rb)}.pos-WR{background:var(--wr)}.pos-TE{background:var(--te)}
+.pos-QB{background:var(--qb)}.pos-DST{background:var(--dst)}.pos-K{background:var(--k)}
+.grade{font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:700;line-height:1;
+min-width:2.5rem;text-align:right}
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2rem,1fr));gap:.45rem;
+padding:.55rem .65rem;background:var(--paper);border-radius:2px}
+.sig{display:flex;flex-direction:column;gap:.08rem}
+.lbl{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.num{font-family:"JetBrains Mono",monospace;font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums}
+.val{color:var(--good)}.rea{color:var(--bad)}.flat{color:var(--muted)}
+.verdict{margin:0;font-size:.95rem;padding-top:.55rem;border-top:1px solid var(--rule)}
+
+.spread,.alts{margin:0;font-size:.79rem;color:var(--muted)}
+.flagline{margin:0;font-size:.79rem;color:var(--bad);font-weight:600}
+.yourtake{border-left:2px solid var(--accent);padding:.12rem 0 .12rem .75rem;
+display:flex;flex-direction:column;gap:.18rem}
+.note-line{margin:0;font-size:.86rem}
+.swing{margin:0;font-size:.86rem;font-style:italic;color:var(--muted)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:1rem 1.2rem;
+border-radius:0 3px 3px 0;font-size:.91rem;margin-top:1rem}
+.note p{margin:0 0 .6rem}.note p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.77rem;color:var(--muted)}
+footer p{margin:0 0 .6rem}
+
+.pick:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick h3 a{color:inherit;text-decoration:none}
+.pick h3 a:hover{color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.three .card{padding:1rem 1.1rem}
+.three h3{font-size:.95rem;margin:0 0 .5rem}
+.three ol{margin:0;padding-left:1.1rem;font-size:.86rem}
+.three li{margin-bottom:.35rem}
+.three a{text-decoration:none;font-weight:600}
+.gap{font-family:"JetBrains Mono",monospace;font-size:.8rem}
+
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--accent)}
+th.sortable::after{content:"";opacity:.35;margin-left:.3rem}
+th[aria-sort="descending"]::after{content:"\25BC";opacity:.9}
+th[aria-sort="ascending"]::after{content:"\25B2";opacity:.9}
+th.sortable:not([aria-sort])::after{content:"\21C5"}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.9rem;
+margin-top:1rem;font-size:.83rem}
+.legend div{color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600;display:block;font-size:.78rem;
+letter-spacing:.07em;text-transform:uppercase;margin-bottom:.15rem}
+
+/* --- narrow screens ------------------------------------------------ */
+.tw{position:relative}
+.tw::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1.6rem;
+  pointer-events:none;background:linear-gradient(to right,transparent,var(--paper));
+  opacity:0;transition:opacity .15s}
+.tw.scrolls::after{opacity:1}
+.scrollhint{display:none;font-size:.72rem;color:var(--muted);margin:.4rem 0 0}
+.tw.scrolls ~ .scrollhint{display:block}
+.ctx{display:grid;grid-template-columns:repeat(2,1fr);
+gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;
+margin-top:1.6rem;overflow:hidden}
+.ctx > div{background:var(--card);padding:.9rem 1.05rem;display:flex;flex-direction:column;
+gap:.28rem;min-width:0}
+.ctx b{display:block;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+color:var(--muted);font-weight:600;line-height:1.3}
+.ctx .big{font-family:"JetBrains Mono",monospace;font-size:1.55rem;font-weight:600;
+font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink);word-break:break-word}
+.ctx .big a{color:var(--accent)}
+.ctx .sub{font-size:.74rem;color:var(--muted);line-height:1.4}
+.bars{display:flex;gap:2px;margin-top:.15rem}
+.bars span{flex:1;height:3px;border-radius:2px;background:var(--rule)}
+.bars span.on{background:var(--accent)}
+@media (min-width:58rem){.ctx{grid-template-columns:repeat(4,1fr)}}
+.ctx .big.names{font-family:"Public Sans",system-ui,sans-serif;font-size:.9rem;font-weight:500;line-height:1.45}
+.bd{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.1rem}
+@media (min-width:62rem){.bd{grid-template-columns:1fr 1fr}}
+table.brk{font-size:.85rem}
+table.brk td.sl{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);
+letter-spacing:.04em;width:3.1rem}
+table.brk td.mut{color:var(--muted)}
+table.brk tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:600;
+padding-top:.5rem}
+table.brk tr.tot td:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted)}
+.gpaval{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:34rem){
+  /* let the table use the full screen width; the page padding was costing it
+     exactly the 38px that forced a horizontal scroll */
+  .tw{margin-inline:calc(-1 * clamp(1.2rem,4vw,3rem))}
+  #league{font-size:.8rem;width:100%}
+  #league td:first-child,#league th:first-child{padding-left:.55rem}
+  #league td:last-child,#league th:last-child{padding-right:.4rem}
+  #league th{padding:.4rem .22rem}
+  #league td{padding:.42rem .22rem}
+  #league th{font-size:.58rem;letter-spacing:.03em;padding:.4rem .28rem}
+  #league td{padding:.4rem .28rem}
+  #league th.sortable::after{margin-left:.15rem}
+  .ctx{grid-template-columns:1fr 1fr}
+  .ctx > div{padding:.7rem .8rem}
+  .ctx .big{font-size:1.15rem}
+  .ctx b{font-size:.6rem;letter-spacing:.08em}
+  .signals{grid-template-columns:repeat(2,1fr)}
+  .pick{padding:.85rem .9rem}
+  .grade{font-size:1.35rem;min-width:2.1rem}
+  .who h3{font-size:1rem}
+  .hero{gap:1rem}
+  .bigmark{font-size:3rem}
+  .three ol{padding-left:1rem}
+  /* Seven columns will not fit a phone, and a table squeezed to fit wraps
+     every name over three lines instead of overflowing. Returned and typical
+     are the two the diff column already carries, so they go first. */
+  table.val{font-size:.8rem}
+  table.val .opt{display:none}
+  table.val td,table.val th{padding:.45rem .3rem;white-space:nowrap}
+  table.val td:first-child{white-space:normal}
+  /* the grade span's desktop min-width was taking 82px for two characters,
+     which is what pushed the player names onto a second line */
+  table.val .grade{font-size:1.05rem;min-width:0}
+  table.val td:last-child,table.val th:last-child{width:2.2rem}
+}
+@media (max-width:24rem){
+  #league{font-size:.74rem}
+  #league th{font-size:.54rem}
+  .signals{grid-template-columns:1fr 1fr}
+}
+/* who bought the lot rides under the player name rather than in a column of
+   its own, the same way the ledger reads — a team name is the widest thing on
+   the row and a column for it squeezed every other one. */
+table.val a.tm{display:block;color:var(--muted);font-size:.76rem;text-decoration:none;
+margin-top:.12rem}
+table.val a.tm:hover{color:var(--accent);text-decoration:underline}
+table.led{font-size:.88rem}
+table.led a.tm{display:block;color:var(--muted);font-size:.74rem;text-decoration:none;
+margin-top:.1rem}
+table.led a.tm:hover{color:var(--accent);text-decoration:underline}
+table.led td.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+table.led tr.me td{background:var(--accent-soft)}
+.rnd{margin-top:1.4rem}
+.rshape{font-size:.78rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+@media (max-width:34rem){
+  table.led{font-size:.78rem}
+  table.led td,table.led th{padding:.38rem .3rem}
+  table.led a.tm{font-size:.68rem}
+}
+</style>
+</head>
+<body><div class="proposal-banner" style="background:#7a2f1f;color:#fff;padding:.7rem 1rem;border-radius:4px;margin:0 0 1.4rem;font-size:.86rem;line-height:1.5"><b>PROPOSAL &mdash; not the published card.</b> Starting lineups here are filled and scored on projected points instead of value over replacement. The live cards are at <a style="color:#ffd9cf" href="../bragging-rights-auction-2026/index.html">bragging-rights-auction-2026</a>.</div>
+<div class="wrap">
+<header>
+  <p class="eyebrow">2026 &middot; auction</p>
+  <h1>Bragging Rights 2K4</h1>
+  <p class="lede">Every manager had $200 and the same board, so unlike a
+  snake draft there is nothing to correct for: what each one built is a fair
+  comparison, and it carries most of the grade. The room paid
+  <strong>1.04&times;</strong> expert consensus for a dollar of
+  value.</p>
+  <p><a href="ledger.html">The full ledger &mdash; all 196 lots, most
+  expensive first &rarr;</a></p>
+</header>
+
+<section><div class="tw"><table>
+<thead><tr><th class="rk">#</th>
+<th class="sortable" data-type="text">team</th>
+<th class="sortable gr" data-type="num">grade</th>
+<th class="sortable vv" data-type="num">spent</th>
+<th class="sortable vv" data-type="num" aria-sort="descending">starters</th>
+<th class="sortable vv" data-type="num">bench</th>
+<th class="sortable vv" data-type="num">buying</th></tr></thead>
+<tbody><tr><td class="rk">1</td><td data-v="4 in the Box"><a href="4-in-the-box.html">4 in the Box</a></td><td class="gr" data-v="9"><span class="grade g-a">A-</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1908.2">1908</td><td class="vv" data-v="456.0">456</td><td class="vv" data-v="3.323">3.32</td></tr><tr><td class="rk">2</td><td data-v="Flacco's Always Been Lucky"><a href="flacco-s-always-been-lucky.html">Flacco's Always Been Lucky</a></td><td class="gr" data-v="9"><span class="grade g-a">A-</span></td><td class="vv" data-v="195">$195</td><td class="vv" data-v="1941.6">1942</td><td class="vv" data-v="248.0">248</td><td class="vv" data-v="3.520">3.52</td></tr><tr><td class="rk">3</td><td data-v="Opus Dei Scrubs B"><a href="opus-dei-scrubs-b.html">Opus Dei Scrubs B</a></td><td class="gr" data-v="8"><span class="grade g-b">B+</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1935.6">1936</td><td class="vv" data-v="230.0">230</td><td class="vv" data-v="3.099">3.10</td></tr><tr><td class="rk">4</td><td data-v="Club CH"><a href="club-ch.html">Club CH</a></td><td class="gr" data-v="7"><span class="grade g-b">B</span></td><td class="vv" data-v="199">$199</td><td class="vv" data-v="1850.1">1850</td><td class="vv" data-v="338.0">338</td><td class="vv" data-v="3.050">3.05</td></tr><tr><td class="rk">5</td><td data-v="Half Baked"><a href="half-baked.html">Half Baked</a></td><td class="gr" data-v="7"><span class="grade g-b">B</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1852.2">1852</td><td class="vv" data-v="164.0">164</td><td class="vv" data-v="3.179">3.18</td></tr><tr><td class="rk">6</td><td data-v="PreConsent Insertion"><a href="preconsent-insertion.html">PreConsent Insertion</a></td><td class="gr" data-v="6"><span class="grade g-b">B-</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1845.1">1845</td><td class="vv" data-v="125.0">125</td><td class="vv" data-v="3.008">3.01</td></tr><tr><td class="rk">7</td><td data-v="Team Ca$h Money"><a href="team-ca-h-money.html">Team Ca$h Money</a></td><td class="gr" data-v="6"><span class="grade g-b">B-</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1817.6">1818</td><td class="vv" data-v="137.0">137</td><td class="vv" data-v="2.904">2.90</td></tr><tr><td class="rk">8</td><td data-v="JPP's Index Finger"><a href="jpp-s-index-finger.html">JPP's Index Finger</a></td><td class="gr" data-v="5"><span class="grade g-c">C+</span></td><td class="vv" data-v="191">$191</td><td class="vv" data-v="1736.7">1737</td><td class="vv" data-v="336.0">336</td><td class="vv" data-v="3.043">3.04</td></tr><tr><td class="rk">9</td><td data-v="Pink Flamingos"><a href="pink-flamingos.html">Pink Flamingos</a></td><td class="gr" data-v="4"><span class="grade g-c">C</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1728.1">1728</td><td class="vv" data-v="295.0">295</td><td class="vv" data-v="2.527">2.53</td></tr><tr><td class="rk">10</td><td data-v="'Murica Bonesaws"><a href="murica-bonesaws.html">'Murica Bonesaws</a></td><td class="gr" data-v="5"><span class="grade g-c">C+</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1751.7">1752</td><td class="vv" data-v="73.0">73</td><td class="vv" data-v="3.543">3.54</td></tr><tr><td class="rk">11</td><td data-v="Must CTE Vee"><a href="must-cte-vee.html">Must CTE Vee</a></td><td class="gr" data-v="4"><span class="grade g-c">C</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1692.7">1693</td><td class="vv" data-v="228.0">228</td><td class="vv" data-v="3.295">3.29</td></tr><tr><td class="rk">12</td><td data-v="Team H"><a href="team-h.html">Team H</a></td><td class="gr" data-v="4"><span class="grade g-c">C</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1727.8">1728</td><td class="vv" data-v="45.0">45</td><td class="vv" data-v="3.171">3.17</td></tr><tr><td class="rk">13</td><td data-v="God Squad"><a href="god-squad.html">God Squad</a></td><td class="gr" data-v="5"><span class="grade g-c">C+</span></td><td class="vv" data-v="199">$199</td><td class="vv" data-v="1724.9">1725</td><td class="vv" data-v="19.0">19</td><td class="vv" data-v="3.918">3.92</td></tr><tr><td class="rk">14</td><td data-v="Nippon Steelers"><a href="nippon-steelers.html">Nippon Steelers</a></td><td class="gr" data-v="3"><span class="grade g-c">C-</span></td><td class="vv" data-v="200">$200</td><td class="vv" data-v="1656.6">1657</td><td class="vv" data-v="19.0">19</td><td class="vv" data-v="3.818">3.82</td></tr></tbody></table></div>
+<p class="scrollhint">Tap a column heading to sort.</p></section>
+
+<section><h2>Best value in the room</h2>
+  <div class="tw"><table class="val"><tr><th>player</th><th class="vv">paid</th><th class="vv opt">returned</th><th class="vv opt">typical</th><th class="vv">diff</th><th class="gr">grade</th></tr><tr><td>TreVeyon Henderson <span class="pos pos-RB">RB</span><a class="tm" href="god-squad.html">God Squad</a></td><td class="vv">$1</td><td class="vv opt">101</td><td class="vv opt">0</td><td class="vv gap">+101</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>RJ Harvey <span class="pos pos-RB">RB</span><a class="tm" href="team-ca-h-money.html">Team Ca$h Money</a></td><td class="vv">$1</td><td class="vv opt">82</td><td class="vv opt">0</td><td class="vv gap">+82</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>Jahmyr Gibbs <span class="pos pos-RB">RB</span><a class="tm" href="murica-bonesaws.html">'Murica Bonesaws</a></td><td class="vv">$82</td><td class="vv opt">262</td><td class="vv opt">191</td><td class="vv gap">+71</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>Bucky Irving <span class="pos pos-RB">RB</span><a class="tm" href="team-ca-h-money.html">Team Ca$h Money</a></td><td class="vv">$11</td><td class="vv opt">136</td><td class="vv opt">105</td><td class="vv gap">+31</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>Bijan Robinson <span class="pos pos-RB">RB</span><a class="tm" href="nippon-steelers.html">Nippon Steelers</a></td><td class="vv">$83</td><td class="vv opt">255</td><td class="vv opt">191</td><td class="vv gap">+64</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>Ashton Jeanty <span class="pos pos-RB">RB</span><a class="tm" href="4-in-the-box.html">4 in the Box</a></td><td class="vv">$29</td><td class="vv opt">174</td><td class="vv opt">141</td><td class="vv gap">+33</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>Colston Loveland <span class="pos pos-TE">TE</span><a class="tm" href="4-in-the-box.html">4 in the Box</a></td><td class="vv">$18</td><td class="vv opt">73</td><td class="vv opt">46</td><td class="vv gap">+28</td><td class="gr"><span class="grade g-a">A+</span></td></tr><tr><td>David Montgomery <span class="pos pos-RB">RB</span><a class="tm" href="half-baked.html">Half Baked</a></td><td class="vv">$10</td><td class="vv opt">126</td><td class="vv opt">101</td><td class="vv gap">+25</td><td class="gr"><span class="grade g-a">A+</span></td></tr></table></div></section>
+
+<section><h2>Paid up</h2>
+  <div class="tw"><table class="val"><tr><th>player</th><th class="vv">paid</th><th class="vv opt">returned</th><th class="vv opt">typical</th><th class="vv">diff</th><th class="gr">grade</th></tr><tr><td>Anthony Richardson Sr. <span class="pos pos-QB">QB</span><a class="tm" href="half-baked.html">Half Baked</a></td><td class="vv">$1</td><td class="vv opt">0</td><td class="vv opt">144</td><td class="vv gap">&minus;144</td><td class="gr"><span class="grade g-f">F</span></td></tr><tr><td>Breece Hall <span class="pos pos-RB">RB</span><a class="tm" href="4-in-the-box.html">4 in the Box</a></td><td class="vv">$36</td><td class="vv opt">141</td><td class="vv opt">174</td><td class="vv gap">&minus;33</td><td class="gr"><span class="grade g-c">C-</span></td></tr><tr><td>Jeremiyah Love <span class="pos pos-RB">RB</span><a class="tm" href="pink-flamingos.html">Pink Flamingos</a></td><td class="vv">$46</td><td class="vv opt">142</td><td class="vv opt">177</td><td class="vv gap">&minus;35</td><td class="gr"><span class="grade g-c">C-</span></td></tr><tr><td>Terrance Ferguson <span class="pos pos-TE">TE</span><a class="tm" href="nippon-steelers.html">Nippon Steelers</a></td><td class="vv">$1</td><td class="vv opt">0</td><td class="vv opt">14</td><td class="vv gap">&minus;14</td><td class="gr"><span class="grade g-c">C</span></td></tr><tr><td>Parker Washington <span class="pos pos-WR">WR</span><a class="tm" href="opus-dei-scrubs-b.html">Opus Dei Scrubs B</a></td><td class="vv">$10</td><td class="vv opt">38</td><td class="vv opt">51</td><td class="vv gap">&minus;13</td><td class="gr"><span class="grade g-c">C</span></td></tr><tr><td>DJ Moore <span class="pos pos-WR">WR</span><a class="tm" href="team-ca-h-money.html">Team Ca$h Money</a></td><td class="vv">$19</td><td class="vv opt">55</td><td class="vv opt">67</td><td class="vv gap">&minus;12</td><td class="gr"><span class="grade g-c">C</span></td></tr><tr><td>Malik Willis <span class="pos pos-QB">QB</span><a class="tm" href="murica-bonesaws.html">'Murica Bonesaws</a></td><td class="vv">$6</td><td class="vv opt">138</td><td class="vv opt">158</td><td class="vv gap">&minus;20</td><td class="gr"><span class="grade g-c">C</span></td></tr><tr><td>Nico Collins <span class="pos pos-WR">WR</span><a class="tm" href="club-ch.html">Club CH</a></td><td class="vv">$41</td><td class="vv opt">79</td><td class="vv opt">90</td><td class="vv gap">&minus;11</td><td class="gr"><span class="grade g-c">C+</span></td></tr></table></div></section>
+
+<footer>
+  <p><b>Typical</b> is what lots at that price and position actually returned in this
+  room &mdash; the median of the nearest sales, read off the draft rather than assumed.
+  A lot is graded on how far it beat or missed that, then centred so the median lot
+  grades a B. Starters and bench are points over a replaceable starter at
+  the same position, so the figure means the same thing whichever position it comes
+  from. The best undrafted player at each was
+  Michael Penix Jr. at QB, Samaje Perine at RB, Brenton Strange at TE, Ja'Kobi Lane at WR.</p>
+  <p class="mut">Player values are frozen at the expert consensus of 2026-09-04 and do not move again. Graded against BraggingRights2K4_Auction_Cheat_Sheet.xlsx.</p>
+</footer></div>
+<script>
+document.querySelectorAll("th.sortable").forEach(function(th){
+  th.addEventListener("click", function(){
+    var table = th.closest("table"), body = table.tBodies[0];
+    var i = [].indexOf.call(th.parentNode.cells, th);
+    var num = th.dataset.type === "num";
+    var desc = th.getAttribute("aria-sort") !== "descending";
+    [].forEach.call(table.tHead.rows[0].cells, function(c){ c.removeAttribute("aria-sort"); });
+    th.setAttribute("aria-sort", desc ? "descending" : "ascending");
+    var rows = [].slice.call(body.rows);
+    rows.sort(function(a, b){
+      var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+      if (num) { x = parseFloat(x); y = parseFloat(y); }
+      return (x < y ? -1 : x > y ? 1 : 0) * (desc ? -1 : 1);
+    });
+    rows.forEach(function(r){ body.appendChild(r); });
+  });
+});
+(function(){
+  function mark(){
+    document.querySelectorAll(".tw").forEach(function(w){
+      var t = w.querySelector("table");
+      if (t) w.classList.toggle("scrolls", t.scrollWidth > w.clientWidth + 2);
+    });
+  }
+})();
+</script>
+</body>
+</html>
