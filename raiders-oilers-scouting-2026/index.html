@@ -12,7 +12,7 @@ body{background:var(--ground);color:var(--ink);font-family:"Source Sans 3",syste
 main{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
 h1,h2,h3,.grp,.cardlbl,.plab,.badge,.stats,th,.tile b{font-family:"Barlow Condensed","Arial Narrow",sans-serif}
 h1{font-size:44px;font-weight:700;line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em}
-.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--muted);font-weight:600;margin:0 0 8px}
+.brand{display:flex;align-items:center;gap:14px;background:#111214;color:#E6E8EA;padding:12px 16px;margin:0 0 18px;border-bottom:4px solid #B9BDC2}.mark{width:52px;height:auto;flex:none}.team{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0;line-height:1;color:#E6E8EA}.brand .eyebrow{color:#B9BDC2;margin:4px 0 0}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--muted);font-weight:600;margin:0 0 8px}
 .sub{color:var(--muted);margin:8px 0 0;max-width:65ch}
 .nav{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px}.nav a{color:var(--link);text-decoration:none;border-bottom:1px solid var(--rule)}.nav a:focus-visible,.nav a:hover{border-color:var(--link);outline:none}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
@@ -31,8 +31,11 @@ td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}td.
 @media print{body{padding:0}.formation,.keys{break-inside:avoid}.nav{display:none}}
 </style>
 <main>
-<header><p class="eyebrow">Raiders scouting · opponent film study · week 2</p><h1>Oilers Offense Scouting Card</h1>
-<p class="sub">Every Oilers offensive snap from their September 5 game against the Mustangs, charted play by play by Coach Jason from Varsity Hype film. Each formation gets one play card drawn from the offense's point of view, with the same play drawn once and counted, plus a film frame from just before the snap so you can check the card against the real alignment.</p></header>
+<header><div class="brand">
+<svg class="mark" viewBox="0 0 96 110" role="img" aria-label="Raiders"><path d="M48 4 L90 18 V56 C90 82 70 98 48 106 C26 98 6 82 6 56 V18 Z" fill="#111214" stroke="#B9BDC2" stroke-width="4"/><path d="M48 14 L80 25 V56 C80 75 66 88 48 95 C30 88 16 75 16 56 V25 Z" fill="none" stroke="#B9BDC2" stroke-width="1.5" opacity=".6"/><text x="48" y="66" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="52" font-weight="700" fill="#E6E8EA">R</text><ellipse cx="48" cy="82" rx="12" ry="6" fill="#8B5A2B" stroke="#E6E8EA" stroke-width="1.2"/><path d="M42 82 H54 M45 80 V84 M48 80 V84 M51 80 V84" stroke="#E6E8EA" stroke-width="1.2"/></svg>
+<div><p class="team">Raiders</p><p class="eyebrow">Opponent film study · week 2 · vs Oilers, September 12</p></div>
+</div><h1>Oilers Offense Scouting Card</h1>
+<p class="sub">Every Oilers offensive snap from their September 5 game against the Mustangs, charted play by play by Mr. Wang from Varsity Hype film. Each formation gets one play card drawn from the offense's point of view, with the same play drawn once and counted, plus a film frame from just before the snap so you can check the card against the real alignment.</p></header>
 
 <nav class="nav"><a href="#quiz">Player quiz</a> <a href="#fA">A · Shotgun Bunch, single back (10)</a> <a href="#fB">B · Shotgun Split Backs, TE (8)</a> <a href="#fE">E · Shotgun Empty, 5 WR, motion (6)</a> <a href="#fD">D · Shotgun 3 WR, TE (2)</a> <a href="#fF">F · Shotgun 2 TE, single back (2)</a> <a href="#fC">C · Pistol, TE (1)</a></nav>
 
@@ -330,7 +333,7 @@ td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}td.
 <p class="score" id="score" hidden></p>
 </section>
 
-<p class="foot">Source: Coach Jason's play-by-play chart of Mustangs vs Oilers (September 5, 2026), Varsity Hype film. Plays charted as "?" count toward totals but not tendencies. Position labels on the cards are ours (QB, HB and FB backs, TE, X and Z wide receivers, S and W slots), not the Oilers' names. One game is a small sample: treat tendencies as things to confirm early on Saturday.</p>
+<p class="foot">Source: Mr. Wang's play-by-play chart of Mustangs vs Oilers (September 5, 2026), Varsity Hype film. Plays charted as "?" count toward totals but not tendencies. Position labels on the cards are ours (QB, HB and FB backs, TE, X and Z wide receivers, S and W slots), not the Oilers' names. One game is a small sample: treat tendencies as things to confirm early on Saturday.</p>
 </main>
 <script>
 (function(){
