@@ -1,0 +1,51 @@
+{
+  "definition": "Only inside linebacker rushes count as blitzes. OLBs are treated as edge contain / read and react, per Mr. Wang.",
+  "source": "Green Wave vs Texans, September 12, 2026; assistant film chart with coach corrections.",
+  "groups": {
+    "Both ILBs": [
+      8,
+      9,
+      15,
+      24,
+      25,
+      33,
+      34,
+      37,
+      38,
+      45,
+      46,
+      47,
+      48,
+      51,
+      71,
+      73,
+      74
+    ],
+    "One ILB": [
+      6,
+      13,
+      14,
+      36,
+      72
+    ],
+    "No ILB blitz identified": [
+      7,
+      23,
+      26,
+      31,
+      32,
+      35,
+      49,
+      50,
+      70
+    ],
+    "Uncertain ILB action": [
+      69
+    ],
+    "Snap missing": [
+      76
+    ]
+  },
+  "viewable_snaps": 32,
+  "identified_ilb_blitzes": 22
+}
