@@ -16,3 +16,5 @@
 @media(max-height:550px){.app{padding-top:6px}.game-layout{margin-top:6px}.board-header{display:none}.hint{font-size:12px;margin-top:8px}.welcome-star{font-size:38px}h2{font-size:22px;margin-top:8px}#overlay p{margin:8px 0}#play{padding:10px 30px;margin-top:5px}}
 
 #drop{z-index:auto}#drop span{z-index:4}
+
+.drop-ready #drop{outline:3px solid #efb73e;background:#fac75b20}.drop-ready #drop span{background:#efb73e}

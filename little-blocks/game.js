@@ -57,7 +57,7 @@ function cancelGesture(e){
   if(!gesture||(e && e.pointerId!==gesture.id))return;
   const id=gesture.id;gesture=null;last=performance.now();
   if(playfield.hasPointerCapture(id))playfield.releasePointerCapture(id);
-  playfield.classList.remove('dragging');
+  playfield.classList.remove('dragging','drop-ready');
 }
 function beginGesture(e){
   if(!playing||gesture||!e.isPrimary||e.button!==0||performance.now()<lockUntil)return;
@@ -70,6 +70,10 @@ function moveGesture(e){
   e.preventDefault();
   const g=gesture;
   g.remainder+=e.clientX-g.lastX;g.lastX=e.clientX;
+  const dx=e.clientX-g.startX,dy=e.clientY-g.startY;
+  const dropDistance=Math.max(36,Math.min(64,cells[0].getBoundingClientRect().height*.6));
+  g.dropReady=dy>=dropDistance && dy>Math.abs(dx);
+  playfield.classList.toggle('drop-ready',g.dropReady);
   if(Math.hypot(e.clientX-g.startX,e.clientY-g.startY)>8)g.moved=true;
   if(!g.moved)return;
   playfield.classList.add('dragging');
@@ -86,7 +90,8 @@ function endGesture(e){
   if(!gesture||e.pointerId!==gesture.id)return;
   moveGesture(e);
   const g=gesture;cancelGesture();
-  if(!g.moved){if(g.target==='rotate')rotate();else if(g.target==='drop')action('drop');}
+  if(g.dropReady)action('drop');
+  else if(!g.moved){if(g.target==='rotate')rotate();else if(g.target==='drop')action('drop');}
 }
 playfield.addEventListener('pointerdown',beginGesture);
 playfield.addEventListener('pointermove',moveGesture);
@@ -100,4 +105,4 @@ $('rotate').addEventListener('click',rotate);window.addEventListener('resize',po
 $('drop').addEventListener('click',()=>action('drop'));$('play').addEventListener('click',resume);$('pause').addEventListener('click',pause);$('sound').addEventListener('click',()=>{muted=!muted;$('sound').setAttribute('aria-pressed',String(!muted));$('sound').setAttribute('aria-label',muted?'Turn sound on':'Turn sound off');$('sound').querySelector('path').setAttribute('d',muted?'M11 5 6 9H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6':'M11 5 6 9H3v6h3l5 4V5Zm5 3c3 2 3 6 0 8m3-11c5 4 5 10 0 14');chime();});
 document.addEventListener('keydown',e=>{if(e.target.closest('button,a'))return;if(e.key==='ArrowUp'){e.preventDefault();if(!e.repeat)rotate();return;}const kind={ArrowLeft:'left',ArrowRight:'right',ArrowDown:'drop',' ':'drop'}[e.key];if(kind){e.preventDefault();if(!e.repeat)action(kind);}if(e.key==='Escape')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pause();});
 grid=empty();grid[ROWS-1]=[colors[3],null,null,null,null,colors[4]];active=makePiece(0);next=piece();draw();requestAnimationFrame(frame);
-if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:'read_game_state',description:'Read the current Little Blocks game state.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:(input)=>{if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length)throw new Error('Expected an empty object');return {playing,stars,grid:grid.map(r=>[...r]),active:{...active},controls:['drag_left_right','tap_target_to_drop','tap_block_to_rotate']};}})).catch(()=>{});}catch{}}
+if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:'read_game_state',description:'Read the current Little Blocks game state.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:(input)=>{if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length)throw new Error('Expected an empty object');return {playing,stars,grid:grid.map(r=>[...r]),active:{...active},controls:['drag_left_right','drag_down_to_drop','tap_target_to_drop','tap_block_to_rotate']};}})).catch(()=>{});}catch{}}
