@@ -1,0 +1,749 @@
+{
+  "team": "Raiders",
+  "plays": [
+    {
+      "play": 1,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_001.jpg"
+      ]
+    },
+    {
+      "play": 2,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_002.jpg"
+      ]
+    },
+    {
+      "play": 3,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_003.jpg"
+      ]
+    },
+    {
+      "play": 4,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_004.jpg"
+      ]
+    },
+    {
+      "play": 5,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_005.jpg"
+      ]
+    },
+    {
+      "play": 6,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_006.jpg"
+      ]
+    },
+    {
+      "play": 7,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_007.jpg"
+      ]
+    },
+    {
+      "play": 8,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_008.jpg"
+      ]
+    },
+    {
+      "play": 9,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_009.jpg"
+      ]
+    },
+    {
+      "play": 10,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_010.jpg"
+      ]
+    },
+    {
+      "play": 11,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_011.jpg"
+      ]
+    },
+    {
+      "play": 12,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_012.jpg"
+      ]
+    },
+    {
+      "play": 13,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_013.jpg"
+      ]
+    },
+    {
+      "play": 14,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_014.jpg"
+      ]
+    },
+    {
+      "play": 15,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_015.jpg"
+      ]
+    },
+    {
+      "play": 16,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_016.jpg"
+      ]
+    },
+    {
+      "play": 17,
+      "label": "Scoreboard / no play",
+      "raiders_side": "other",
+      "evidence": [
+        "possession_evidence/middle_017.jpg"
+      ]
+    },
+    {
+      "play": 18,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_018.jpg"
+      ]
+    },
+    {
+      "play": 19,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_019.jpg"
+      ]
+    },
+    {
+      "play": 20,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_020.jpg"
+      ]
+    },
+    {
+      "play": 21,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_021.jpg"
+      ]
+    },
+    {
+      "play": 22,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_022.jpg"
+      ]
+    },
+    {
+      "play": 23,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_023.jpg"
+      ]
+    },
+    {
+      "play": 24,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_024.jpg"
+      ]
+    },
+    {
+      "play": 25,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_025.jpg"
+      ]
+    },
+    {
+      "play": 26,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_026.jpg"
+      ]
+    },
+    {
+      "play": 27,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_027.jpg"
+      ]
+    },
+    {
+      "play": 28,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_028.jpg"
+      ]
+    },
+    {
+      "play": 29,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_029.jpg"
+      ]
+    },
+    {
+      "play": 30,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_030.jpg"
+      ]
+    },
+    {
+      "play": 31,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_031.jpg"
+      ]
+    },
+    {
+      "play": 32,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_032.jpg"
+      ]
+    },
+    {
+      "play": 33,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_033.jpg"
+      ]
+    },
+    {
+      "play": 34,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_034.jpg"
+      ]
+    },
+    {
+      "play": 35,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_035.jpg"
+      ]
+    },
+    {
+      "play": 36,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_036.jpg"
+      ]
+    },
+    {
+      "play": 37,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_037.jpg"
+      ]
+    },
+    {
+      "play": 38,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_038.jpg"
+      ]
+    },
+    {
+      "play": 39,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_039.jpg"
+      ]
+    },
+    {
+      "play": 40,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_040.jpg"
+      ]
+    },
+    {
+      "play": 41,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_041.jpg"
+      ]
+    },
+    {
+      "play": 42,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_042.jpg"
+      ]
+    },
+    {
+      "play": 43,
+      "label": "Scoreboard / no play",
+      "raiders_side": "other",
+      "evidence": [
+        "possession_evidence/middle_043.jpg"
+      ]
+    },
+    {
+      "play": 44,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/detail_044.jpg"
+      ]
+    },
+    {
+      "play": 45,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_045.jpg"
+      ]
+    },
+    {
+      "play": 46,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_046.jpg"
+      ]
+    },
+    {
+      "play": 47,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_047.jpg"
+      ]
+    },
+    {
+      "play": 48,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_048.jpg"
+      ]
+    },
+    {
+      "play": 49,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_049.jpg"
+      ]
+    },
+    {
+      "play": 50,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_050.jpg"
+      ]
+    },
+    {
+      "play": 51,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_051.jpg"
+      ]
+    },
+    {
+      "play": 52,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_052.jpg"
+      ]
+    },
+    {
+      "play": 53,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_053.jpg"
+      ]
+    },
+    {
+      "play": 54,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_054.jpg"
+      ]
+    },
+    {
+      "play": 55,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_055.jpg"
+      ]
+    },
+    {
+      "play": 56,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_056.jpg"
+      ]
+    },
+    {
+      "play": 57,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_057.jpg"
+      ]
+    },
+    {
+      "play": 58,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_058.jpg"
+      ]
+    },
+    {
+      "play": 59,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_059.jpg"
+      ]
+    },
+    {
+      "play": 60,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_060.jpg"
+      ]
+    },
+    {
+      "play": 61,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_061.jpg"
+      ]
+    },
+    {
+      "play": 62,
+      "label": "Scoreboard / no play",
+      "raiders_side": "other",
+      "evidence": [
+        "possession_evidence/middle_062.jpg"
+      ]
+    },
+    {
+      "play": 63,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_063.jpg"
+      ]
+    },
+    {
+      "play": 64,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_064.jpg"
+      ]
+    },
+    {
+      "play": 65,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_065.jpg"
+      ]
+    },
+    {
+      "play": 66,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_066.jpg"
+      ]
+    },
+    {
+      "play": 67,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_067.jpg"
+      ]
+    },
+    {
+      "play": 68,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_068.jpg"
+      ]
+    },
+    {
+      "play": 69,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_069.jpg"
+      ]
+    },
+    {
+      "play": 70,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_070.jpg"
+      ]
+    },
+    {
+      "play": 71,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_071.jpg"
+      ]
+    },
+    {
+      "play": 72,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_072.jpg"
+      ]
+    },
+    {
+      "play": 73,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_073.jpg"
+      ]
+    },
+    {
+      "play": 74,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_074.jpg"
+      ]
+    },
+    {
+      "play": 75,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_075.jpg"
+      ]
+    },
+    {
+      "play": 76,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_076.jpg"
+      ]
+    },
+    {
+      "play": 77,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_077.jpg"
+      ]
+    },
+    {
+      "play": 78,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_078.jpg"
+      ]
+    },
+    {
+      "play": 79,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_079.jpg"
+      ]
+    },
+    {
+      "play": 80,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_080.jpg"
+      ]
+    },
+    {
+      "play": 81,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_081.jpg"
+      ]
+    },
+    {
+      "play": 82,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_082.jpg"
+      ]
+    },
+    {
+      "play": 83,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_083.jpg"
+      ]
+    },
+    {
+      "play": 84,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_084.jpg"
+      ]
+    },
+    {
+      "play": 85,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_085.jpg"
+      ]
+    },
+    {
+      "play": 86,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_086.jpg"
+      ]
+    },
+    {
+      "play": 87,
+      "label": "Scoreboard / no play",
+      "raiders_side": "other",
+      "evidence": [
+        "possession_evidence/middle_087.jpg"
+      ]
+    },
+    {
+      "play": 88,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_088.jpg"
+      ]
+    },
+    {
+      "play": 89,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_089.jpg"
+      ]
+    },
+    {
+      "play": 90,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_090.jpg"
+      ]
+    },
+    {
+      "play": 91,
+      "label": "Raiders offense",
+      "raiders_side": "offense",
+      "evidence": [
+        "possession_evidence/middle_091.jpg"
+      ]
+    },
+    {
+      "play": 92,
+      "label": "Raiders defense",
+      "raiders_side": "defense",
+      "evidence": [
+        "possession_evidence/middle_092.jpg"
+      ]
+    },
+    {
+      "play": 93,
+      "label": "Scoreboard / no play",
+      "raiders_side": "other",
+      "evidence": [
+        "possession_evidence/middle_093.jpg"
+      ]
+    }
+  ]
+}
