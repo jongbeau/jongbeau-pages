@@ -1,10 +1,12 @@
 'use strict';
-const COLS=6,ROWS=9,colors=['#79aecb','#f2bd52','#8975dc','#7cae99','#ed8775','#6b86d6','#edaa67'];
+const COLS=8,ROWS=12,colors=['#79aecb','#f2bd52','#8975dc','#7cae99','#ed8775','#6b86d6','#edaa67'];
 const types=['I','O','T','S','Z','J','L'];
 const shapes=[[[0,0],[1,0],[2,0],[3,0]],[[0,0],[1,0],[0,1],[1,1]],[[1,0],[0,1],[1,1],[2,1]],[[1,0],[2,0],[0,1],[1,1]],[[0,0],[1,0],[1,1],[2,1]],[[0,0],[0,1],[1,1],[2,1]],[[2,0],[0,1],[1,1],[2,1]]];
 let bag=[];
 const $=id=>document.getElementById(id);
 let grid,active,next,stars=0,playing=false,started=false,muted=true,last=0,celebrationTimer,lockUntil=0,audio;
+$('board').style.setProperty('--columns',COLS);
+$('board').style.setProperty('--rows',ROWS);
 const cells=Array.from({length:COLS*ROWS},()=>{let c=document.createElement('div');c.className='cell';$('board').appendChild(c);return c;});
 function makePiece(index){
   const shape=shapes[index].map(p=>[...p]);
@@ -57,12 +59,12 @@ function cancelGesture(e){
   if(!gesture||(e && e.pointerId!==gesture.id))return;
   const id=gesture.id;gesture=null;last=performance.now();
   if(playfield.hasPointerCapture(id))playfield.releasePointerCapture(id);
-  playfield.classList.remove('dragging','drop-ready');
+  playfield.classList.remove('dragging');
 }
 function beginGesture(e){
   if(!playing||gesture||!e.isPrimary||e.button!==0||performance.now()<lockUntil)return;
   e.preventDefault();
-  gesture={id:e.pointerId,startX:e.clientX,startY:e.clientY,lastX:e.clientX,remainder:0,moved:false,target:e.target.closest('#rotate,#drop')?.id};
+  gesture={id:e.pointerId,startX:e.clientX,startY:e.clientY,lastX:e.clientX,startRow:active.y,rowPitch:cells[COLS].getBoundingClientRect().top-cells[0].getBoundingClientRect().top,lowered:false,remainder:0,moved:false,target:e.target.closest('#rotate,#drop')?.id};
   playfield.setPointerCapture(e.pointerId);
 }
 function moveGesture(e){
@@ -70,10 +72,6 @@ function moveGesture(e){
   e.preventDefault();
   const g=gesture;
   g.remainder+=e.clientX-g.lastX;g.lastX=e.clientX;
-  const dx=e.clientX-g.startX,dy=e.clientY-g.startY;
-  const dropDistance=Math.max(36,Math.min(64,cells[0].getBoundingClientRect().height*.6));
-  g.dropReady=dy>=dropDistance && dy>Math.abs(dx);
-  playfield.classList.toggle('drop-ready',g.dropReady);
   if(Math.hypot(e.clientX-g.startX,e.clientY-g.startY)>8)g.moved=true;
   if(!g.moved)return;
   playfield.classList.add('dragging');
@@ -85,12 +83,21 @@ function moveGesture(e){
     g.remainder-=direction*step;
     if(active.x===before){g.remainder=0;break;}
   }
+  // One row of finger travel moves one row, with no jump on release.
+  if(g.rowPitch>0){
+    const targetRow=g.startRow+Math.floor(Math.max(0,e.clientY-g.startY)/g.rowPitch);
+    while(active.y<targetRow && fits(active,active.x,active.y+1)){
+      active.y++;g.lowered=true;
+    }
+    draw();
+  }
+
 }
 function endGesture(e){
   if(!gesture||e.pointerId!==gesture.id)return;
   moveGesture(e);
   const g=gesture;cancelGesture();
-  if(g.dropReady)action('drop');
+  if(g.lowered&&!fits(active,active.x,active.y+1))settle();
   else if(!g.moved){if(g.target==='rotate')rotate();else if(g.target==='drop')action('drop');}
 }
 playfield.addEventListener('pointerdown',beginGesture);
@@ -104,5 +111,5 @@ new ResizeObserver(()=>{if(active)positionRotate();}).observe($('board'));
 $('rotate').addEventListener('click',rotate);window.addEventListener('resize',positionRotate);
 $('drop').addEventListener('click',()=>action('drop'));$('play').addEventListener('click',resume);$('pause').addEventListener('click',pause);$('sound').addEventListener('click',()=>{muted=!muted;$('sound').setAttribute('aria-pressed',String(!muted));$('sound').setAttribute('aria-label',muted?'Turn sound on':'Turn sound off');$('sound').querySelector('path').setAttribute('d',muted?'M11 5 6 9H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6':'M11 5 6 9H3v6h3l5 4V5Zm5 3c3 2 3 6 0 8m3-11c5 4 5 10 0 14');chime();});
 document.addEventListener('keydown',e=>{if(e.target.closest('button,a'))return;if(e.key==='ArrowUp'){e.preventDefault();if(!e.repeat)rotate();return;}const kind={ArrowLeft:'left',ArrowRight:'right',ArrowDown:'drop',' ':'drop'}[e.key];if(kind){e.preventDefault();if(!e.repeat)action(kind);}if(e.key==='Escape')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pause();});
-grid=empty();grid[ROWS-1]=[colors[3],null,null,null,null,colors[4]];active=makePiece(0);next=piece();draw();requestAnimationFrame(frame);
-if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:'read_game_state',description:'Read the current Little Blocks game state.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:(input)=>{if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length)throw new Error('Expected an empty object');return {playing,stars,grid:grid.map(r=>[...r]),active:{...active},controls:['drag_left_right','drag_down_to_drop','tap_target_to_drop','tap_block_to_rotate']};}})).catch(()=>{});}catch{}}
+grid=empty();grid[ROWS-1]=[colors[3],colors[3],null,null,null,null,colors[4],colors[4]];active=makePiece(0);next=piece();draw();requestAnimationFrame(frame);
+if(document.modelContext?.registerTool){try{Promise.resolve(document.modelContext.registerTool({name:'read_game_state',description:'Read the current Little Blocks game state.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true},execute:(input)=>{if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length)throw new Error('Expected an empty object');return {playing,stars,grid:grid.map(r=>[...r]),active:{...active},controls:['drag_left_right','drag_down_proportionally','tap_target_to_drop','tap_block_to_rotate']};}})).catch(()=>{});}catch{}}
