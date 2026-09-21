@@ -45,28 +45,27 @@ function rotate(){
   }
   return false;
 }
-// Original looping chiptune, synthesized locally; no audio downloads needed.
-let musicEnabled=true,musicTimer=null,musicStep=0,nextNoteTime=0,lastEffect=-Infinity;
-const musicVoices=new Set();
-const melody=[69,72,76,72,74,72,69,0,67,71,74,71,72,71,67,0,
-  65,69,72,76,74,72,69,65,64,68,71,74,72,71,68,0,
-  69,76,81,76,79,76,72,69,67,74,79,74,76,74,71,67,
-  65,72,77,76,74,72,69,65,64,68,71,76,74,71,69,0];
-const bass=[45,43,41,40,45,43,41,40];
+// A native media track is more reliable than oscillator scheduling on iOS Safari.
+let musicEnabled=true,lastEffect=-Infinity,musicRequest=0;
+const musicTrack=$('music-track');
+musicTrack.volume=.65;
+function playbackSession(){
+  try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch{}
+}
 function ensureAudio(){
-  if(!audio)audio=new(window.AudioContext||window.webkitAudioContext)();
-  if(audio.state==='suspended')void audio.resume().catch(()=>{});
+  playbackSession();
+  if(!audio||audio.state==='closed')audio=new(window.AudioContext||window.webkitAudioContext)();
+  if(audio.state!=='running')void audio.resume().catch(()=>{});
   return audio;
 }
-function tone(midi,time,duration,volume,type='triangle',music=false,endMidi=null){
+function tone(midi,time,duration,volume,type='triangle',endMidi=null){
   const o=audio.createOscillator(),g=audio.createGain();
   o.type=type;o.frequency.setValueAtTime(440*2**((midi-69)/12),time);
   if(endMidi!==null)o.frequency.exponentialRampToValueAtTime(440*2**((endMidi-69)/12),time+duration);
   g.gain.setValueAtTime(0,time);g.gain.linearRampToValueAtTime(volume,time+.012);
   g.gain.exponentialRampToValueAtTime(.0001,time+duration);
   o.connect(g);g.connect(audio.destination);
-  if(music)musicVoices.add(o);
-  o.onended=()=>{musicVoices.delete(o);o.disconnect();g.disconnect();};
+  o.onended=()=>{o.disconnect();g.disconnect();};
   o.start(time);o.stop(time+duration+.02);
 }
 function soundEffect(kind){
@@ -76,34 +75,36 @@ function soundEffect(kind){
     if((kind==='move'||kind==='lower')&&t-lastEffect<.07)return;
     lastEffect=t;
     if(kind==='clear') [72,76,79,84].forEach((n,i)=>tone(n,t+i*.1,.23,.045,'triangle'));
-    else if(kind==='land')tone(55,t,.16,.055,'triangle',false,43);
+    else if(kind==='land')tone(55,t,.16,.055,'triangle',43);
     else if(kind==='rotate'){tone(76,t,.07,.035,'square');tone(81,t+.07,.1,.025,'square');}
     else if(kind==='start'){tone(72,t,.13,.04);tone(79,t+.12,.18,.035);}
     else tone(kind==='lower'?57:69,t,.055,.018,'square');
   }catch{}
 }
-function scheduleMusic(){
-  if(!playing||!musicEnabled||!audio)return;
-  const eighth=60/112/2;
-  if(nextNoteTime<audio.currentTime)nextNoteTime=audio.currentTime+.025;
-  while(nextNoteTime<audio.currentTime+.18){
-    const n=melody[musicStep%melody.length];
-    if(n)tone(n,nextNoteTime,eighth*.8,.018,'square',true);
-    if(musicStep%4===0)tone(bass[Math.floor(musicStep/8)%bass.length],nextNoteTime,eighth*2.7,.055,'triangle',true);
-    if(musicStep%4===2)tone(bass[Math.floor(musicStep/8)%bass.length]+12,nextNoteTime,eighth*.8,.025,'triangle',true);
-    musicStep=(musicStep+1)%melody.length;nextNoteTime+=eighth;
+function startMusic(){
+  if(!playing||!musicEnabled)return;
+  playbackSession();
+  const request=++musicRequest;
+  // Call play synchronously from Play/music taps, preserving Safari user activation.
+  try{
+    const promise=musicTrack.play();
+    if(promise)promise.then(()=>{
+      if(request!==musicRequest||!playing||!musicEnabled){if(!playing||!musicEnabled)musicTrack.pause();return;}
+      $('music').setAttribute('aria-label','Turn music off');
+    }).catch(()=>{
+      if(request===musicRequest&&playing&&musicEnabled){
+        $('music').setAttribute('aria-label','Start music');
+        $('status').textContent='Tap the music note to start music.';
+      }
+    });
+  }catch{
+    $('music').setAttribute('aria-label','Start music');
+    $('status').textContent='Tap the music note to start music.';
   }
 }
-function startMusic(){
-  if(!playing||!musicEnabled||musicTimer!==null)return;
-  try{ensureAudio();nextNoteTime=audio.currentTime+.04;scheduleMusic();musicTimer=setInterval(scheduleMusic,80);}catch{}
-}
-function stopMusic(){
-  clearInterval(musicTimer);musicTimer=null;
-  for(const voice of musicVoices){try{voice.stop();}catch{}}
-  musicVoices.clear();
-}
+function stopMusic(){musicRequest++;musicTrack.pause();}
 $('music').addEventListener('click',()=>{
+  if(musicEnabled&&playing&&musicTrack.paused){startMusic();return;}
   musicEnabled=!musicEnabled;
   $('music').setAttribute('aria-pressed',String(musicEnabled));
   $('music').setAttribute('aria-label',musicEnabled?'Turn music off':'Turn music on');
