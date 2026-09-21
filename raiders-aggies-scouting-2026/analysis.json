@@ -1,0 +1,57 @@
+{
+  "source": "Aggies (1).xlsx",
+  "sheet": "vs Texans",
+  "scrimmage_plays": [
+    1,
+    2,
+    3,
+    4,
+    14,
+    15,
+    16,
+    17,
+    20,
+    21,
+    22,
+    23,
+    24,
+    37,
+    46,
+    47,
+    53,
+    54,
+    55,
+    56,
+    57,
+    66,
+    67,
+    69,
+    70,
+    71,
+    72,
+    73,
+    79,
+    80
+  ],
+  "excluded_xp": [
+    48,
+    58,
+    74
+  ],
+  "designed_runs": 23,
+  "pass_calls": 7,
+  "scrambles_within_pass_calls": 2,
+  "strong_side_designed_runs": 22,
+  "designed_run_denominator": 23,
+  "second_half_heavy_plays": 16,
+  "second_half_strong_off_tackle": 13,
+  "formation_counts": {
+    "A": 10,
+    "B": 4,
+    "C": 16
+  },
+  "source_conflicts": [
+    "Play 22: motion left, sweep right, but Run Side=Strong. Strong-side total uses the chart side label; no motion-direction percentage asserted."
+  ],
+  "method": "Manual chart authoritative for this report. Pass attempts ending in scramble remain pass calls. XP excluded from headline counts. Workbook yardages are charted estimates."
+}
