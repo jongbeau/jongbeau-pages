@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1448" height="1086" viewBox="0 0 1448 1086" role="img" aria-labelledby="title desc">
+<title id="title">Power formation: point-of-attack blocking</title>
+<desc id="desc">Eleven offensive players. Green flat-ended lines show blocks, red dashes show wingback motion, and the short blue arrow shows the quarterback's direction. Right guard seals the defensive tackle left. Each line is independently editable.</desc>
+<rect width="1448" height="1086" fill="white"/>
+<g id="field-and-motion" fill="none" stroke="#c82020" stroke-width="3.5" stroke-linecap="round">
+<path id="line-of-scrimmage" d="M 30 585 L 1415 585"/>
+<path id="wingback-motion" d="M 550 707 L 903 707" stroke-dasharray="16 15"/>
+</g>
+<g id="players" fill="#c82020" font-family="Comic Sans MS, Chalkboard, sans-serif" font-size="43" text-anchor="middle" dominant-baseline="middle">
+<text id="free-safety" x="690" y="175">FS</text><text id="strong-safety" x="390" y="365">SS</text><text id="left-lb" x="600" y="365">LB</text><text id="inside-lb" x="825" y="365">LB</text><text id="outside-lb" x="1040" y="365">LB</text><text id="left-cb" x="85" y="530">CB</text><text id="right-cb" x="1360" y="530">CB</text><text id="def-left-edge" x="520" y="550">E</text><text id="def-nose" x="655" y="550">N</text><text id="def-tackle" x="765" y="550">T</text><text id="def-right-edge" x="955" y="550">E</text><text id="off-left-tackle" x="585" y="625">T</text><text id="off-left-guard" x="655" y="625">G</text><text id="off-center" x="715" y="625">C</text><text id="off-right-guard" x="785" y="625">G</text><text id="off-right-tackle" x="865" y="625">T</text><text id="motion-wingback" x="500" y="715">WB</text><text id="quarterback" x="685" y="815">QB</text><text id="running-back" x="760" y="815">RB</text><text id="strong-side-receiver" x="1360" y="625">WR</text><text id="tight-end" x="955" y="625">TE</text><text id="outside-wingback" x="1040" y="715">WB</text>
+</g>
+<g id="blocking-paths" fill="none" stroke="#009c50" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+<g id="right-guard-inside-seal"><path d="M 790 598 C 811 586 810 568 782 553"/><path d="M 773 570 L 791 536"/></g><g id="right-tackle-edge-block"><path d="M 873 598 L 934 544"/><path d="M 924 533 L 944 555"/></g><g id="tight-end-edge-block"><path d="M 955 596 L 955 573"/><path d="M 940 573 L 970 573"/></g><g id="running-back-lead-block"><path d="M 782 766 C 805 703 826 595 844 480"/><path d="M 830 478 L 858 482"/></g><g id="motion-wingback-lead-block"><path d="M 903 700 C 889 675 850 674 842 644 C 836 619 845 572 856 551 C 872 521 888 503 889 480"/><path d="M 875 480 L 903 480"/></g><g id="outside-wingback-block"><path d="M 1040 657 C 1044 602 1031 535 1020 495"/><path d="M 1006 499 L 1034 491"/></g>
+</g>
+<g id="qb-run" fill="none" stroke="#164dff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 714 786 L 739 748 M 726 753 L 739 748 L 737 762"/>
+</g>
+</svg>
