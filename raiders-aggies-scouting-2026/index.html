@@ -61,6 +61,16 @@ td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}td.
  .formation .blocking-jobs p{margin:6px 0}
  .formation .blocking-jobs strong{margin-bottom:4px}
  .formation .blocking-reminder{padding:8px}
+ /* Keep both backfield diagrams, player table, and notes together. */
+ #players{break-inside:avoid-page;page-break-inside:avoid;font-size:13px;line-height:1.3}
+ #players h2{font-size:22px}
+ #players h3{font-size:17px;margin-bottom:6px}
+ #players p{margin:8px 0}
+ #players .backfield-keys{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ #players .card svg{max-height:2.3in}
+ #players table,#players th{font-size:12px}
+ #players th,#players td{padding:4px 5px}
+ #players .figure-note,#players .source{font-size:11px}
 }
 
 </style></head><body><main><header><div class="brand">
